@@ -39,7 +39,6 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
 
         public override bool TryConvert(ConvertBinder binder, out object result)
         {
-            result = null;
             if (binder.Type.IsAssignableFrom(_values.GetType()))
             {
                 result = _values;
@@ -66,7 +65,7 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
         public override bool TrySetIndex(SetIndexBinder binder, object[] indexes, object value)
         {
             string key = GetKey(indexes);
-            if (!String.IsNullOrEmpty(key))
+            if (!string.IsNullOrEmpty(key))
             {
                 _values[key] = Json.WrapObject(value);
             }
