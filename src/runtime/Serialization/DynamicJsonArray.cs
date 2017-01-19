@@ -61,17 +61,7 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
                     var item = _arrayValues[i];
                     if (item is DynamicJsonObject)
                     {
-                        var values = ((DynamicJsonObject) item).ToDictionary();
-                        var converted = Activator.CreateInstance(elementType);
-
-                        foreach (var property in elementType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-                        {
-                            if (values.ContainsKey(property.Name) && property.PropertyType == values[property.Name].GetType())
-                            {
-                                property.SetValue(converted, values[property.Name]);
-                            }
-                        }
-
+                        var converted = ((DynamicJsonObject) item).ToObject(elementType);
                         destinationArray.SetValue(converted, i);
                     }
                     else

@@ -65,6 +65,7 @@
     <Compile Include="When_serializing_arrays.cs" />
     <Compile Include="When_serializing_objects.cs" />
     <Compile Include="When_working_with_dynamic_json_arrays.cs" />
+    <Compile Include="When_working_with_dynamic_json_objects.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -46,7 +46,7 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
             }
             else
             {
-                throw new InvalidOperationException(String.Format(CultureInfo.CurrentCulture, "Unable to convert to \"{0}\". Use Json.Decode<T> instead.", binder.Type));
+                result = ToObject(binder.Type);
             }
             return true;
         }
@@ -129,6 +129,21 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
             var regex = new Regex(@"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$");
 
             return regex.IsMatch(s);
+        }
+
+        public object ToObject(Type elementType)
+        {
+            var converted = Activator.CreateInstance(elementType);
+
+            foreach (var property in elementType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            {
+                if (_values.ContainsKey(property.Name) && property.PropertyType == _values[property.Name].GetType())
+                {
+                    property.SetValue(converted, _values[property.Name]);
+                }
+            }
+
+            return converted;
         }
     }
 
