@@ -21,6 +21,9 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using Microsoft.CSharp.RuntimeBinder;
 
 // namespace modified to prevent naming collisions
 namespace MessageHandler.EventProcessing.Runtime.Serialization
@@ -51,9 +54,32 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
         {
             if (_arrayValues.GetType().IsAssignableFrom(binder.Type))
             {
-                var destinationArray = Array.CreateInstance(binder.Type.GetElementType(), _arrayValues.Length);
-                Array.Copy(_arrayValues, destinationArray, _arrayValues.Length);
+                var elementType = binder.Type.GetElementType();
+                var destinationArray = Array.CreateInstance(elementType, _arrayValues.Length);
+                for (var i=0; i < _arrayValues.Length; i++)
+                {
+                    var item = _arrayValues[i];
+                    if (item is DynamicJsonObject)
+                    {
+                        var values = ((DynamicJsonObject) item).ToDictionary();
+                        var converted = Activator.CreateInstance(elementType);
 
+                        foreach (var property in elementType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+                        {
+                            if (values.ContainsKey(property.Name) && property.PropertyType == values[property.Name].GetType())
+                            {
+                                property.SetValue(converted, values[property.Name]);
+                            }
+                        }
+
+                        destinationArray.SetValue(converted, i);
+                    }
+                    else
+                    {
+                        destinationArray.SetValue(item, i);
+                    }
+                }
+                
                 result = destinationArray;
                 return true;
             }
