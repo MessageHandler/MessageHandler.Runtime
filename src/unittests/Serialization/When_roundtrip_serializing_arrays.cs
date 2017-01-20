@@ -1,14 +1,14 @@
 using MessageHandler.EventProcessing.Runtime.Serialization;
 using Xunit;
 
-namespace unittests
+namespace unittests.Serialization
 {
-    public class When_roundtrip_serializing_objects
+    public class When_roundtrip_serializing_arrays
     {
         [Fact]
-        public void Can_serialize_a_deserialized_object()
+        public void Can_serialize_a_deserialized_array()
         {
-            var deserialized1 = new SerializedObject { SomeProperty = "test" };
+            var deserialized1 = new[] { new SerializedObject { SomeProperty = "test" }, new SerializedObject { SomeProperty = "test" } };
 
             var serialized1 = Json.Encode(deserialized1);
 
@@ -20,16 +20,18 @@ namespace unittests
         }
 
         [Fact]
-        public void Can_serialize_a_complex_deserialized_object()
+        public void Can_serialize_a_complex_deserialized_array()
         {
-            var deserialized1 = new ComplexSerializedObject()
-            {
-                SomeProperty = "test",
-                Children = new[]
+            var deserialized1 = new [] {
+                new ComplexSerializedObject()
                 {
-                    new SerializedObject {SomeProperty = "test"}
-                },
-                Child = new SerializedObject {SomeProperty = "test"}
+                    SomeProperty = "test",
+                    Children = new[]
+                    {
+                        new SerializedObject {SomeProperty = "test"}
+                    },
+                    Child = new SerializedObject { SomeProperty = "test" }
+                }
             };
 
             var serialized1 = Json.Encode(deserialized1);

@@ -1,12 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using MessageHandler.EventProcessing.Runtime.Serialization;
 using Xunit;
 
-namespace unittests
+namespace unittests.Serialization
 {
-    using System.Collections;
-
     public class When_working_with_dynamic_json_objects
     {
         const string json = "{\"SomeProperty\":\"test\"}";

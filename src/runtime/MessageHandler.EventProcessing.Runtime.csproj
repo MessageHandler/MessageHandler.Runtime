@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\IConfigurationSource.cs" />
+    <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\DynamicHelper.cs" />
     <Compile Include="Serialization\DynamicJavaScriptConverter.cs" />

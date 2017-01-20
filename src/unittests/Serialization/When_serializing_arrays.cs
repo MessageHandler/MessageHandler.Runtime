@@ -1,7 +1,7 @@
 ﻿using MessageHandler.EventProcessing.Runtime.Serialization;
 using Xunit;
 
-namespace unittests
+namespace unittests.Serialization
 {
     public class When_serializing_arrays
     {

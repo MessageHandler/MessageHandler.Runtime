@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MessageHandler.EventProcessing.Runtime.Serialization;
 using Xunit;
 
-namespace unittests
+namespace unittests.Serialization
 {
     public class When_working_with_dynamic_json_arrays
     {

@@ -57,17 +57,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_deserializing_objects.cs" />
+    <Compile Include="Configuration\When_deserializing_arrays.cs" />
+    <Compile Include="Serialization\When_deserializing_objects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="When_deserializing_arrays.cs" />
-    <Compile Include="When_roundtrip_serializing_arrays.cs" />
-    <Compile Include="When_roundtrip_serializing_objects.cs" />
-    <Compile Include="When_serializing_arrays.cs" />
-    <Compile Include="When_serializing_objects.cs" />
-    <Compile Include="When_working_with_dynamic_json_arrays.cs" />
-    <Compile Include="When_working_with_dynamic_json_objects.cs" />
+    <Compile Include="Serialization\When_deserializing_arrays.cs" />
+    <Compile Include="Serialization\When_roundtrip_serializing_arrays.cs" />
+    <Compile Include="Serialization\When_roundtrip_serializing_objects.cs" />
+    <Compile Include="Serialization\When_serializing_arrays.cs" />
+    <Compile Include="Serialization\When_serializing_objects.cs" />
+    <Compile Include="Serialization\When_working_with_dynamic_json_arrays.cs" />
+    <Compile Include="Serialization\When_working_with_dynamic_json_objects.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="handler.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
