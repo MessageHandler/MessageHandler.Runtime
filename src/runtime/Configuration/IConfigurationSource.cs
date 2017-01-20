@@ -1,5 +1,4 @@
-﻿using System;
-namespace MessageHandler.EventProcessing.Runtime
+﻿namespace MessageHandler.EventProcessing.Runtime
 {
     public interface IConfigurationSource
     {

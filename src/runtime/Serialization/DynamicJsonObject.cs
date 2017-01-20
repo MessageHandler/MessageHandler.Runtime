@@ -39,7 +39,6 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
 
         public override bool TryConvert(ConvertBinder binder, out object result)
         {
-            result = null;
             if (binder.Type.IsAssignableFrom(_values.GetType()))
             {
                 result = _values;
@@ -66,7 +65,7 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
         public override bool TrySetIndex(SetIndexBinder binder, object[] indexes, object value)
         {
             string key = GetKey(indexes);
-            if (!String.IsNullOrEmpty(key))
+            if (!string.IsNullOrEmpty(key))
             {
                 _values[key] = Json.WrapObject(value);
             }
@@ -112,8 +111,8 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
                 var s = result as string;
                 if (s != null && IsPotentialIso8601DateTimeString(s))
                 {
-                    DateTime d;
-                    if (DateTime.TryParse(s, null, DateTimeStyles.RoundtripKind, out d))
+                    DateTimeOffset d;
+                    if (DateTimeOffset.TryParse(s, null, DateTimeStyles.RoundtripKind, out d))
                     {
                         result = d;
                     }

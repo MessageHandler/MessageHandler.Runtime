@@ -21,9 +21,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using Microsoft.CSharp.RuntimeBinder;
 
 // namespace modified to prevent naming collisions
 namespace MessageHandler.EventProcessing.Runtime.Serialization
