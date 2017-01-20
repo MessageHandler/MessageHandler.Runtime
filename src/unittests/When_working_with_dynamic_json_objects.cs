@@ -77,8 +77,9 @@ namespace unittests
         {
             get
             {
-                yield return new object[] { "1997-07", new DateTimeOffset(1997, 07, 1, 0, 0, 0, DateTimeOffset.Now.Offset) };
-                yield return new object[] { "1997-07-16", new DateTimeOffset(1997, 07, 16, 0, 0, 0, DateTimeOffset.Now.Offset) };
+                yield return new object[] { "1997-07", new DateTimeOffset(new DateTime(1997, 07, 1, 0, 0, 0)) };
+                yield return new object[] { "1997-07-16", new DateTimeOffset(new DateTime(1997, 07, 16, 0, 0, 0)) };
+                yield return new object[] { "1997-07-16T19:20Z", new DateTimeOffset(1997, 07, 16, 19, 20, 0, TimeSpan.Zero) };
                 yield return new object[] { "1997-07-16T19:20+01:00", new DateTimeOffset(1997, 07, 16, 19, 20, 0, TimeSpan.FromHours(1)) };
                 yield return new object[] { "1997-07-16T19:20:30+01:00", new DateTimeOffset(1997, 07, 16, 19, 20, 30, TimeSpan.FromHours(1)) };
                 yield return new object[] { "1997-07-16T19:20:30.45+01:00", new DateTimeOffset(new DateTime(1997, 07, 16, 19, 20, 30).AddMilliseconds(450), TimeSpan.FromHours(1)) };

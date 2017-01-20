@@ -111,8 +111,8 @@ namespace MessageHandler.EventProcessing.Runtime.Serialization
                 var s = result as string;
                 if (s != null && IsPotentialIso8601DateTimeString(s))
                 {
-                    DateTime d;
-                    if (DateTime.TryParse(s, null, DateTimeStyles.RoundtripKind, out d))
+                    DateTimeOffset d;
+                    if (DateTimeOffset.TryParse(s, null, DateTimeStyles.RoundtripKind, out d))
                     {
                         result = d;
                     }
