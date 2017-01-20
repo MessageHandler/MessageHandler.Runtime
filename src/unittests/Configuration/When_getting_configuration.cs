@@ -22,7 +22,15 @@ namespace unittests.Serialization
             Assert.NotNull(deserialized);
             Assert.True(deserialized.SomeProperty == "test");
         }
-        
+
+        [Fact]
+        public async Task Throws_file_not_found_exception_if_file_does_not_exist()
+        {
+            var configurationSource = new JSonFileConfigurationSource();
+
+            await Assert.ThrowsAsync<FileNotFoundException>(() => configurationSource.GetConfiguration<SerializedObject>("unexisting.json"));
+        }
+
         public class SerializedObject
         {
             public string SomeProperty { get; set; }
