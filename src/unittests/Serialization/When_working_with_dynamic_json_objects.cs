@@ -88,12 +88,6 @@ namespace unittests.Serialization
 
         [Theory]
         [MemberData("DateTimePermutations")]
-        ////[InlineData("1997")] //not automatically converted because to much conflict with numbers
-//        [InlineData("1997-07")]
-//        [InlineData("1997-07-16")]
-//        [InlineData("1997-07-16T19:20+01:00")]
-//        [InlineData("1997-07-16T19:20:30+01:00")]
-//        [InlineData("1997-07-16T19:20:30.45+01:00")]
         public void Can_deal_with_iso_date_formats(string date, DateTimeOffset expected)
         {
             dynamic deserialized = Json.Decode("{Date:\"" + date + "\"}");

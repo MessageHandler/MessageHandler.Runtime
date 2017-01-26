@@ -61,6 +61,7 @@
     <Compile Include="Serialization\When_deserializing_objects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\When_deserializing_arrays.cs" />
+    <Compile Include="Serialization\When_deserializing_primitive_types.cs" />
     <Compile Include="Serialization\When_roundtrip_serializing_arrays.cs" />
     <Compile Include="Serialization\When_roundtrip_serializing_objects.cs" />
     <Compile Include="Serialization\When_serializing_arrays.cs" />
