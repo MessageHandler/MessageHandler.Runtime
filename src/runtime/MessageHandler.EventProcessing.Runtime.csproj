@@ -44,8 +44,10 @@
     <Compile Include="ConfigurationSettings\Setting.cs" />
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
+    <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
     <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
+    <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\DynamicHelper.cs" />
     <Compile Include="Serialization\DynamicJavaScriptConverter.cs" />
