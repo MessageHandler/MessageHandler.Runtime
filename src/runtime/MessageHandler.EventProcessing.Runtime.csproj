@@ -49,6 +49,11 @@
     <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />
+    <Compile Include="Container\Container.cs" />
+    <Compile Include="Container\ContainerRegistration.cs" />
+    <Compile Include="Container\IContainer.cs" />
+    <Compile Include="Container\Lifecycle.cs" />
+    <Compile Include="Container\TypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\DynamicHelper.cs" />
     <Compile Include="Serialization\DynamicJavaScriptConverter.cs" />

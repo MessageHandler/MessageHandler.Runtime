@@ -61,6 +61,11 @@
     <Compile Include="ConfigurationSettings\When_removing_values.cs" />
     <Compile Include="ConfigurationSettings\When_working_with_types.cs" />
     <Compile Include="Configuration\When_getting_configuration.cs" />
+    <Compile Include="DependencyInjection\When_registering_dependencies.cs" />
+    <Compile Include="DependencyInjection\When_resolving_dependencies.cs" />
+    <Compile Include="DependencyInjection\When_resolving_interface_dependencies.cs" />
+    <Compile Include="DependencyInjection\When_resolving_mutiple_interface.cs" />
+    <Compile Include="DependencyInjection\When_resolving_single_instances.cs" />
     <Compile Include="Serialization\When_deserializing_objects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\When_deserializing_arrays.cs" />
