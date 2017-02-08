@@ -88,6 +88,19 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
                 }
             }
         }
+
+        public void Remove(string key)
+        {
+            Setting setting;
+            _explicitValues.TryRemove(key, out setting);
+            _defaultValues.TryRemove(key, out setting);
+        }
+
+        public void Clear()
+        {
+            _explicitValues.Clear();
+            _defaultValues.Clear();
+        }
     }
 
     internal class Setting
