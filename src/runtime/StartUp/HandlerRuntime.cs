@@ -20,10 +20,9 @@ namespace MessageHandler.EventProcessing.Runtime
             config.LockSettings();
 
             var runtime = new HandlerRuntime(config);
-
-
+            
             var container = config.Settings.Get<IContainer>("messagehandler.container");
-            container.Register(() => config.Settings);
+            container?.Register(() => config.Settings);
 
             return runtime;
         }

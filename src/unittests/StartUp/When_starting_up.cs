@@ -23,82 +23,76 @@ namespace unittests.StartUp
             public bool LockIsCalled;
             public void Set(string key, object value)
             {
-                throw new NotImplementedException();
             }
 
             public void Set<T>(T value)
             {
-                throw new NotImplementedException();
             }
 
             public T Get<T>()
             {
-                throw new NotImplementedException();
+                return default(T);
             }
 
             public T Get<T>(string key)
             {
-                throw new NotImplementedException();
+                return default(T);
             }
 
             public object Get(Type type)
             {
-                throw new NotImplementedException();
+                return null;
             }
 
             public object Get(string key)
             {
-                throw new NotImplementedException();
+                return null;
             }
 
             public void SetDefault<T>(T value)
             {
-                throw new NotImplementedException();
+                
             }
 
             public void SetDefault(string key, object value)
             {
-                throw new NotImplementedException();
+               
             }
 
             public object GetDefault(Type type)
             {
-                throw new NotImplementedException();
+                return null;
             }
 
             public T GetDefault<T>(string key)
             {
-                throw new NotImplementedException();
+                return default(T);
             }
 
             public object GetDefault(string key)
             {
-                throw new NotImplementedException();
+                return null;
             }
 
             public T GetDefault<T>()
             {
-                throw new NotImplementedException();
+                return default(T);
             }
 
             public void Remove<T>()
             {
-                throw new NotImplementedException();
             }
 
             public void Remove(Type type)
             {
-                throw new NotImplementedException();
             }
 
             public void Remove(string key)
             {
-                throw new NotImplementedException();
             }
 
             public void Lock(string key)
             {
-                throw new NotImplementedException();
             }
 
             public void LockAll()
@@ -108,7 +102,6 @@ namespace unittests.StartUp
 
             public void Clear()
             {
-                throw new NotImplementedException();
             }
         }
     }
