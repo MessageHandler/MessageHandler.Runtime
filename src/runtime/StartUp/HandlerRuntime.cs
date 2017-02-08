@@ -18,7 +18,12 @@ namespace MessageHandler.EventProcessing.Runtime
         public static HandlerRuntime Create(HandlerRuntimeConfiguration config)
         {
             config.LockSettings();
+
             var runtime = new HandlerRuntime(config);
+
+
+            var container = config.Settings.Get<IContainer>("messagehandler.container");
+            container.Register(() => config.Settings);
 
             return runtime;
         }

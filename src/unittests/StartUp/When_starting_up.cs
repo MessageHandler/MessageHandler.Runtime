@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MessageHandler.EventProcessing.Runtime;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 using Xunit;
@@ -15,10 +11,13 @@ namespace unittests.StartUp
         public void Will_lock_settings_after_configuration()
         {
             var settings = new FakeSettings();
+
             var config = new HandlerRuntimeConfiguration(settings);
             var runtime = HandlerRuntime.Create(config);
             Assert.True(settings.LockIsCalled);
         }
+
+
         public class FakeSettings:ISettings
         {
             public bool LockIsCalled;

@@ -13,6 +13,13 @@ namespace MessageHandler.EventProcessing.Runtime
         public HandlerRuntimeConfiguration(ISettings settings):base(settings)
         {
             _settings = settings;
+
+            ApplyDefaults();
+        }
+
+        private void ApplyDefaults()
+        {
+            _settings.SetDefault("messagehandler.container", new Container());
         }
 
         public void LockSettings()
