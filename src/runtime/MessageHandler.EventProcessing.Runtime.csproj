@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
+    <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
