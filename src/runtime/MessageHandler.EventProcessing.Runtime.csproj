@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationSettings\ISettings.cs" />
     <Compile Include="ConfigurationSettings\Setting.cs" />
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Serialization\DynamicJsonArray.cs" />
     <Compile Include="Serialization\DynamicJsonObject.cs" />
     <Compile Include="Serialization\Json.cs" />
+    <Compile Include="StartUp\HandlerRuntime.cs" />
+    <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

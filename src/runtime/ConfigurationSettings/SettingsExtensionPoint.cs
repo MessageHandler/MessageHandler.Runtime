@@ -2,11 +2,11 @@
 {
     public abstract class SettingsExtensionPoint
     {
-        protected SettingsExtensionPoint(Settings settings)
+        protected SettingsExtensionPoint(ISettings settings)
         {
             Settings = settings;
         }
 
-        internal Settings Settings { get; private set; }
+        internal ISettings Settings { get; private set; }
     }
 }

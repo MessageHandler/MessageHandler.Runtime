@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
 {
-    public class Settings
+    public class Settings : ISettings
     {
         private readonly ConcurrentDictionary<string, Setting> _explicitValues = new ConcurrentDictionary<string, Setting>();
         private readonly ConcurrentDictionary<string, Setting> _defaultValues = new ConcurrentDictionary<string, Setting>();

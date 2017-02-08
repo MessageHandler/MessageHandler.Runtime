@@ -2,7 +2,7 @@
 {
     public static class SettingsExtensionPointExtensions
     {
-        public static Settings GetSettings(this SettingsExtensionPoint extensionPoint)
+        public static ISettings GetSettings(this SettingsExtensionPoint extensionPoint)
         {
             return extensionPoint.Settings;
         }
