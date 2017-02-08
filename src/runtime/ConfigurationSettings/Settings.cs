@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
@@ -20,6 +21,27 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
 
         }
 
+        public T Get<T>()
+        {
+            return (T) Get(typeof(T).FullName);
+        }
+
+        public void Set<T>(T value)
+        {
+            Set(typeof(T).FullName, value);
+        }
+
+        public T Get<T>(string key)
+        {
+            return (T) Get(key);
+        }
+        public object Get(Type type)
+        {
+            return Get(type.FullName);
+        }
+
+
+
         public object Get(string key)
         {
             Setting setting;
@@ -34,6 +56,21 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             return setting?.Value;
         }
 
+        public object GetDefault(Type type)
+        {
+            return GetDefault(type.FullName);
+        }
+
+        public void SetDefault<T>(T value)
+        {
+            SetDefault(typeof(T).FullName, value);
+        }
+
+        public T GetDefault<T>(string key)
+        {
+            return (T) GetDefault(key);
+        }
+
         public void SetDefault(string key, object value)
         {
             Setting setting;
@@ -45,11 +82,24 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             _defaultValues.AddOrUpdate(key, s => new Setting {Value = value}, (s, o) => new Setting {Value = value});
         }
 
+        public void Remove<T>()
+        {
+            Remove(typeof(T).FullName);
+        }
+        public void Remove(Type type)
+        {
+            Remove(type.FullName);
+        }
         public object GetDefault(string key)
         {
             Setting setting;
             _defaultValues.TryGetValue(key, out setting);
             return setting?.Value;
+        }
+
+        public T GetDefault<T>()
+        {
+            return (T) GetDefault(typeof(T).FullName);
         }
 
         public void Lock(string key)
@@ -101,6 +151,9 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             _explicitValues.Clear();
             _defaultValues.Clear();
         }
+
+
+        
     }
 
     internal class Setting
