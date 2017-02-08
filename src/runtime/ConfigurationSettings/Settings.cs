@@ -21,14 +21,14 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
 
         }
 
-        public T Get<T>()
-        {
-            return (T) Get(typeof(T).FullName);
-        }
-
         public void Set<T>(T value)
         {
             Set(typeof(T).FullName, value);
+        }
+
+        public T Get<T>()
+        {
+            return (T) Get(typeof(T).FullName);
         }
 
         public T Get<T>(string key)
@@ -39,8 +39,6 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
         {
             return Get(type.FullName);
         }
-
-
 
         public object Get(string key)
         {
@@ -56,19 +54,9 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             return setting?.Value;
         }
 
-        public object GetDefault(Type type)
-        {
-            return GetDefault(type.FullName);
-        }
-
         public void SetDefault<T>(T value)
         {
             SetDefault(typeof(T).FullName, value);
-        }
-
-        public T GetDefault<T>(string key)
-        {
-            return (T) GetDefault(key);
         }
 
         public void SetDefault(string key, object value)
@@ -79,16 +67,17 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             {
                 throw new SettingLockedException($"Setting {key} is locked and cannot be changed.");
             }
-            _defaultValues.AddOrUpdate(key, s => new Setting {Value = value}, (s, o) => new Setting {Value = value});
+            _defaultValues.AddOrUpdate(key, s => new Setting { Value = value }, (s, o) => new Setting { Value = value });
         }
 
-        public void Remove<T>()
+        public object GetDefault(Type type)
         {
-            Remove(typeof(T).FullName);
+            return GetDefault(type.FullName);
         }
-        public void Remove(Type type)
+
+        public T GetDefault<T>(string key)
         {
-            Remove(type.FullName);
+            return (T) GetDefault(key);
         }
         public object GetDefault(string key)
         {
@@ -99,7 +88,22 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
 
         public T GetDefault<T>()
         {
-            return (T) GetDefault(typeof(T).FullName);
+            return (T)GetDefault(typeof(T).FullName);
+        }
+
+        public void Remove<T>()
+        {
+            Remove(typeof(T).FullName);
+        }
+        public void Remove(Type type)
+        {
+            Remove(type.FullName);
+        }
+        public void Remove(string key)
+        {
+            Setting setting;
+            _explicitValues.TryRemove(key, out setting);
+            _defaultValues.TryRemove(key, out setting);
         }
 
         public void Lock(string key)
@@ -139,26 +143,10 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             }
         }
 
-        public void Remove(string key)
-        {
-            Setting setting;
-            _explicitValues.TryRemove(key, out setting);
-            _defaultValues.TryRemove(key, out setting);
-        }
-
         public void Clear()
         {
             _explicitValues.Clear();
             _defaultValues.Clear();
         }
-
-
-        
-    }
-
-    internal class Setting
-    {
-        public object Value { get; set; }
-        public bool Locked { get; set; }
     }
 }

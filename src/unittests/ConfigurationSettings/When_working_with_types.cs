@@ -36,6 +36,7 @@ namespace unittests.ConfigurationSettings
             settings.Set(testValue);
             Assert.StrictEqual(settings.Get(typeof(TestValue)), testValue);
         }
+
         [Fact]
         public void Can_get_typed_default_value_by_type()
         {
@@ -53,6 +54,7 @@ namespace unittests.ConfigurationSettings
             settings.Set<TestValue>(testValue);
             Assert.StrictEqual(settings.Get<TestValue>(typeof(TestValue).FullName),testValue);
         }
+    
         [Fact]
         public void Can_get_typed_default_value()
         {
@@ -80,6 +82,7 @@ namespace unittests.ConfigurationSettings
             settings.Remove<TestValue>();
             Assert.Null(settings.Get<TestValue>());
         }
+
         [Fact]
         public void Can_remove_typed_default_value()
         {
@@ -89,6 +92,7 @@ namespace unittests.ConfigurationSettings
             settings.Remove<TestValue>();
             Assert.Null(settings.GetDefault<TestValue>());
         }
+
         [Fact]
         public void Can_remove_typed_value_by_type()
         {
@@ -98,6 +102,7 @@ namespace unittests.ConfigurationSettings
             settings.Remove(typeof(TestValue));
             Assert.Null(settings.Get<TestValue>());
         }
+
         [Fact]
         public void Can_remove_typed_default_value_by_type()
         {
