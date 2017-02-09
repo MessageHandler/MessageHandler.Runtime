@@ -34,7 +34,7 @@ namespace unittests.Running
         }
 
         [Fact]
-        public async Task Will_stop_even_if_background_task_cant_stop_in_30_seconds()
+        public async Task Will_stop_even_if_background_task_cant_stop_in_5_seconds()
         {
             var timestamp = DateTime.UtcNow;
             var sleepTime = TimeSpan.FromSeconds(60);
@@ -42,9 +42,10 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask(sleepTime);
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
+            configuration.ShutdownGracePeriod(TimeSpan.FromSeconds(5));
             var runtime = HandlerRuntime.Create(configuration);
             await runtime.Start();
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(1));
             await runtime.Stop();
 
             var executionTime = DateTime.UtcNow - timestamp;

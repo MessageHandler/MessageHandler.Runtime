@@ -7,12 +7,12 @@ namespace MessageHandler.EventProcessing.Runtime
 {
     public class HandlerRuntime
     {
-        private List<IBackgroundTask> _backgroundTasks = new List<IBackgroundTask>();
-        private List<Task> _runningTasks = new List<Task>();
+        private readonly List<IBackgroundTask> _backgroundTasks = new List<IBackgroundTask>();
+        private readonly List<Task> _runningTasks = new List<Task>();
 
         private HandlerRuntimeConfiguration _config;
-        private IContainer _container;
-        private CancellationTokenSource _tokenSource = new CancellationTokenSource();
+        private readonly IContainer _container;
+        private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
 
 
         private HandlerRuntime(HandlerRuntimeConfiguration config, IContainer container)
@@ -53,7 +53,9 @@ namespace MessageHandler.EventProcessing.Runtime
         public async Task Stop()
         {
             _tokenSource.Cancel(false);
-            var timeoutTask = Task.Delay(TimeSpan.FromSeconds(30));
+            var gracePeriod = _config.Settings.Get<TimeSpan>("messagehandler.shutdowngraceperiod");
+
+            var timeoutTask = Task.Delay(gracePeriod);
             var waitingForCompletion = Task.WhenAll(_runningTasks);
             await Task.WhenAny(timeoutTask, waitingForCompletion);
         }

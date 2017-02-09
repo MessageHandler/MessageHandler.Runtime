@@ -64,6 +64,7 @@
     <Compile Include="Serialization\DynamicJsonObject.cs" />
     <Compile Include="Serialization\Json.cs" />
     <Compile Include="Running\BackgroundTaskExtensions.cs" />
+    <Compile Include="Shutdown\ShutdownExtensions.cs" />
     <Compile Include="StartUp\HandlerRuntime.cs" />
     <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
     <Compile Include="StartUp\IStartupTask.cs" />

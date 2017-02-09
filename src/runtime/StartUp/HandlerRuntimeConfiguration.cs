@@ -1,4 +1,5 @@
-﻿using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
+﻿using System;
+using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.EventProcessing.Runtime
 {
@@ -20,9 +21,10 @@ namespace MessageHandler.EventProcessing.Runtime
         private void ApplyDefaults()
         {
             _settings.SetDefault("messagehandler.container", new Container());
+            _settings.SetDefault("messagehandler.shutdowngraceperiod", TimeSpan.FromSeconds(30));
         }
 
-        public void LockSettings()
+        internal void LockSettings()
         {
             _settings.LockAll();
         }
