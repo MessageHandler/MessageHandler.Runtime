@@ -63,6 +63,9 @@
     <Compile Include="Serialization\Json.cs" />
     <Compile Include="StartUp\HandlerRuntime.cs" />
     <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
+    <Compile Include="StartUp\IStartupTask.cs" />
+    <Compile Include="StartUp\StartupTaskExtensions.cs" />
+    <Compile Include="StartUp\StartupTasks.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

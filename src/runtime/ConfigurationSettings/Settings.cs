@@ -148,5 +148,21 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             _explicitValues.Clear();
             _defaultValues.Clear();
         }
+
+        public T GetOrCreate<T>()
+        {
+            return (T) GetOrCreate(typeof(T).FullName, typeof(T));
+        }
+
+        public object GetOrCreate(Type type)
+        {
+            return GetOrCreate(type.FullName, type);
+        }
+
+        public object GetOrCreate(string key, Type type)
+        {
+            var setting = _explicitValues.GetOrAdd(key, s => new Setting() {Value = Activator.CreateInstance(type)});
+            return setting.Value;
+        }
     }
 }

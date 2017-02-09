@@ -2,6 +2,7 @@
 using MessageHandler.EventProcessing.Runtime;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 using Xunit;
+using Xunit.Sdk;
 
 namespace unittests.StartUp
 {
@@ -102,6 +103,21 @@ namespace unittests.StartUp
 
             public void Clear()
             {
+            }
+
+            public T GetOrCreate<T>()
+            {
+                return default(T);
+            }
+
+            public object GetOrCreate(Type type)
+            {
+                return null;
+            }
+
+            public object GetOrCreate(string key, Type type)
+            {
+                return null;
             }
         }
     }

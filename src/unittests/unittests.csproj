@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationSettings\When_getting_or_creating_settings.cs" />
     <Compile Include="ConfigurationSettings\When_locking_values.cs" />
     <Compile Include="ConfigurationSettings\When_removing_values.cs" />
     <Compile Include="ConfigurationSettings\When_working_with_types.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="ConfigurationSettings\When_setting_values.cs" />
     <Compile Include="StartUp\When_configuring_the_container.cs" />
     <Compile Include="StartUp\When_extending_handler_runtime_configuration.cs" />
+    <Compile Include="StartUp\When_registering_start_up_tasks.cs" />
     <Compile Include="StartUp\When_starting_up.cs" />
   </ItemGroup>
   <ItemGroup>

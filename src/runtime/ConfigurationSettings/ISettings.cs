@@ -3,7 +3,9 @@ using System;
 namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
 {
     public interface ISettings:IManageSettings,IProvideSettings
-    {    }
+    {
+        
+    }
 
     public interface IProvideSettings
     {
@@ -15,6 +17,9 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
         T GetDefault<T>(string key);
         object GetDefault(string key);
         T GetDefault<T>();
+        T GetOrCreate<T>();
+        object GetOrCreate(Type type);
+        object GetOrCreate(string key, Type type);
     }
 
     public interface IManageSettings
