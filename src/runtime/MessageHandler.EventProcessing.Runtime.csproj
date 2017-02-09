@@ -43,12 +43,14 @@
   <ItemGroup>
     <Compile Include="ConfigurationConventions\ConventionExtensions.cs" />
     <Compile Include="ConfigurationConventions\Conventions.cs" />
+    <Compile Include="ConfigurationConventions\DefaultConvention.cs" />
     <Compile Include="ConfigurationConventions\IConvention.cs" />
     <Compile Include="ConfigurationSettings\ISettings.cs" />
     <Compile Include="ConfigurationSettings\Setting.cs" />
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
+    <Compile Include="Configuration\HandlerRuntimeSettings.cs" />
     <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />

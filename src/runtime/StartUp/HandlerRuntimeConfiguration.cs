@@ -7,6 +7,8 @@ namespace MessageHandler.EventProcessing.Runtime
     {
         private readonly ISettings _settings;
 
+        public HandlerRuntimeSettings Runtime { get; private set; }
+
         public HandlerRuntimeConfiguration():this(new Settings())
         {
         }
@@ -14,7 +16,7 @@ namespace MessageHandler.EventProcessing.Runtime
         public HandlerRuntimeConfiguration(ISettings settings):base(settings)
         {
             _settings = settings;
-
+            Runtime = new HandlerRuntimeSettings(settings);
             ApplyDefaults();
         }
 

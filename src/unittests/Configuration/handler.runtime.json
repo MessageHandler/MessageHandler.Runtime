@@ -1,1 +1,10 @@
-{"HandlerInstanceId":"1","HandlerConfigurationId":"1ed72b77-629d-45b8-bb0c-a6d4ceff92de","AccountId":"messagehandler","EnvironmentId":"7d49577c-d64d-4926-bf71-de8212f10aab","ChannelId":"727cce9e-f95f-468f-9437-1eb05105835d","TransportType":"EventHub","Connectionstring":"Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx="}
+{
+  
+  "HandlerInstanceId": "1",
+  "HandlerConfigurationId": "1ed72b77-629d-45b8-bb0c-a6d4ceff92de",
+  "AccountId": "messagehandler",
+  "EnvironmentId": "7d49577c-d64d-4926-bf71-de8212f10aab",
+  "ChannelId": "727cce9e-f95f-468f-9437-1eb05105835d",
+  "TransportType": "EventHub",
+  "Connectionstring": "Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx="
+}

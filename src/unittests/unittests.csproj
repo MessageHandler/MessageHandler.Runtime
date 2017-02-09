@@ -57,12 +57,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationConventions\When_applying_default_convention.cs" />
     <Compile Include="ConfigurationSettings\When_getting_or_creating_settings.cs" />
     <Compile Include="ConfigurationSettings\When_locking_values.cs" />
     <Compile Include="ConfigurationSettings\When_removing_values.cs" />
     <Compile Include="ConfigurationSettings\When_working_with_types.cs" />
     <Compile Include="Configuration\When_getting_configuration.cs" />
     <Compile Include="ConfigurationConventions\When_applying_conventions.cs" />
+    <Compile Include="Configuration\When_getting_runtime_configuration.cs" />
     <Compile Include="DependencyInjection\When_registering_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_interface_dependencies.cs" />
@@ -87,6 +89,18 @@
     <Compile Include="StartUp\When_starting_up.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Configuration\handler.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\handler.routing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\handler.runtime.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\handler.variables.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="handler.config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
