@@ -19,13 +19,13 @@ namespace MessageHandler.EventProcessing.Runtime
             {
                 var json = reader.ReadToEndAsync().GetAwaiter().GetResult();
                 dynamic deserialized =  Json.Decode(json);
-                configuration.Runtime.HandlerInstanceID(deserialized.HandlerInstanceId);
-                configuration.Runtime.HandlerConfigurationID(deserialized.HandlerConfigurationId);
-                configuration.Runtime.AccountID(deserialized.AccountId);
-                configuration.Runtime.EnvironmentID(deserialized.EnvironmentId);
-                configuration.Runtime.ChannelID(deserialized.ChannelId);
-                configuration.Runtime.TransportType(deserialized.TransportType);
-                configuration.Runtime.ConnectionString(deserialized.Connectionstring);
+                configuration.HandlerInstanceId((string)deserialized.HandlerInstanceId);
+                configuration.HandlerConfigurationId((string)deserialized.HandlerConfigurationId);
+                configuration.AccountId((string)deserialized.AccountId);
+                configuration.EnvironmentId((string)deserialized.EnvironmentId);
+                configuration.ChannelId((string)deserialized.ChannelId);
+                configuration.TransportType((string)deserialized.TransportType);
+                configuration.Connectionstring((string)deserialized.Connectionstring);
             }
         }
     }

@@ -14,7 +14,6 @@ namespace MessageHandler.EventProcessing.Runtime
         private readonly IContainer _container;
         private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
 
-
         private HandlerRuntime(HandlerRuntimeConfiguration config, IContainer container)
         {
             _config = config;

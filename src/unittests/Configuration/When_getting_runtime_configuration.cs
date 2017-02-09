@@ -11,8 +11,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.HandlerInstanceID("value");
-            Assert.Equal("value", settings.Get("HandlerInstanceID"));
+            config.HandlerInstanceId("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().HandlerInstanceId);
         }
 
         [Fact]
@@ -20,8 +20,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.HandlerConfigurationID("value");
-            Assert.Equal("value", settings.Get("HandlerConfigurationID"));
+            config.HandlerConfigurationId("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().HandlerConfigurationId);
         }
 
         [Fact]
@@ -29,8 +29,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.AccountID("value");
-            Assert.Equal("value", settings.Get("AccountID"));
+            config.AccountId("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().AccountId);
         }
 
         [Fact]
@@ -38,8 +38,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.EnvironmentID("value");
-            Assert.Equal("value", settings.Get("EnvironmentID"));
+            config.EnvironmentId("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().EnvironmentId);
         }
 
         [Fact]
@@ -47,8 +47,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.ChannelID("value");
-            Assert.Equal("value", settings.Get("ChannelID"));
+            config.ChannelId("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().ChannelId);
         }
 
         [Fact]
@@ -56,8 +56,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.TransportType("value");
-            Assert.Equal("value", settings.Get("TransportType"));
+            config.TransportType("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().TransportType);
         }
 
         [Fact]
@@ -65,8 +65,8 @@ namespace unittests.Configuration
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
-            config.Runtime.ConnectionString("value");
-            Assert.Equal("value", settings.Get("ConnectionString"));
+            config.Connectionstring("value");
+            Assert.Equal("value", settings.Get<HandlerRuntimeConfigurationValues>().Connectionstring);
         }
     }
 }

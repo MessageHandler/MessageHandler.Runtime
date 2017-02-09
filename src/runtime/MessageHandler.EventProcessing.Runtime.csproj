@@ -50,7 +50,8 @@
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
-    <Compile Include="Configuration\HandlerRuntimeSettings.cs" />
+    <Compile Include="Configuration\HandlerRuntimeConfigurationValues.cs" />
+    <Compile Include="Configuration\HandlerRuntimeConfigurationSettingsExtensions.cs" />
     <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />
