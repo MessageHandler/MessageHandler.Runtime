@@ -14,7 +14,7 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
-            var runtime = HandlerRuntime.Create(configuration);
+            var runtime = await HandlerRuntime.Create(configuration);
             await runtime.Start();
             await runtime.Stop();
             Assert.True(backgroundTask.StartCalled);
@@ -27,7 +27,7 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
-            var runtime = HandlerRuntime.Create(configuration);
+            var runtime = await HandlerRuntime.Create(configuration);
             await runtime.Start();
             await runtime.Stop();
             Assert.NotEqual(Thread.CurrentThread.ManagedThreadId, backgroundTask.ManagedThreadId);
@@ -43,7 +43,7 @@ namespace unittests.Running
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
             configuration.ShutdownGracePeriod(TimeSpan.FromSeconds(5));
-            var runtime = HandlerRuntime.Create(configuration);
+            var runtime = await HandlerRuntime.Create(configuration);
             await runtime.Start();
             await Task.Delay(TimeSpan.FromSeconds(1));
             await runtime.Stop();

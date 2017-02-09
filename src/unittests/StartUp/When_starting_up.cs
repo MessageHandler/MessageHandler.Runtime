@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using MessageHandler.EventProcessing.Runtime;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 using Xunit;
@@ -9,12 +10,12 @@ namespace unittests.StartUp
     public class When_starting_up
     {
         [Fact]
-        public void Will_lock_settings_after_configuration()
+        public async Task Will_lock_settings_after_configuration()
         {
             var settings = new FakeSettings();
 
             var config = new HandlerRuntimeConfiguration(settings);
-            var runtime = HandlerRuntime.Create(config);
+            var runtime = await HandlerRuntime.Create(config);
             Assert.True(settings.LockIsCalled);
         }
 

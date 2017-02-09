@@ -1,4 +1,5 @@
-﻿using MessageHandler.EventProcessing.Runtime;
+﻿using System.Threading.Tasks;
+using MessageHandler.EventProcessing.Runtime;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 using Xunit;
 
@@ -7,12 +8,12 @@ namespace unittests.ConfigurationConventions
     public class When_applying_default_convention
     {
         [Fact]
-        public void Read_runtime_settings_from_file()
+        public async Task Read_runtime_settings_from_file()
         {
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
             config.RegisterConvention(new DefaultConvention("Configuration"));
-            HandlerRuntime.Create(config);
+            await HandlerRuntime.Create(config);
             Assert.Equal("1", settings.Get<HandlerRuntimeConfigurationValues>().HandlerInstanceId);
             Assert.Equal("1ed72b77-629d-45b8-bb0c-a6d4ceff92de", settings.Get<HandlerRuntimeConfigurationValues>().HandlerConfigurationId);
             Assert.Equal("messagehandler", settings.Get<HandlerRuntimeConfigurationValues>().AccountId);

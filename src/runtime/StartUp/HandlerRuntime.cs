@@ -20,12 +20,12 @@ namespace MessageHandler.EventProcessing.Runtime
             _container = container;
         }
 
-        public static HandlerRuntime Create(HandlerRuntimeConfiguration config)
+        public static async Task<HandlerRuntime> Create(HandlerRuntimeConfiguration config)
         {
             var conventions = config.Settings.GetOrCreate<Conventions>();
             foreach (var convention in conventions)
             {
-                convention.Apply(config);
+               await convention.Apply(config);
             }
             config.LockSettings();
 

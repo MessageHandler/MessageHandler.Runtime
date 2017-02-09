@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using MessageHandler.EventProcessing.Runtime.Serialization;
 
 namespace MessageHandler.EventProcessing.Runtime
@@ -12,12 +13,12 @@ namespace MessageHandler.EventProcessing.Runtime
             _basePath = basePath;
         }
 
-        public void Apply(HandlerRuntimeConfiguration configuration)
+        public async Task Apply(HandlerRuntimeConfiguration configuration)
         {
             var fullPath = Path.Combine(_basePath, "handler.runtime.json");
             using (var reader = File.OpenText(fullPath))
             {
-                var json = reader.ReadToEndAsync().GetAwaiter().GetResult();
+                var json = await reader.ReadToEndAsync();
                 dynamic deserialized =  Json.Decode(json);
                 configuration.HandlerInstanceId((string)deserialized.HandlerInstanceId);
                 configuration.HandlerConfigurationId((string)deserialized.HandlerConfigurationId);
