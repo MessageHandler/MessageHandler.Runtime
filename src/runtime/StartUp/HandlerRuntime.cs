@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.EventProcessing.Runtime
 {
     public class HandlerRuntime
     {
+        private List<IBackgroundTask> _backgroundTasks = new List<IBackgroundTask>();
         private HandlerRuntimeConfiguration _config;
         private IContainer _container;
 
@@ -26,12 +28,25 @@ namespace MessageHandler.EventProcessing.Runtime
             return runtime;
         }
 
-        public void Start()
+        public async Task Start()
         {
-            var tasks = _container?.ResolveAll<IStartupTask>()??new List<IStartupTask>();
-            foreach (var task in tasks)
+            var startupTasks = _container?.ResolveAll<IStartupTask>()??new List<IStartupTask>();
+            foreach (var task in startupTasks)
             {
-                task.Run();
+                await task.Run();
+            }
+            _backgroundTasks.AddRange(_container?.ResolveAll<IBackgroundTask>()??new List<IBackgroundTask>());
+            foreach (var task in _backgroundTasks)
+            {
+                await task.Start();
+            }
+        }
+
+        public async Task Stop()
+        {
+            foreach (var task in _backgroundTasks)
+            {
+                await task.Stop();
             }
         }
     }

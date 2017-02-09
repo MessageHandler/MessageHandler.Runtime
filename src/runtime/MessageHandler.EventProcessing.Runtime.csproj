@@ -56,11 +56,14 @@
     <Compile Include="Container\Lifecycle.cs" />
     <Compile Include="Container\TypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Running\BackgroundTaskTypes.cs" />
+    <Compile Include="Running\IBackgroundTask.cs" />
     <Compile Include="Serialization\DynamicHelper.cs" />
     <Compile Include="Serialization\DynamicJavaScriptConverter.cs" />
     <Compile Include="Serialization\DynamicJsonArray.cs" />
     <Compile Include="Serialization\DynamicJsonObject.cs" />
     <Compile Include="Serialization\Json.cs" />
+    <Compile Include="Running\BackgroundTaskExtensions.cs" />
     <Compile Include="StartUp\HandlerRuntime.cs" />
     <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
     <Compile Include="StartUp\IStartupTask.cs" />
