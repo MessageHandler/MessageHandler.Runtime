@@ -9,6 +9,12 @@ namespace MessageHandler.EventProcessing.Runtime
     {
         private readonly IDictionary<Type, IList<ContainerRegistration>> _registrations = new Dictionary<Type, IList<ContainerRegistration>>();
 
+        public Container()
+        {
+            Register<IResolveDependencies>(()=> this) ;
+            Register<IRegisterDependencies>(() => this);
+        }
+
         public void Register<T>()
         {
             Register(typeof(T));

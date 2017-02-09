@@ -54,5 +54,19 @@ namespace unittests.StartUp
             Assert.StrictEqual(settings, container.Resolve<ISettings>());
         }
 
+        [Fact]
+        public void Can_find_dependencies_resolver_in_container()
+        {
+            var container = new Container();
+            Assert.NotNull(container.Resolve<IResolveDependencies>());
+        }
+
+        [Fact]
+        public void Can_find_dependency_registration()
+        {
+            var container = new Container();
+            Assert.NotNull(container.Resolve<IRegisterDependencies>());
+        }
+
     }
 }
