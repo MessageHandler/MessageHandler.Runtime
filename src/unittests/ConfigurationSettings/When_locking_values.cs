@@ -100,5 +100,13 @@ namespace unittests.ConfigurationSettings
             
         }
 
+        [Fact]
+        public void Can_not_override_locked_default_setting()
+        {
+            var settings = new Settings();
+            settings.SetDefault("key", "value");
+            settings.Lock("key");
+            Assert.Throws<SettingLockedException>(() => settings.Set("key", "value2"));
+        }
     }
 }

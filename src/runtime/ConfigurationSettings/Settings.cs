@@ -11,14 +11,18 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
         public void Set(string key, object value)
         {
             Setting setting;
+            _defaultValues.TryGetValue(key, out setting);
+            if (setting != null && setting.Locked)
+            {
+                throw new SettingLockedException($"Setting {key} is locked and cannot be changed.");
+            }
             _explicitValues.TryGetValue(key, out setting);
             if (setting != null && setting.Locked)
             {
                 throw new SettingLockedException($"Setting {key} is locked and cannot be changed.");
             }
+
             _explicitValues.AddOrUpdate(key, s => new Setting { Value = value }, (s, o) => new Setting { Value = value });
-
-
         }
 
         public void Set<T>(T value)
