@@ -54,14 +54,14 @@ namespace unittests.Running
         }
 
         [Fact]
-        public void Will_call_start_and_stop()
+        public async Task Will_call_start_and_stop()
         {
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
             var runtime = HandlerRuntime.Create(configuration);
-            runtime.Start();
-            runtime.Stop();
+            await runtime.Start();
+            await runtime.Stop();
             Assert.True(backgroundTask.StartCalled);
             Assert.True(backgroundTask.StopCalled);
         }

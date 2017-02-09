@@ -33,13 +33,13 @@ namespace unittests.StartUp
         }
 
         [Fact]
-        public void Will_run_startup_task()
+        public async Task Will_run_startup_task()
         {
             var startupTask = new MyStartupTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask(startupTask);
             var runtime = HandlerRuntime.Create(configuration);
-            runtime.Start();
+            await runtime.Start();
             Assert.True(startupTask.RunIsCalled);
         }
 
