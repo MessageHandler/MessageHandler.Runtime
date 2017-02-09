@@ -107,17 +107,17 @@ namespace unittests.StartUp
 
             public T GetOrCreate<T>()
             {
-                return default(T);
+                return Activator.CreateInstance<T>();
             }
 
             public object GetOrCreate(Type type)
             {
-                return null;
+                return Activator.CreateInstance(type);
             }
 
             public object GetOrCreate(string key, Type type)
             {
-                return null;
+                return Activator.CreateInstance(type);
             }
         }
     }

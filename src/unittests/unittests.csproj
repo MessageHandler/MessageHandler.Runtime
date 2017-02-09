@@ -62,6 +62,7 @@
     <Compile Include="ConfigurationSettings\When_removing_values.cs" />
     <Compile Include="ConfigurationSettings\When_working_with_types.cs" />
     <Compile Include="Configuration\When_getting_configuration.cs" />
+    <Compile Include="ConfigurationConventions\When_applying_conventions.cs" />
     <Compile Include="DependencyInjection\When_registering_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_interface_dependencies.cs" />

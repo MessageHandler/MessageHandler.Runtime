@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationConventions\ConventionExtensions.cs" />
+    <Compile Include="ConfigurationConventions\Conventions.cs" />
+    <Compile Include="ConfigurationConventions\IConvention.cs" />
     <Compile Include="ConfigurationSettings\ISettings.cs" />
     <Compile Include="ConfigurationSettings\Setting.cs" />
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />

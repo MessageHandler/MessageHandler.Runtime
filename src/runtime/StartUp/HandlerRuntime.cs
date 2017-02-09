@@ -23,6 +23,11 @@ namespace MessageHandler.EventProcessing.Runtime
 
         public static HandlerRuntime Create(HandlerRuntimeConfiguration config)
         {
+            var conventions = config.Settings.GetOrCreate<Conventions>();
+            foreach (var convention in conventions)
+            {
+                convention.Apply(config);
+            }
             config.LockSettings();
 
             var container = config.Settings.Get<IContainer>("messagehandler.container");
