@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using MessageHandler.EventProcessing.Runtime;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
-using unittests.StartUp;
 using Xunit;
 
 namespace unittests.Running
@@ -52,31 +52,11 @@ namespace unittests.Running
             var backgroundTasks= settings.Get<BackgroundTaskTypes>();
             Assert.NotNull(backgroundTasks.Exists(t => t == typeof(MyBackgroundTask)));
         }
-
-        [Fact]
-        public async Task Will_call_start_and_stop()
-        {
-            var backgroundTask = new MyBackgroundTask();
-            var configuration = new HandlerRuntimeConfiguration();
-            configuration.RegisterBackgroundTask(backgroundTask);
-            var runtime = HandlerRuntime.Create(configuration);
-            await runtime.Start();
-            await runtime.Stop();
-            Assert.True(backgroundTask.StartCalled);
-            Assert.True(backgroundTask.StopCalled);
-        }
+        
         public class MyBackgroundTask:IBackgroundTask
         {
-            public bool StartCalled;
-            public bool StopCalled;
-            public async Task Start()
+            public async Task Run(CancellationToken cancellation)
             {
-                StartCalled = true;
-            }
-
-            public async Task Stop()
-            {
-                StopCalled = true;
             }
         }
     }

@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace MessageHandler.EventProcessing.Runtime
 {
     public interface IBackgroundTask
     {
-        Task Start();
-        Task Stop();
+        Task Run(CancellationToken cancellation);
     }
 }
