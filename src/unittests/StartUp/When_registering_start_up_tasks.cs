@@ -22,14 +22,14 @@ namespace unittests.StartUp
         }
 
         [Fact]
-        public void Can_register_startup_task_instance_and_find_it_in_the_settings()
+        public void Can_register_startup_task_instance_and_find_its_type_in_the_settings()
         {
             var settings = new Settings();
             var startupTask = new MyStartupTask();
             var configuration = new HandlerRuntimeConfiguration(settings);
             configuration.RegisterStartupTask(startupTask);
-            var startupTasks = settings.Get<StartupTasks>();
-            Assert.NotNull(startupTasks.Exists(t => t.Equals(startupTask)));
+            var startupTasks = settings.Get<StartupTaskTypes>();
+            Assert.NotNull(startupTasks.Exists(t => t == typeof(MyStartupTask)));
         }
 
         [Fact]

@@ -8,8 +8,8 @@ namespace MessageHandler.EventProcessing.Runtime
         public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, IStartupTask task)
         {
             var settings = configuration.GetSettings();
-            var tasks = settings.GetOrCreate<StartupTasks>();
-            tasks.Add(() => task);
+            var tasks = settings.GetOrCreate<StartupTaskTypes>();
+            tasks.Add(task.GetType());
             var container = settings.Get<IContainer>("messagehandler.container");
             container.Register(() => task);
         }
@@ -17,10 +17,10 @@ namespace MessageHandler.EventProcessing.Runtime
         public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, Type type)
         {
             var settings = configuration.GetSettings();
-            var tasks = settings.GetOrCreate<StartupTasks>();
+            var tasks = settings.GetOrCreate<StartupTaskTypes>();
             var container = settings.Get<IContainer>("messagehandler.container");
             container.Register(type);
-            tasks.Add(() => (IStartupTask)container.Resolve(type));
+            tasks.Add(type);
         }
 
         public static void RegisterStartupTask<T>(this HandlerRuntimeConfiguration configuration)

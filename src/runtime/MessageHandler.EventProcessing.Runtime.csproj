@@ -65,7 +65,7 @@
     <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
     <Compile Include="StartUp\IStartupTask.cs" />
     <Compile Include="StartUp\StartupTaskExtensions.cs" />
-    <Compile Include="StartUp\StartupTasks.cs" />
+    <Compile Include="StartUp\StartupTaskTypes.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
