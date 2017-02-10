@@ -49,7 +49,7 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration(settings);
             configuration.RegisterBackgroundTask(backgroundTask);
-            var backgroundTasks= settings.Get<BackgroundTaskTypes>();
+            var backgroundTasks = settings.Get<BackgroundTaskTypes>();
             Assert.NotNull(backgroundTasks.Exists(t => t == typeof(MyBackgroundTask)));
         }
 
@@ -61,12 +61,13 @@ namespace unittests.Running
             var container = new Container();
             configuration.UseContainer(container);
             configuration.RegisterBackgroundTask(backgroundTask);
-            configuration.RegisterBackgroundTask(backgroundTask);
-            Assert.True(backgroundTask.StartCalled);
+            //configuration.RegisterBackgroundTask(backgroundTask);
+
+            Assert.Throws<BackgroundTaskRegisteredException>(()=> configuration.RegisterBackgroundTask(backgroundTask));
         }
 
 
-        public class MyBackgroundTask:IBackgroundTask
+        public class MyBackgroundTask : IBackgroundTask
         {
             public bool StartCalled;
 
