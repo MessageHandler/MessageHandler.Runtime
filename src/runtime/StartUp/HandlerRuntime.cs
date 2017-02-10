@@ -43,8 +43,10 @@ namespace MessageHandler.Runtime
             var startupTasks = _container?.ResolveAll<IStartupTask>() ?? new List<IStartupTask>();
             foreach (var task in startupTasks)
             {
-                await task.Run();
+                _runningTasks.Add(task.Run());
             }
+
+            await Task.WhenAll(_runningTasks);
 
             _backgroundTasks.AddRange(_container?.ResolveAll<IBackgroundTask>() ?? new List<IBackgroundTask>());
             foreach (var task in _backgroundTasks)
