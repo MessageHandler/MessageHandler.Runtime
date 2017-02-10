@@ -23,7 +23,7 @@ using System.Dynamic;
 using System.Linq;
 
 // namespace modified to prevent naming collisions
-namespace MessageHandler.EventProcessing.Runtime.Serialization
+namespace MessageHandler.Runtime.Serialization
 {
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "This class isn't meant to be used directly")]
     public class DynamicJsonArray : DynamicObject, IEnumerable<object>

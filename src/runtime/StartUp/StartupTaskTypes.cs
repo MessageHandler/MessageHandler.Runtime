@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MessageHandler.EventProcessing.Runtime
+namespace MessageHandler.Runtime
 {
     public class StartupTaskTypes: List<Type>{}
 }

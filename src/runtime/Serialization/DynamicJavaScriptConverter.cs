@@ -21,7 +21,7 @@ using System.Dynamic;
 using System.Web.Script.Serialization;
 
 // namespace modified to prevent naming collisions
-namespace MessageHandler.EventProcessing.Runtime.Serialization
+namespace MessageHandler.Runtime.Serialization
 {
     /// <summary>
     /// Converter that knows how to get the member values from a dynamic object.

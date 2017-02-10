@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MessageHandler.EventProcessing.Runtime
+namespace MessageHandler.Runtime
 {
     public class Conventions : List<IConvention> { }
 }

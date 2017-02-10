@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
+namespace MessageHandler.Runtime.ConfigurationSettings
 {
     public class Settings : ISettings
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MessageHandler.EventProcessing.Runtime.Configuration
+namespace MessageHandler.Runtime.Configuration
 {
     public interface IConfigurationSource
     {

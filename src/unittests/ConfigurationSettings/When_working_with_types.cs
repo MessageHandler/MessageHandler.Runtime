@@ -1,4 +1,4 @@
-﻿using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
+﻿using MessageHandler.Runtime.ConfigurationSettings;
 using Xunit;
 
 namespace unittests.ConfigurationSettings

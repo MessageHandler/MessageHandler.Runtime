@@ -1,7 +1,7 @@
 ﻿namespace unittests.Serialization
 {
     using System.Collections;
-    using MessageHandler.EventProcessing.Runtime.Serialization;
+    using MessageHandler.Runtime.Serialization;
     using Xunit;
 
     public class When_deserializing_primitive_types

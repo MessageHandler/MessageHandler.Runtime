@@ -1,6 +1,6 @@
 using System;
 
-namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
+namespace MessageHandler.Runtime.ConfigurationSettings
 {
     public interface ISettings:IManageSettings,IProvideSettings
     {

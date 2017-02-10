@@ -1,8 +1,8 @@
 using System.IO;
 using System.Threading.Tasks;
-using MessageHandler.EventProcessing.Runtime.Serialization;
+using MessageHandler.Runtime.Serialization;
 
-namespace MessageHandler.EventProcessing.Runtime.Configuration
+namespace MessageHandler.Runtime.Configuration
 {
     public class JSonFileConfigurationSource : IConfigurationSource
     {

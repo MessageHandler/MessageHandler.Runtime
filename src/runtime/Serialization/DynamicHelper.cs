@@ -23,7 +23,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.CSharp.RuntimeBinder;
 
 // namespace modified to prevent naming collisions
-namespace MessageHandler.EventProcessing.Runtime.Serialization
+namespace MessageHandler.Runtime.Serialization
 {
     /// <summary>
     /// Helper to evaluate different method on dynamic objects

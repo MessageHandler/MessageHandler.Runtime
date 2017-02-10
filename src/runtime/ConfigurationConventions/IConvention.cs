@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace MessageHandler.EventProcessing.Runtime
+namespace MessageHandler.Runtime
 {
     public interface IConvention
     {

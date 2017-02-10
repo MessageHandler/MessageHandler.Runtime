@@ -107,9 +107,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\runtime\MessageHandler.EventProcessing.Runtime.csproj">
+    <ProjectReference Include="..\runtime\MessageHandler.Runtime.csproj">
       <Project>{3179e536-2b90-4092-a7f8-b612273dca6e}</Project>
-      <Name>MessageHandler.EventProcessing.Runtime</Name>
+      <Name>MessageHandler.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

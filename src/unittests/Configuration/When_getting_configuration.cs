@@ -1,6 +1,6 @@
 using System.IO;
 using System.Threading.Tasks;
-using MessageHandler.EventProcessing.Runtime.Configuration;
+using MessageHandler.Runtime.Configuration;
 using Xunit;
 
 namespace unittests.Configuration

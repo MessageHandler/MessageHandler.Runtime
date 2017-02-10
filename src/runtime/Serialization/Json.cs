@@ -20,7 +20,7 @@ using System.IO;
 using System.Web.Script.Serialization;
 
 // namespace modified to prevent naming collision
-namespace MessageHandler.EventProcessing.Runtime.Serialization
+namespace MessageHandler.Runtime.Serialization
 {
     public static class Json
     {

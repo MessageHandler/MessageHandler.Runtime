@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.EventProcessing.Runtime", "runtime\MessageHandler.EventProcessing.Runtime.csproj", "{3179E536-2B90-4092-A7F8-B612273DCA6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.Runtime", "runtime\MessageHandler.Runtime.csproj", "{3179E536-2B90-4092-A7F8-B612273DCA6E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unittests", "unittests\unittests.csproj", "{BADB5E1E-548B-4159-B1BB-6D9681B2DCBE}"
 EndProject

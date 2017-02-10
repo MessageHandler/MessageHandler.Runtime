@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MessageHandler.EventProcessing.Runtime
+namespace MessageHandler.Runtime
 {
     internal static class TypeExtensions
     {

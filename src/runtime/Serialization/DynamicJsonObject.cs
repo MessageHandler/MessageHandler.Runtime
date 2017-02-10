@@ -24,7 +24,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 
 // namespace modified to prevent naming collisions
-namespace MessageHandler.EventProcessing.Runtime.Serialization
+namespace MessageHandler.Runtime.Serialization
 {
     public class DynamicJsonObject : DynamicObject
     {

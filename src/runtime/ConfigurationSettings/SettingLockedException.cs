@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
+namespace MessageHandler.Runtime.ConfigurationSettings
 {
     public class SettingLockedException : Exception
     {

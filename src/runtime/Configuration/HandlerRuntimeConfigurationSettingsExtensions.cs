@@ -1,6 +1,6 @@
-﻿using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
+﻿using MessageHandler.Runtime.ConfigurationSettings;
 
-namespace MessageHandler.EventProcessing.Runtime
+namespace MessageHandler.Runtime
 {
     public static class HandlerRuntimeConfigurationSettingsExtensions
     {

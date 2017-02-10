@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using MessageHandler.EventProcessing.Runtime;
+using MessageHandler.Runtime;
 using Xunit;
 
 namespace unittests.DependencyInjection

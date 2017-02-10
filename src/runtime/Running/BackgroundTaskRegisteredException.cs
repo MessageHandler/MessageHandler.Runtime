@@ -1,6 +1,6 @@
 using System;
 
-namespace MessageHandler.EventProcessing.Runtime
+namespace MessageHandler.Runtime
 {
     public class BackgroundTaskRegisteredException : Exception
     {

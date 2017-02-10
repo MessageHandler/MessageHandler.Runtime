@@ -1,4 +1,4 @@
-namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
+namespace MessageHandler.Runtime.ConfigurationSettings
 {
     internal class Setting
     {

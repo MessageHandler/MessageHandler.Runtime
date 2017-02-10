@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using MessageHandler.EventProcessing.Runtime;
+using MessageHandler.Runtime;
 using Xunit;
 
 namespace unittests.Running

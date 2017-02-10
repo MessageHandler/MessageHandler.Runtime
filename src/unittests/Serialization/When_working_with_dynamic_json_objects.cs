@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using MessageHandler.EventProcessing.Runtime.Serialization;
+using MessageHandler.Runtime.Serialization;
 using Xunit;
 
 namespace unittests.Serialization

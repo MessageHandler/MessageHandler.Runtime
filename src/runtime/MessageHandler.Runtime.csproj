@@ -7,8 +7,8 @@
     <ProjectGuid>{3179E536-2B90-4092-A7F8-B612273DCA6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MessageHandler.EventProcessing.Runtime</RootNamespace>
-    <AssemblyName>MessageHandler.EventProcessing.Runtime</AssemblyName>
+    <RootNamespace>MessageHandler.Runtime</RootNamespace>
+    <AssemblyName>MessageHandler.Runtime</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

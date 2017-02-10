@@ -1,4 +1,4 @@
-﻿namespace MessageHandler.EventProcessing.Runtime
+﻿namespace MessageHandler.Runtime
 {
     public enum Lifecycle
     {
