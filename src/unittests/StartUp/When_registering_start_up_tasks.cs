@@ -63,12 +63,24 @@ namespace unittests.StartUp
             Assert.IsType<MyStartupTask>(container.Resolve<IStartupTask>());
         }
 
+        [Fact]
+        public async Task Can_OR_NOT_register_startup_task_instance_multiple_times()
+        {
+            var startupTask = new MyStartupTask();
+            var configuration = new HandlerRuntimeConfiguration();
+            configuration.RegisterStartupTask(startupTask);
+            configuration.RegisterStartupTask(startupTask);
+            var runtime = await HandlerRuntime.Create(configuration);
+            await runtime.Start();
+            Assert.True(startupTask.RunIsCalled);
+        }
+
         public class MyStartupTask:IStartupTask
         {
             public bool RunIsCalled;
             public async Task Run()
             {
-                RunIsCalled = true;
+                RunIsCalled = !RunIsCalled;
             }
         }
     }

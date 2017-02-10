@@ -52,11 +52,27 @@ namespace unittests.Running
             var backgroundTasks= settings.Get<BackgroundTaskTypes>();
             Assert.NotNull(backgroundTasks.Exists(t => t == typeof(MyBackgroundTask)));
         }
-        
+
+        [Fact]
+        public void Can_OR_NOT_register_background_task_instance_multiple_types()
+        {
+            var backgroundTask = new MyBackgroundTask();
+            var configuration = new HandlerRuntimeConfiguration();
+            var container = new Container();
+            configuration.UseContainer(container);
+            configuration.RegisterBackgroundTask(backgroundTask);
+            configuration.RegisterBackgroundTask(backgroundTask);
+            Assert.True(backgroundTask.StartCalled);
+        }
+
+
         public class MyBackgroundTask:IBackgroundTask
         {
+            public bool StartCalled;
+
             public async Task Run(CancellationToken cancellation)
             {
+                StartCalled = !StartCalled;
             }
         }
     }
