@@ -22,6 +22,10 @@ namespace MessageHandler.EventProcessing.Runtime
         {
             var settings = configuration.GetSettings();
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
+            if (tasks.Contains(type))
+            {
+                throw new StartupTaskRegisteredException($"Startup task is already registered.");
+            }
             var container = settings.Get<IContainer>("messagehandler.container");
             container.Register(type);
             tasks.Add(type);

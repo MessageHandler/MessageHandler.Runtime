@@ -64,6 +64,26 @@ namespace unittests.Running
             Assert.Throws<BackgroundTaskRegisteredException>(()=> configuration.RegisterBackgroundTask(backgroundTask));
         }
 
+        [Fact]
+        public void Can_OR_NOT_register_background_task_instance_multiple_types_generic()
+        {
+            var configuration = new HandlerRuntimeConfiguration();
+            var container = new Container();
+            configuration.UseContainer(container);
+            configuration.RegisterBackgroundTask<MyBackgroundTask>();
+            Assert.Throws<BackgroundTaskRegisteredException>(() => configuration.RegisterBackgroundTask<MyBackgroundTask>());
+        }
+
+        [Fact]
+        public void Can_OR_NOT_register_background_task_instance_multiple_types_by_type()
+        {
+            var configuration = new HandlerRuntimeConfiguration();
+            var container = new Container();
+            configuration.UseContainer(container);
+            configuration.RegisterBackgroundTask(typeof(MyBackgroundTask));
+            Assert.Throws<BackgroundTaskRegisteredException>(() => configuration.RegisterBackgroundTask(typeof(MyBackgroundTask)));
+        }
+
 
         public class MyBackgroundTask : IBackgroundTask
         {

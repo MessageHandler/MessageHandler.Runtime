@@ -74,6 +74,26 @@ namespace unittests.StartUp
             Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask(startupTask));
         }
 
+        [Fact]
+        public async Task Can_OR_NOT_register_startup_task_instance_multiple_times_generic()
+        {
+            var configuration = new HandlerRuntimeConfiguration();
+            configuration.RegisterStartupTask<MyStartupTask>();
+            var runtime = await HandlerRuntime.Create(configuration);
+            await runtime.Start();
+            Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask<MyStartupTask>());
+        }
+
+        [Fact]
+        public async Task Can_OR_NOT_register_startup_task_instance_multiple_times_by_type()
+        {
+            var configuration = new HandlerRuntimeConfiguration();
+            configuration.RegisterStartupTask(typeof(MyStartupTask));
+            var runtime = await HandlerRuntime.Create(configuration);
+            await runtime.Start();
+            Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask(typeof(MyStartupTask)));
+        }
+
         public class MyStartupTask:IStartupTask
         {
             public bool RunIsCalled;
