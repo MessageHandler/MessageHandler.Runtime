@@ -1,6 +1,3 @@
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using MessageHandler.EventProcessing.Runtime;
 using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 using Xunit;
