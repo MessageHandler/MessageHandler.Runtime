@@ -69,7 +69,6 @@ namespace unittests.StartUp
             var startupTask = new MyStartupTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask(startupTask);
-            //configuration.RegisterStartupTask(startupTask);
             var runtime = await HandlerRuntime.Create(configuration);
             await runtime.Start();
             Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask(startupTask));

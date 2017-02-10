@@ -61,8 +61,6 @@ namespace unittests.Running
             var container = new Container();
             configuration.UseContainer(container);
             configuration.RegisterBackgroundTask(backgroundTask);
-            //configuration.RegisterBackgroundTask(backgroundTask);
-
             Assert.Throws<BackgroundTaskRegisteredException>(()=> configuration.RegisterBackgroundTask(backgroundTask));
         }
 

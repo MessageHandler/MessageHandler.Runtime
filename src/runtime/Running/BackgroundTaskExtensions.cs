@@ -11,7 +11,7 @@ namespace MessageHandler.EventProcessing.Runtime
             var tasks = settings.GetOrCreate<BackgroundTaskTypes>();
             if (tasks.Contains(task.GetType()))
             {
-                throw new BackgroundTaskRegisteredException($"Task is already registered.");
+                throw new BackgroundTaskRegisteredException($"Background Task is already registered.");
             }
             tasks.Add(task.GetType());
             var container = settings.Get<IContainer>("messagehandler.container");
