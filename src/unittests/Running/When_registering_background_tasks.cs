@@ -49,14 +49,49 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration(settings);
             configuration.RegisterBackgroundTask(backgroundTask);
-            var backgroundTasks= settings.Get<BackgroundTaskTypes>();
+            var backgroundTasks = settings.Get<BackgroundTaskTypes>();
             Assert.NotNull(backgroundTasks.Exists(t => t == typeof(MyBackgroundTask)));
         }
-        
-        public class MyBackgroundTask:IBackgroundTask
+
+        [Fact]
+        public void Cannot_register_background_task_instance_multiple_types()
         {
+            var backgroundTask = new MyBackgroundTask();
+            var configuration = new HandlerRuntimeConfiguration();
+            var container = new Container();
+            configuration.UseContainer(container);
+            configuration.RegisterBackgroundTask(backgroundTask);
+            Assert.Throws<BackgroundTaskRegisteredException>(()=> configuration.RegisterBackgroundTask(backgroundTask));
+        }
+
+        [Fact]
+        public void Cannot_register_background_task_instance_multiple_types_generic()
+        {
+            var configuration = new HandlerRuntimeConfiguration();
+            var container = new Container();
+            configuration.UseContainer(container);
+            configuration.RegisterBackgroundTask<MyBackgroundTask>();
+            Assert.Throws<BackgroundTaskRegisteredException>(() => configuration.RegisterBackgroundTask<MyBackgroundTask>());
+        }
+
+        [Fact]
+        public void Cannot_register_background_task_instance_multiple_types_by_type()
+        {
+            var configuration = new HandlerRuntimeConfiguration();
+            var container = new Container();
+            configuration.UseContainer(container);
+            configuration.RegisterBackgroundTask(typeof(MyBackgroundTask));
+            Assert.Throws<BackgroundTaskRegisteredException>(() => configuration.RegisterBackgroundTask(typeof(MyBackgroundTask)));
+        }
+
+
+        public class MyBackgroundTask : IBackgroundTask
+        {
+            public bool StartCalled;
+
             public async Task Run(CancellationToken cancellation)
             {
+                StartCalled = true;
             }
         }
     }

@@ -9,6 +9,10 @@ namespace MessageHandler.EventProcessing.Runtime
         {
             var settings = configuration.GetSettings();
             var tasks = settings.GetOrCreate<BackgroundTaskTypes>();
+            if (tasks.Contains(task.GetType()))
+            {
+                throw new BackgroundTaskRegisteredException("Background Task is already registered.");
+            }
             tasks.Add(task.GetType());
             var container = settings.Get<IContainer>("messagehandler.container");
             container.Register(() => task);
@@ -18,6 +22,10 @@ namespace MessageHandler.EventProcessing.Runtime
         {
             var settings = configuration.GetSettings();
             var tasks = settings.GetOrCreate<BackgroundTaskTypes>();
+            if (tasks.Contains(type))
+            {
+                throw new BackgroundTaskRegisteredException("Background Task is already registered.");
+            }
             var container = settings.Get<IContainer>("messagehandler.container");
             container.Register(type);
             tasks.Add(type);
