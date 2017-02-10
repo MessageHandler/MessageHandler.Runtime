@@ -13,12 +13,12 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             _defaultValues.TryGetValue(key, out setting);
             if (setting != null && setting.Locked)
             {
-                throw new SettingLockedException($"Setting {key} is locked and cannot be changed.");
+                throw new SettingLockedException($"Setting '{key}' is locked and cannot be changed.");
             }
             _explicitValues.TryGetValue(key, out setting);
             if (setting != null && setting.Locked)
             {
-                throw new SettingLockedException($"Setting {key} is locked and cannot be changed.");
+                throw new SettingLockedException($"Setting '{key}' is locked and cannot be changed.");
             }
 
             _explicitValues.AddOrUpdate(key, s => new Setting { Value = value }, (s, o) => new Setting { Value = value });
@@ -68,7 +68,7 @@ namespace MessageHandler.EventProcessing.Runtime.ConfigurationSettings
             _defaultValues.TryGetValue(key, out setting);
             if (setting != null && setting.Locked)
             {
-                throw new SettingLockedException($"Setting {key} is locked and cannot be changed.");
+                throw new SettingLockedException($"Setting '{key}' is locked and cannot be changed.");
             }
             _defaultValues.AddOrUpdate(key, s => new Setting { Value = value }, (s, o) => new Setting { Value = value });
         }

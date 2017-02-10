@@ -11,7 +11,7 @@ namespace MessageHandler.EventProcessing.Runtime
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
             if (tasks.Contains(task.GetType()))
             {
-                throw new StartupTaskRegisteredException($"Startup task is already registered.");
+                throw new StartupTaskRegisteredException("Startup task is already registered.");
             }
             tasks.Add(task.GetType());
             var container = settings.Get<IContainer>("messagehandler.container");
@@ -24,7 +24,7 @@ namespace MessageHandler.EventProcessing.Runtime
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
             if (tasks.Contains(type))
             {
-                throw new StartupTaskRegisteredException($"Startup task is already registered.");
+                throw new StartupTaskRegisteredException("Startup task is already registered.");
             }
             var container = settings.Get<IContainer>("messagehandler.container");
             container.Register(type);
