@@ -1,5 +1,4 @@
-﻿using System.CodeDom;
-using System.Linq;
+﻿using System.Linq;
 using MessageHandler.EventProcessing.Runtime;
 using Xunit;
 

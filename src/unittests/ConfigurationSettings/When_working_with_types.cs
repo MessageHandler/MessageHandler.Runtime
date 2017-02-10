@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
+﻿using MessageHandler.EventProcessing.Runtime.ConfigurationSettings;
 using Xunit;
 
 namespace unittests.ConfigurationSettings
@@ -51,7 +46,7 @@ namespace unittests.ConfigurationSettings
         {
             var settings = new Settings();
             var testValue = new TestValue { Text = "test" };
-            settings.Set<TestValue>(testValue);
+            settings.Set(testValue);
             Assert.StrictEqual(settings.Get<TestValue>(typeof(TestValue).FullName),testValue);
         }
     
@@ -69,7 +64,7 @@ namespace unittests.ConfigurationSettings
         {
             var settings = new Settings();
             var testValue = new TestValue { Text = "test" };
-            settings.SetDefault<TestValue>(testValue);
+            settings.SetDefault(testValue);
             Assert.StrictEqual(settings.GetDefault<TestValue>(typeof(TestValue).FullName), testValue);
         }
 

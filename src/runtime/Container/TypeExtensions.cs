@@ -12,7 +12,7 @@ namespace MessageHandler.EventProcessing.Runtime
 
             return Enumerable.Repeat(type.BaseType, 1)
                 .Concat(type.GetInterfaces())
-                .Concat(type.GetInterfaces().SelectMany<Type, Type>(GetBaseTypes))
+                .Concat(type.GetInterfaces().SelectMany(GetBaseTypes))
                 .Concat(type.BaseType.GetBaseTypes());
         }
     }
