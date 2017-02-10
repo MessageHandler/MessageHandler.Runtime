@@ -99,7 +99,7 @@ namespace unittests.StartUp
             public bool RunIsCalled;
             public async Task Run()
             {
-                RunIsCalled = !RunIsCalled;
+                RunIsCalled = true;
             }
         }
     }

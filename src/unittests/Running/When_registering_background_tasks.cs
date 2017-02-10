@@ -91,7 +91,7 @@ namespace unittests.Running
 
             public async Task Run(CancellationToken cancellation)
             {
-                StartCalled = !StartCalled;
+                StartCalled = true;
             }
         }
     }
