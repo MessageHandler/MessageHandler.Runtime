@@ -54,7 +54,7 @@ namespace unittests.Running
         }
 
         [Fact]
-        public void Can_OR_NOT_register_background_task_instance_multiple_types()
+        public void Cannot_register_background_task_instance_multiple_types()
         {
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration();
@@ -65,7 +65,7 @@ namespace unittests.Running
         }
 
         [Fact]
-        public void Can_OR_NOT_register_background_task_instance_multiple_types_generic()
+        public void Cannot_register_background_task_instance_multiple_types_generic()
         {
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
@@ -75,7 +75,7 @@ namespace unittests.Running
         }
 
         [Fact]
-        public void Can_OR_NOT_register_background_task_instance_multiple_types_by_type()
+        public void Cannot_register_background_task_instance_multiple_types_by_type()
         {
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();

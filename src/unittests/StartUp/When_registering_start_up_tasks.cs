@@ -64,7 +64,7 @@ namespace unittests.StartUp
         }
 
         [Fact]
-        public async Task Can_OR_NOT_register_startup_task_instance_multiple_times()
+        public async Task Cannot_register_startup_task_instance_multiple_times()
         {
             var startupTask = new MyStartupTask();
             var configuration = new HandlerRuntimeConfiguration();
@@ -75,7 +75,7 @@ namespace unittests.StartUp
         }
 
         [Fact]
-        public async Task Can_OR_NOT_register_startup_task_instance_multiple_times_generic()
+        public async Task Cannot_register_startup_task_instance_multiple_times_generic()
         {
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask<MyStartupTask>();
@@ -85,7 +85,7 @@ namespace unittests.StartUp
         }
 
         [Fact]
-        public async Task Can_OR_NOT_register_startup_task_instance_multiple_times_by_type()
+        public async Task Cannot_register_startup_task_instance_multiple_times_by_type()
         {
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask(typeof(MyStartupTask));
