@@ -18,7 +18,7 @@ namespace MessageHandler.Runtime
             var fullPath = Path.Combine(_basePath, "handler.runtime.json");
             using (var reader = File.OpenText(fullPath))
             {
-                var json = await reader.ReadToEndAsync();
+                var json = await reader.ReadToEndAsync().ConfigureAwait(false);
                 dynamic deserialized =  Json.Decode(json);
                 configuration.HandlerInstanceId((string)deserialized.HandlerInstanceId);
                 configuration.HandlerConfigurationId((string)deserialized.HandlerConfigurationId);

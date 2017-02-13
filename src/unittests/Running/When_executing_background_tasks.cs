@@ -14,9 +14,9 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
-            await runtime.Stop();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
+            await runtime.Stop().ConfigureAwait(false);
             Assert.True(backgroundTask.StartCalled);
             Assert.True(backgroundTask.StopCalled);
         }
@@ -27,9 +27,9 @@ namespace unittests.Running
             var backgroundTask = new MyBackgroundTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
-            await runtime.Stop();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
+            await runtime.Stop().ConfigureAwait(false);
             Assert.NotEqual(Thread.CurrentThread.ManagedThreadId, backgroundTask.ManagedThreadId);
         }
 
@@ -43,10 +43,10 @@ namespace unittests.Running
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterBackgroundTask(backgroundTask);
             configuration.ShutdownGracePeriod(TimeSpan.FromSeconds(2));
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
-            await Task.Delay(TimeSpan.FromMilliseconds(500));
-            await runtime.Stop();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+            await runtime.Stop().ConfigureAwait(false);
 
             var executionTime = DateTime.UtcNow - timestamp;
 
@@ -78,7 +78,7 @@ namespace unittests.Running
 
                 while (!cancellation.IsCancellationRequested)
                 {
-                    await Task.Delay(_sleepTime);
+                    await Task.Delay(_sleepTime).ConfigureAwait(false);
                 }
 
                 StopCalled = true;

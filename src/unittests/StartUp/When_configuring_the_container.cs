@@ -15,7 +15,8 @@ namespace unittests.StartUp
             config.UseContainer(container);
             var runtime = HandlerRuntime.Create(config);
 
-            Assert.StrictEqual(settings.Get("messagehandler.container"), container);
+            Assert.StrictEqual(settings.GetContainer(), container);
+            
         }
 
         [Fact]
@@ -25,7 +26,7 @@ namespace unittests.StartUp
             var config = new HandlerRuntimeConfiguration(settings);
             var runtime = HandlerRuntime.Create(config);
 
-            Assert.IsType<Container>(settings.Get("messagehandler.container"));
+            Assert.IsType<Container>(settings.GetContainer());
         }
 
         [Fact]
@@ -46,7 +47,7 @@ namespace unittests.StartUp
             var settings = new Settings();
             var config = new HandlerRuntimeConfiguration(settings);
             var runtime = HandlerRuntime.Create(config);
-            var container = settings.Get<IContainer>("messagehandler.container");
+            var container = settings.GetContainer();
 
             Assert.StrictEqual(settings, container.Resolve<ISettings>());
         }

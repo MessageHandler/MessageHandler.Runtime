@@ -14,7 +14,7 @@ namespace unittests.StartUp
             var settings = new FakeSettings();
 
             var config = new HandlerRuntimeConfiguration(settings);
-            var runtime = await HandlerRuntime.Create(config);
+            var runtime = await HandlerRuntime.Create(config).ConfigureAwait(false);
             Assert.True(settings.LockIsCalled);
         }
 

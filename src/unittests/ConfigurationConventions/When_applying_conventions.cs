@@ -13,7 +13,7 @@ namespace unittests.ConfigurationConventions
             var config = new HandlerRuntimeConfiguration();
             var convention = new MyConvention();
             config.RegisterConvention(convention);
-            await HandlerRuntime.Create(config);
+            await HandlerRuntime.Create(config).ConfigureAwait(false);
             Assert.True(convention.ApplyCalled);
         }
         public class MyConvention:IConvention

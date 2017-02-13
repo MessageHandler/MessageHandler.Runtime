@@ -14,7 +14,7 @@ namespace MessageHandler.Runtime
                 throw new BackgroundTaskRegisteredException("Background Task is already registered.");
             }
             tasks.Add(task.GetType());
-            var container = settings.Get<IContainer>("messagehandler.container");
+            var container = settings.GetContainer();
             container.Register(() => task);
         }
 
@@ -26,7 +26,7 @@ namespace MessageHandler.Runtime
             {
                 throw new BackgroundTaskRegisteredException("Background Task is already registered.");
             }
-            var container = settings.Get<IContainer>("messagehandler.container");
+            var container = settings.GetContainer();
             container.Register(type);
             tasks.Add(type);
         }

@@ -25,11 +25,11 @@ namespace MessageHandler.Runtime
             var conventions = config.Settings.GetOrCreate<Conventions>();
             foreach (var convention in conventions)
             {
-               await convention.Apply(config);
+               await convention.Apply(config).ConfigureAwait(false);
             }
             config.LockSettings();
 
-            var container = config.Settings.Get<IContainer>("messagehandler.container");
+            var container = config.Settings.GetContainer();
             var runtime = new HandlerRuntime(config, container);
 
 
@@ -46,7 +46,7 @@ namespace MessageHandler.Runtime
                 _runningTasks.Add(task.Run());
             }
 
-            await Task.WhenAll(_runningTasks);
+            await Task.WhenAll(_runningTasks).ConfigureAwait(false);
 
             _backgroundTasks.AddRange(_container?.ResolveAll<IBackgroundTask>() ?? new List<IBackgroundTask>());
             foreach (var task in _backgroundTasks)
@@ -59,11 +59,11 @@ namespace MessageHandler.Runtime
         public async Task Stop()
         {
             _tokenSource.Cancel(false);
-            var gracePeriod = _config.Settings.Get<TimeSpan>("messagehandler.shutdowngraceperiod");
+            var gracePeriod = _config.Settings.GetShutdownGracePeriod();
 
             var timeoutTask = Task.Delay(gracePeriod);
             var waitingForCompletion = Task.WhenAll(_runningTasks);
-            await Task.WhenAny(timeoutTask, waitingForCompletion);
+            await Task.WhenAny(timeoutTask, waitingForCompletion).ConfigureAwait(false);
         }
     }
 }

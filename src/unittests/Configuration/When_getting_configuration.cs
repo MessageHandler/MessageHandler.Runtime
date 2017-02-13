@@ -12,7 +12,7 @@ namespace unittests.Configuration
         {
             var configurationSource = new JSonFileConfigurationSource();
 
-            var deserialized = await configurationSource.GetConfiguration<SerializedObject>();
+            var deserialized = await configurationSource.GetConfiguration<SerializedObject>().ConfigureAwait(false);
 
             Assert.NotNull(deserialized);
             Assert.True(deserialized.SomeProperty == "test");
@@ -23,7 +23,7 @@ namespace unittests.Configuration
         {
             var configurationSource = new JSonFileConfigurationSource();
 
-            await Assert.ThrowsAsync<FileNotFoundException>(() => configurationSource.GetConfiguration<SerializedObject>("unexisting.json"));
+            await Assert.ThrowsAsync<FileNotFoundException>(() => configurationSource.GetConfiguration<SerializedObject>("unexisting.json")).ConfigureAwait(false);
         }
 
         public class SerializedObject

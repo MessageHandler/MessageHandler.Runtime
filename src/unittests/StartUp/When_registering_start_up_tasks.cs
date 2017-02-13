@@ -36,8 +36,8 @@ namespace unittests.StartUp
             var startupTask = new MyStartupTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask(startupTask);
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
             Assert.True(startupTask.RunIsCalled);
         }
 
@@ -69,8 +69,8 @@ namespace unittests.StartUp
             var startupTask = new MyStartupTask();
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask(startupTask);
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
             Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask(startupTask));
         }
 
@@ -79,8 +79,8 @@ namespace unittests.StartUp
         {
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask<MyStartupTask>();
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
             Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask<MyStartupTask>());
         }
 
@@ -89,8 +89,8 @@ namespace unittests.StartUp
         {
             var configuration = new HandlerRuntimeConfiguration();
             configuration.RegisterStartupTask(typeof(MyStartupTask));
-            var runtime = await HandlerRuntime.Create(configuration);
-            await runtime.Start();
+            var runtime = await HandlerRuntime.Create(configuration).ConfigureAwait(false);
+            await runtime.Start().ConfigureAwait(false);
             Assert.Throws<StartupTaskRegisteredException>(() => configuration.RegisterStartupTask(typeof(MyStartupTask)));
         }
 
