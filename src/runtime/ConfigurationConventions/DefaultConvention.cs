@@ -34,7 +34,7 @@ namespace MessageHandler.Runtime
             using (var reader = File.OpenText(fullPathConfig))
             {
                 var json = await reader.ReadToEndAsync().ConfigureAwait(false);
-                Dictionary<string, object> deserialized = Json.Decode(json);
+                var deserialized = Json.Decode<Dictionary<string, object>>(json);
                 configuration.HandlerConfigurationValues(deserialized);
             }
 
@@ -42,8 +42,8 @@ namespace MessageHandler.Runtime
             using (var reader = File.OpenText(fullPathVariables))
             {
                 var json = await reader.ReadToEndAsync().ConfigureAwait(false);
-                List<Variables> deserialized = Json.Decode(json);
-                configuration.HandlerConfigurationVariables(deserialized);
+                var deserialized = Json.Decode<List<Variables>>(json);
+                configuration.UserVariables(deserialized);
             }
         }
     }

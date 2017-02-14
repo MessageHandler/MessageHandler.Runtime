@@ -59,6 +59,7 @@
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />
     <Compile Include="Configuration\OutputSubjectRoute.cs" />
+    <Compile Include="Configuration\UserVariablesExtensions.cs" />
     <Compile Include="Configuration\Variable.cs" />
     <Compile Include="Container\Container.cs" />
     <Compile Include="Container\ContainerExtension.cs" />
