@@ -68,6 +68,9 @@
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\Lifecycle.cs" />
     <Compile Include="Container\TypeExtensions.cs" />
+    <Compile Include="Diagnostics\DiagnosticTaskExtensions.cs" />
+    <Compile Include="Diagnostics\DiagnosticTypes.cs" />
+    <Compile Include="Diagnostics\IDiagnosticSink.cs" />
     <Compile Include="Metrics\IMetricSink.cs" />
     <Compile Include="Metrics\MetricTaskExtensions.cs" />
     <Compile Include="Metrics\MetricTypes.cs" />

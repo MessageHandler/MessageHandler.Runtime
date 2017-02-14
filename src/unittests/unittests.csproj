@@ -70,6 +70,7 @@
     <Compile Include="DependencyInjection\When_resolving_interface_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_mutiple_interface.cs" />
     <Compile Include="DependencyInjection\When_resolving_single_instances.cs" />
+    <Compile Include="Diagnostics\When_registering_diagnostics.cs" />
     <Compile Include="Metrics\When_registering_metrics.cs" />
     <Compile Include="Running\When_executing_background_tasks.cs" />
     <Compile Include="Running\When_registering_background_tasks.cs" />

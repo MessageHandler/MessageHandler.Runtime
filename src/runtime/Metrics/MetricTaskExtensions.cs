@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
@@ -17,6 +13,7 @@ namespace MessageHandler.Runtime
             var container = settings.GetContainer();
             container.Register(() => metric);
         }
+
         public static void RegisterMetricSink(this HandlerRuntimeConfiguration configuration, Type type)
         {
             var settings = configuration.GetSettings();
