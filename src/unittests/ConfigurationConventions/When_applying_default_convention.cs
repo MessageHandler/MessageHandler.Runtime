@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MessageHandler.Runtime;
 using MessageHandler.Runtime.ConfigurationSettings;
 using Xunit;
@@ -22,6 +23,7 @@ namespace unittests.ConfigurationConventions
             Assert.Equal("727cce9e-f95f-468f-9437-1eb05105835d", settings.Get<HandlerRuntimeConfigurationValues>().ChannelId);
             Assert.Equal("EventHub", settings.Get<HandlerRuntimeConfigurationValues>().TransportType);
             Assert.Equal("Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx=", settings.Get<HandlerRuntimeConfigurationValues>().Connectionstring);
+            Assert.NotEmpty(settings.GetHandlerConfigurationValues());
         }
     }
 }

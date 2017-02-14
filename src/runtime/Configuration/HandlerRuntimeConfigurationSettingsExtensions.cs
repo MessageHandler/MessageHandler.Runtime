@@ -11,7 +11,8 @@ namespace MessageHandler.Runtime
             config.HandlerInstanceId = handlerInstanceId;
         }
 
-        public static void HandlerConfigurationId(this HandlerRuntimeConfiguration configuration, string handlerConfigurationId)
+        public static void HandlerConfigurationId(this HandlerRuntimeConfiguration configuration,
+            string handlerConfigurationId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();

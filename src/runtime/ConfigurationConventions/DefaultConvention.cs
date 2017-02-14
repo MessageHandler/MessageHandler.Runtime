@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using MessageHandler.Runtime.Serialization;
 
@@ -27,6 +28,14 @@ namespace MessageHandler.Runtime
                 configuration.ChannelId((string)deserialized.ChannelId);
                 configuration.TransportType((string)deserialized.TransportType);
                 configuration.Connectionstring((string)deserialized.Connectionstring);
+            }
+
+            var fullPathConfig = Path.Combine(_basePath, "handler.config.json");
+            using (var reader = File.OpenText(fullPathConfig))
+            {
+                var json = await reader.ReadToEndAsync().ConfigureAwait(false);
+                Dictionary<string, object> deserialized = Json.Decode(json);
+                configuration.HandlerConfigurationValues(deserialized);
             }
         }
     }

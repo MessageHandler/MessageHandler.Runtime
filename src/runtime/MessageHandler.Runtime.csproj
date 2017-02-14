@@ -51,6 +51,7 @@
     <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
     <Compile Include="Configuration\HandlerRouting.cs" />
+    <Compile Include="Configuration\HandlerConfigurationSettingsExtension.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfigurationValues.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfigurationSettingsExtensions.cs" />
     <Compile Include="Configuration\IConfigurationSource.cs" />

@@ -20,7 +20,7 @@ namespace MessageHandler.Runtime
         private void ApplyDefaults()
         {
             _settings.SetDefaultContainer(new Container());
-            _settings.SetDefaultTimeSpan(TimeSpan.FromSeconds(30));
+            _settings.SetDefaultShutdownGracePeriod(TimeSpan.FromSeconds(30));
         }
 
         internal void LockSettings()
