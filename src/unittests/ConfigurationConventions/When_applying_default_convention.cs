@@ -24,6 +24,7 @@ namespace unittests.ConfigurationConventions
             Assert.Equal("EventHub", settings.Get<HandlerRuntimeConfigurationValues>().TransportType);
             Assert.Equal("Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx=", settings.Get<HandlerRuntimeConfigurationValues>().Connectionstring);
             Assert.NotEmpty(settings.GetHandlerConfigurationValues());
+            Assert.NotEmpty(settings.GetUserVariables());
         }
     }
 }

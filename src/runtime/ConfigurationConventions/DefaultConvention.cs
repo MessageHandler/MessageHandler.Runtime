@@ -37,6 +37,18 @@ namespace MessageHandler.Runtime
                 Dictionary<string, object> deserialized = Json.Decode(json);
                 configuration.HandlerConfigurationValues(deserialized);
             }
+
+            var fullPathVariables = Path.Combine(_basePath, "handler.variables.json");
+            using (var reader = File.OpenText(fullPathVariables))
+            {
+                var json = await reader.ReadToEndAsync().ConfigureAwait(false);
+                List<Variables> deserialized = Json.Decode(json);
+                configuration.HandlerConfigurationVariables(deserialized);
+            }
         }
+    }
+
+    public class Variables
+    {
     }
 }
