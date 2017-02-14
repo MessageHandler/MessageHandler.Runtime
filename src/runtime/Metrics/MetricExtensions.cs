@@ -3,21 +3,21 @@ using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
-    public static class MetricTaskExtensions
+    public static class MetricExtensions
     {
-        public static void RegisterMetricSink(this HandlerRuntimeConfiguration configuration, IMetricSink metric)
+        public static void RegisterMetricSink(this HandlerRuntimeConfiguration configuration, IMetricsSink sink)
         {
             var settings = configuration.GetSettings();
-            var metrics = settings.GetOrCreate<MetricTypes>();
-            metrics.Add(metric.GetType());
+            var metrics = settings.GetOrCreate<MetricSinkTypes>();
+            metrics.Add(sink.GetType());
             var container = settings.GetContainer();
-            container.Register(() => metric);
+            container.Register(() => sink);
         }
 
         public static void RegisterMetricSink(this HandlerRuntimeConfiguration configuration, Type type)
         {
             var settings = configuration.GetSettings();
-            var metrics = settings.GetOrCreate<MetricTypes>();
+            var metrics = settings.GetOrCreate<MetricSinkTypes>();
             var container = settings.GetContainer();
             container.Register(type);
             metrics.Add(type);

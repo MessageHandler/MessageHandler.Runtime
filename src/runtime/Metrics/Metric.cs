@@ -1,14 +1,5 @@
-﻿using System.Threading.Tasks;
-
 namespace MessageHandler.Runtime
 {
-    public interface IMetricSink
-    {
-        void Add(Metric metric);
-
-        Task Flush();
-    }
-
     public class Metric
     {
         public double Value { get; private set; }

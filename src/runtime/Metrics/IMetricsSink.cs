@@ -2,9 +2,10 @@
 
 namespace MessageHandler.Runtime
 {
-    public interface IDiagnosticSink
+    public interface IMetricsSink
     {
-        void Add(string value);
+        void Add(Metric metric);
+
         Task Flush();
     }
 }

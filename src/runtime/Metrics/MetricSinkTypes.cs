@@ -3,5 +3,5 @@ using System.Collections.Generic;
 
 namespace MessageHandler.Runtime
 {
-    public class MetricTypes : List<Type> { }
+    public class MetricSinkTypes : List<Type> { }
 }

@@ -3,5 +3,5 @@ using System.Collections.Generic;
 
 namespace MessageHandler.Runtime.Diagnostics
 {
-    public class DiagnosticTypes : List<Type> { }
+    public class DiagnosticSinkTypes : List<Type> { }
 }
