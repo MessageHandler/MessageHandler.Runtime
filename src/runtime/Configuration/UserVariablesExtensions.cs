@@ -7,15 +7,15 @@ namespace MessageHandler.Runtime
     {
         private const string handlerConfigurationVariablesKey = "messagehandler.uservariables";
 
-        public static void UserVariables(this HandlerRuntimeConfiguration configuration, List<Variables> variables)
+        public static void UserVariables(this HandlerRuntimeConfiguration configuration, List<Variable> variables)
         {
             var settings = configuration.GetSettings();
             settings.Set(handlerConfigurationVariablesKey, variables);
         }
 
-        internal static List<Variables> GetUserVariables(this Settings settings)
+        internal static List<Variable> GetUserVariables(this Settings settings)
         {
-            return settings.Get<List<Variables>>(handlerConfigurationVariablesKey);
+            return settings.Get<List<Variable>>(handlerConfigurationVariablesKey);
         }
     }
 }

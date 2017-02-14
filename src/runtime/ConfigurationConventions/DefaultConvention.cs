@@ -42,13 +42,17 @@ namespace MessageHandler.Runtime
             using (var reader = File.OpenText(fullPathVariables))
             {
                 var json = await reader.ReadToEndAsync().ConfigureAwait(false);
-                var deserialized = Json.Decode<List<Variables>>(json);
+                var deserialized = Json.Decode<List<Variable>>(json);
                 configuration.UserVariables(deserialized);
             }
-        }
-    }
 
-    public class Variables
-    {
+            var fullPathRouting = Path.Combine(_basePath, "handler.routing.json");
+            using (var reader = File.OpenText(fullPathRouting))
+            {
+                var json = await reader.ReadToEndAsync().ConfigureAwait(false);
+                var deserialized = Json.Decode<HandlerRouting>(json);
+                configuration.HandlerConfigurationRouting(deserialized);
+            }
+        }
     }
 }
