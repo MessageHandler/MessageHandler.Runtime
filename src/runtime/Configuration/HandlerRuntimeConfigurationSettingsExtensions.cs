@@ -11,12 +11,24 @@ namespace MessageHandler.Runtime
             config.HandlerInstanceId = handlerInstanceId;
         }
 
+        public static string GetHandlerInstanceId(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.HandlerInstanceId;
+        }
+
         public static void HandlerConfigurationId(this HandlerRuntimeConfiguration configuration,
             string handlerConfigurationId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             config.HandlerConfigurationId = handlerConfigurationId;
+        }
+
+        public static string GetHandlerConfigurationId(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.HandlerConfigurationId;
         }
 
         public static void AccountId(this HandlerRuntimeConfiguration configuration, string accountId)
@@ -26,11 +38,23 @@ namespace MessageHandler.Runtime
             config.AccountId = accountId;
         }
 
+        public static string GetAccountId(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.AccountId;
+        }
+
         public static void EnvironmentId(this HandlerRuntimeConfiguration configuration, string environmentId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             config.EnvironmentId = environmentId;
+        }
+
+        public static string GetEnvironmentId(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.EnvironmentId;
         }
 
         public static void ChannelId(this HandlerRuntimeConfiguration configuration, string channelId)
@@ -40,6 +64,12 @@ namespace MessageHandler.Runtime
             config.ChannelId = channelId;
         }
 
+        public static string GetChannelId(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.ChannelId;
+        }
+
         public static void TransportType(this HandlerRuntimeConfiguration configuration, string transportType)
         {
             var settings = configuration.GetSettings();
@@ -47,11 +77,23 @@ namespace MessageHandler.Runtime
             config.TransportType = transportType;
         }
 
+        public static string GetTransportType(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.TransportType;
+        }
+
         public static void Connectionstring(this HandlerRuntimeConfiguration configuration, string connectionString)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             config.Connectionstring = connectionString;
+        }
+
+        public static string GetConnectionstring(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.Connectionstring;
         }
     }
 }
