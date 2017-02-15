@@ -11,7 +11,7 @@ namespace MessageHandler.Runtime
             extensionPoint.GetSettings().Set(ContainerKey, container);
         }
 
-        internal static IContainer GetContainer(this ISettings settings)
+        public static IContainer GetContainer(this ISettings settings)
         {
             return settings.Get<IContainer>(ContainerKey);
         }
