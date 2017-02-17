@@ -1,9 +1,12 @@
-﻿using MessageHandler.Runtime.ConfigurationSettings;
+﻿using System;
+using System.Threading.Tasks;
+using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
     public static class HandlerRuntimeConfigurationSettingsExtensions
     {
+        private const string MessageHandlerPipelineKey = "MessageHandler.Pipeline";
         public static void HandlerInstanceId(this HandlerRuntimeConfiguration configuration, string handlerInstanceId)
         {
             var settings = configuration.GetSettings();
@@ -94,6 +97,17 @@ namespace MessageHandler.Runtime
         {
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             return config.Connectionstring;
+        }
+
+        public static void Pipeline<T>(this HandlerRuntimeConfiguration configuration, Func<T, Task> pipeline)
+        {
+            var settings = configuration.GetSettings();
+            settings.Set(MessageHandlerPipelineKey, pipeline);
+        }
+
+        public static Func<T, Task> GetPipeline<T>(this ISettings settings)
+        {
+            return settings.Get<Func<T, Task>>(MessageHandlerPipelineKey);
         }
     }
 }
