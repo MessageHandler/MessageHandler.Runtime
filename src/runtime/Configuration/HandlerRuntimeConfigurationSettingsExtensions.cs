@@ -7,7 +7,6 @@ namespace MessageHandler.Runtime
     public static class HandlerRuntimeConfigurationSettingsExtensions
     {
         private const string MessageHandlerPipelineKey = "MessageHandler.Pipeline";
-        private const string MessageReceiverAmountKey = "MessageHandler.MessageReceiver";
         public static void HandlerInstanceId(this HandlerRuntimeConfiguration configuration, string handlerInstanceId)
         {
             var settings = configuration.GetSettings();
@@ -99,7 +98,6 @@ namespace MessageHandler.Runtime
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             return config.Connectionstring;
         }
-
         public static void Pipeline<T>(this HandlerRuntimeConfiguration configuration, Func<T, Task> pipeline)
         {
             var settings = configuration.GetSettings();
@@ -109,17 +107,6 @@ namespace MessageHandler.Runtime
         public static Func<T, Task> GetPipeline<T>(this ISettings settings)
         {
             return settings.Get<Func<T, Task>>(MessageHandlerPipelineKey);
-        }
-
-        public static void MessageReceiverAmount(this HandlerRuntimeConfiguration configuration, int amount)
-        {
-            var settings = configuration.GetSettings();
-            settings.Set(MessageReceiverAmountKey, amount);
-        }
-
-        public static int GetMessageReceiverAmount(this ISettings settings)
-        {
-            return settings.Get<int>(MessageReceiverAmountKey);
         }
     }
 }
