@@ -67,6 +67,7 @@
     <Compile Include="Configuration\When_getting_runtime_configuration.cs" />
     <Compile Include="DependencyInjection\When_registering_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_dependencies.cs" />
+    <Compile Include="DependencyInjection\When_resolving_dependencies_with_inheritance.cs" />
     <Compile Include="DependencyInjection\When_resolving_interface_dependencies.cs" />
     <Compile Include="DependencyInjection\When_resolving_mutiple_interface.cs" />
     <Compile Include="DependencyInjection\When_resolving_single_instances.cs" />

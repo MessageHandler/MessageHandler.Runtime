@@ -61,8 +61,10 @@ namespace MessageHandler.Runtime
                 Factory = factory
             };
 
-            foreach (var t in type.GetBaseTypes().Concat(new[] { type }))
+            foreach (var t in type.GetBaseTypes().Concat(new[] { type }).Distinct())
             {
+                if (t == typeof(object)) continue;
+
                 if (!_registrations.ContainsKey(t))
                 {
                     _registrations[t] = new List<ContainerRegistration>();
@@ -100,6 +102,8 @@ namespace MessageHandler.Runtime
 
         public IEnumerable<object> ResolveAll(Type type)
         {
+          //  var results = new List<object>();
+
             if (!_registrations.ContainsKey(type)) yield break;
 
             foreach (var registration in _registrations[type])
