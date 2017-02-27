@@ -71,7 +71,8 @@
     <Compile Include="Diagnostics\DiagnosticsExtensions.cs" />
     <Compile Include="Diagnostics\DiagnosticSinkTypes.cs" />
     <Compile Include="Diagnostics\IDiagnosticsSink.cs" />
-    <Compile Include="LeaseManagement\DefaultLeaseCreation.cs" />
+    <Compile Include="LeaseManagement\InMemoryLease.cs" />
+    <Compile Include="LeaseManagement\InMemoryLeaseCreation.cs" />
     <Compile Include="LeaseManagement\IAllocateLeases.cs" />
     <Compile Include="LeaseManagement\ICreateLeases.cs" />
     <Compile Include="LeaseManagement\InMemoryLeaseAllocation.cs" />

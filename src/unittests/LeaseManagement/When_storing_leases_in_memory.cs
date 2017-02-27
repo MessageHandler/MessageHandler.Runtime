@@ -12,15 +12,15 @@ namespace unittests
         public async Task Can_put_lease()
         {
             var leaseId = Guid.NewGuid().ToString();
-            var leaseStore = new InMemoryLeaseStore<MyLease>(new DefaultLeaseCreation<MyLease>());
-            await leaseStore.Put(new MyLease { LeaseId = leaseId });
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
+            await leaseStore.Put(new InMemoryLease { LeaseId = leaseId });
         }
 
         [Fact]
         public async Task Can_acquire_lease()
         {
             var leaseId = Guid.NewGuid().ToString();
-            var leaseStore = new InMemoryLeaseStore<MyLease>(new DefaultLeaseCreation<MyLease>());
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
             var leaseStored = await leaseStore.TryAcquire(leaseId);
             Assert.NotNull(leaseStored);
         }
@@ -29,9 +29,9 @@ namespace unittests
         public async Task Can_get_lease()
         {
             var leaseId = Guid.NewGuid().ToString();
-            var originalLease = new MyLease {LeaseId = leaseId};
+            var originalLease = new InMemoryLease() {LeaseId = leaseId};
 
-            var leaseStore = new InMemoryLeaseStore<MyLease>(new DefaultLeaseCreation<MyLease>());
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
             await leaseStore.Put(originalLease);
 
             var leaseStored = await leaseStore.TryAcquire(leaseId);
@@ -42,20 +42,15 @@ namespace unittests
         [Fact]
         public async Task Can_list_leases()
         {
-            var leaseStore = new InMemoryLeaseStore<MyLease>(new DefaultLeaseCreation<MyLease>());
-            await leaseStore.Put(new MyLease { LeaseId = Guid.NewGuid().ToString() });
-            await leaseStore.Put(new MyLease { LeaseId = Guid.NewGuid().ToString() });
-            await leaseStore.Put(new MyLease { LeaseId = Guid.NewGuid().ToString() });
-            await leaseStore.Put(new MyLease { LeaseId = Guid.NewGuid().ToString() });
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
+            await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
+            await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
+            await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
+            await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
 
             var stored = await leaseStore.List();
             Assert.Equal(4, stored.Count());
         }
-
-        public class MyLease : ILease
-        {
-            public string LeaseId { get; set; }
-            public object State { get; set; }
-        }
+        
     }
 }
