@@ -1,8 +1,8 @@
 namespace MessageHandler.Runtime
 {
-    public class Lease
+    public interface ILease
     {
-        public string LeaseId { get; set; }
-        public object State { get; set; }
+        string LeaseId { get; set; }
+        object State { get; set; }
     }
 }

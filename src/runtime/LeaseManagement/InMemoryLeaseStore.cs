@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageHandler.Runtime
 {
-    public class InMemoryLeaseStore<T> : IStoreLeases<T> where T : Lease
+    public class InMemoryLeaseStore<T> : IStoreLeases<T> where T : ILease
     {
         private readonly ConcurrentDictionary<string, T> _leases = new ConcurrentDictionary<string, T>();
         private readonly ICreateLeases<T> _leaseFactory;

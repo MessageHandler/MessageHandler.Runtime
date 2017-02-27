@@ -52,9 +52,10 @@ namespace unittests
             Assert.Equal(4, stored.Count());
         }
 
-        public class MyLease : Lease
+        public class MyLease : ILease
         {
-            
+            public string LeaseId { get; set; }
+            public object State { get; set; }
         }
     }
 }

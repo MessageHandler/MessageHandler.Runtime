@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MessageHandler.Runtime
 {
-    public interface IAllocateLeases<out T> where T : Lease
+    public interface IAllocateLeases<out T> where T : ILease
     {
         Task<bool> ExecuteIfLeaseAcquired(string leaseId, Func<Task> toExecute);
 

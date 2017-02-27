@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MessageHandler.Runtime
 {
-    public class InMemoryLeaseAllocation<T> : IAllocateLeases<T> where T : Lease
+    public class InMemoryLeaseAllocation<T> : IAllocateLeases<T> where T : ILease
     {
         private readonly IStoreLeases<T> _leaseStorage;
         private readonly ICreateLeases<T> _leaseFactory;
@@ -158,7 +158,6 @@ namespace MessageHandler.Runtime
             var allocation = _allocations.AddOrUpdate(leaseId,
             s => new LeaseAllocation
             {
-                Lease = null,
                 Acquired = false
             },
             (s, o) =>
