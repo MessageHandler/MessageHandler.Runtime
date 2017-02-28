@@ -51,7 +51,7 @@ namespace MessageHandler.Runtime
             _backgroundTasks.AddRange(_container?.ResolveAll<IBackgroundTask>() ?? new List<IBackgroundTask>());
             foreach (var task in _backgroundTasks)
             {
-                var t = Task.Run(() => task.Run(_tokenSource.Token), CancellationToken.None);
+                var t = Task.Factory.StartNew(() => task.Run(_tokenSource.Token), TaskCreationOptions.LongRunning).Unwrap();
                 _runningTasks.Add(t);
             }
         }
