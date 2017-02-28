@@ -28,10 +28,10 @@ namespace MessageHandler.Runtime
             return Task.CompletedTask;
         }
 
-        public Task Release(string leaseId)
+        public Task Release(T lease)
         {
-            T lease;
-            _leases.TryRemove(leaseId, out lease);
+            T l;
+            _leases.TryRemove(lease.LeaseId, out l);
             return Task.CompletedTask;
         }
 
