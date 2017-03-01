@@ -50,7 +50,7 @@ namespace MessageHandler.Runtime
 
         public Task Subscribe(string leaseId, IObserveLeases<T> observer)
         {
-            var existing = _subscriptions.FirstOrDefault(o => o.Hashcode == observer.GetHashCode());
+            var existing = _subscriptions.FirstOrDefault(o => o.LeaseId == leaseId && o.Hashcode == observer.GetHashCode());
             if (existing == null)
             {
                 _subscriptions.Add(new LeaseSubscription
@@ -78,7 +78,7 @@ namespace MessageHandler.Runtime
 
         public Task Unsubscribe(string leaseId, IObserveLeases<T> observer)
         {
-            var existing = _subscriptions.FirstOrDefault(o => o.Hashcode == observer.GetHashCode());
+            var existing = _subscriptions.FirstOrDefault(o => o.LeaseId == leaseId && o.Hashcode == observer.GetHashCode());
             if (existing != null)
             {
                 existing.Active = false;
