@@ -11,7 +11,7 @@ namespace unittests
         {
             int invocationCount = 0;
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             await leaseStore.TryAcquire("mylease");
             await leases.Allocate();
             await leases.ExecuteIfLeaseAcquired("mylease", () => Task.FromResult(invocationCount++));
@@ -23,7 +23,7 @@ namespace unittests
         {
             int invocationCount = 0;
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             await leases.Allocate();
             await leases.ExecuteIfLeaseAcquired("mylease", () => Task.FromResult(invocationCount++));
             Assert.Equal(0, invocationCount);
@@ -34,7 +34,7 @@ namespace unittests
         {
             int invocationCount = 0;
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             var lease = await leaseStore.TryAcquire("mylease");
             await leases.Allocate();
             await leaseStore.Release(lease);
@@ -47,7 +47,7 @@ namespace unittests
         public async Task Will_invoke_on_lease_granted_on_observer()
         {
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             var observer = new MyLeaseObserver();
             await leases.Subscribe("mylease", observer);
             await leaseStore.TryAcquire("mylease");
@@ -59,7 +59,7 @@ namespace unittests
         public async Task Will_invoke_on_lease_released_on_observer()
         {
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             var observer = new MyLeaseObserver();
             await leases.Subscribe("mylease", observer);
             var lease = await leaseStore.TryAcquire("mylease");
@@ -73,7 +73,7 @@ namespace unittests
         public async Task Will_not_invoke_on_lease_granted_on_observer_after_unsubscribe()
         {
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             var observer = new MyLeaseObserver();
             await leases.Subscribe("mylease", observer);
             await leases.Unsubscribe("mylease", observer);
@@ -86,7 +86,7 @@ namespace unittests
         public async Task Will_not_invoke_on_lease_released_on_observer_after_unsubscribe()
         {
             var leaseStore = new InMemoryLeaseStore<InMemoryLease>(new InMemoryLeaseCreation());
-            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore, new InMemoryLeaseCreation());
+            var leases = new InMemoryLeaseAllocation<InMemoryLease>(leaseStore);
             var observer = new MyLeaseObserver();
             await leases.Subscribe("mylease", observer);
             await leases.Unsubscribe("mylease", observer);

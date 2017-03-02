@@ -89,9 +89,11 @@ namespace unittests.Running
         {
             public bool StartCalled;
 
-            public async Task Run(CancellationToken cancellation)
+            public Task Run(CancellationToken cancellation)
             {
                 StartCalled = true;
+                return Task.CompletedTask;
+
             }
         }
     }

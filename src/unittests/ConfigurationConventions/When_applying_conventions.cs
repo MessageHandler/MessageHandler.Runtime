@@ -19,10 +19,12 @@ namespace unittests.ConfigurationConventions
         public class MyConvention:IConvention
         {
             public bool ApplyCalled;
-            public async Task Apply(HandlerRuntimeConfiguration configuration)
+            public Task Apply(HandlerRuntimeConfiguration configuration)
             {
                 ApplyCalled = true;
                 configuration.ShutdownGracePeriod(TimeSpan.FromSeconds(1)); //Proves that lock is not yet called
+                return Task.CompletedTask;
+
             }
         }
     }

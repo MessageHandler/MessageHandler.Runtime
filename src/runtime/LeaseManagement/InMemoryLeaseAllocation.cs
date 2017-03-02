@@ -10,7 +10,6 @@ namespace MessageHandler.Runtime
     public class InMemoryLeaseAllocation<T> : IAllocateLeases<T> where T : ILease
     {
         private readonly IStoreLeases<T> _leaseStorage;
-        private readonly ICreateLeases<T> _leaseFactory;
 
         private readonly ConcurrentDictionary<string, LeaseAllocation> _allocations = new ConcurrentDictionary<string, LeaseAllocation>();
 
@@ -18,10 +17,9 @@ namespace MessageHandler.Runtime
 
         private Task _autoAllocationTask;
 
-        public InMemoryLeaseAllocation(IStoreLeases<T> leaseStorage, ICreateLeases<T> leaseFactory)
+        public InMemoryLeaseAllocation(IStoreLeases<T> leaseStorage)
         {
             _leaseStorage = leaseStorage;
-            _leaseFactory = leaseFactory;
         }
 
         public Task<bool> ExecuteIfLeaseAcquired(string leaseId, Func<Task> toExecute)
@@ -119,30 +117,31 @@ namespace MessageHandler.Runtime
 
             foreach (var lease in obtainedLeases)
             {
-                await Grant(lease.LeaseId);
+                await Grant(lease);
             }
 
             foreach (var lease in leasesToRevoke)
             {
-                await Revoke(lease.LeaseId);
+                await Revoke(lease);
             }
         }
 
-        private async Task Grant(string leaseId)
+        private async Task Grant(T lease)
         {
-            var allocation = _allocations.AddOrUpdate(leaseId, 
+            var allocation = _allocations.AddOrUpdate(lease.LeaseId, 
             s => new LeaseAllocation
             {
-                Lease = _leaseFactory.Create(s),
+                Lease = lease,
                 Acquired = true
             },
             (s, o) =>
             {
+                o.Lease = lease;
                 o.Acquired = true;
                 return o;
             });
 
-            var toInvoke = _subscriptions.Where(o => o.LeaseId == leaseId && o.Active);
+            var toInvoke = _subscriptions.Where(o => o.LeaseId == lease.LeaseId && o.Active);
             foreach (var subscription in toInvoke)
             {
                 IObserveLeases<T> observer;
@@ -153,26 +152,26 @@ namespace MessageHandler.Runtime
             }
         }
 
-        private async Task Revoke(string leaseId)
+        private async Task Revoke(T lease)
         {
-            var allocation = _allocations.AddOrUpdate(leaseId,
-            s => new LeaseAllocation
-            {
-                Acquired = false
-            },
-            (s, o) =>
-            {
-                o.Acquired = false;
-                return o;
-            });
+            _allocations.AddOrUpdate(lease.LeaseId,
+                    s => new LeaseAllocation
+                    {
+                        Acquired = false
+                    },
+                    (s, o) =>
+                    {
+                        o.Acquired = false;
+                        return o;
+                    });
 
-            var toInvoke = _subscriptions.Where(o => o.LeaseId == leaseId && o.Active);
+            var toInvoke = _subscriptions.Where(o => o.LeaseId == lease.LeaseId && o.Active);
             foreach (var subscription in toInvoke)
             {
                 IObserveLeases<T> observer;
                 if (subscription.Reference.TryGetTarget(out observer))
                 {
-                    await observer.OnLeaseReleased(allocation.Lease);
+                    await observer.OnLeaseReleased(lease);
                 }
             }
         }

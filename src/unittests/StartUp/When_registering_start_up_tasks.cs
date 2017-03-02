@@ -97,9 +97,10 @@ namespace unittests.StartUp
         public class MyStartupTask:IStartupTask
         {
             public bool RunIsCalled;
-            public async Task Run()
+            public Task Run()
             {
                 RunIsCalled = true;
+                return Task.CompletedTask;
             }
         }
     }
