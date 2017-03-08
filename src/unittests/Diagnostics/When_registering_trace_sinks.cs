@@ -7,29 +7,29 @@ using Xunit;
 
 namespace unittests.Diagnostics
 {
-    public class When_registering_diagnostic_sinks
+    public class When_registering_trace_sinks
     {
         [Fact]
         public void Can_register_diagnostics_sink_and_find_it_in_the_container()
         {
-            var myDiagnostic = new MyDiagnosticsSink();
+            var myDiagnostic = new MyStructuredTraceSink();
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
             configuration.UseContainer(container);
-            configuration.RegisterDiagnosticSink(myDiagnostic);
-            Assert.NotNull(container.Resolve<IDiagnosticsSink>());
-            Assert.IsType<MyDiagnosticsSink>(container.Resolve<IDiagnosticsSink>());
+            configuration.Tracing().RegisterSink(myDiagnostic);
+            Assert.NotNull(container.Resolve<IStructuredTraceSink>());
+            Assert.IsType<MyStructuredTraceSink>(container.Resolve<IStructuredTraceSink>());
         }
 
         [Fact]
         public void Can_register_diagnostics_sink_instance_and_find_its_type_in_the_settings()
         {
             var settings = new Settings();
-            var myDiagnostic = new MyDiagnosticsSink();
+            var myDiagnostic = new MyStructuredTraceSink();
             var configuration = new HandlerRuntimeConfiguration(settings);
-            configuration.RegisterDiagnosticSink(myDiagnostic);
-            var diagnostics = settings.Get<DiagnosticSinkTypes>();
-            Assert.NotNull(diagnostics.Exists( t => t == typeof(MyDiagnosticsSink)));
+            configuration.Tracing().RegisterSink(myDiagnostic);
+            var diagnostics = settings.Get<TraceSinkRegistrations>();
+            Assert.NotNull(diagnostics.Exists(t => t.Type == typeof(MyStructuredTraceSink)));
         }
 
         [Fact]
@@ -38,9 +38,9 @@ namespace unittests.Diagnostics
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
             configuration.UseContainer(container);
-            configuration.RegisterDiagnosticSink<MyDiagnosticsSink>();
-            Assert.NotNull(container.Resolve<IDiagnosticsSink>());
-            Assert.IsType<MyDiagnosticsSink>(container.Resolve<IDiagnosticsSink>());
+            configuration.Tracing().RegisterSink<MyStructuredTraceSink>();
+            Assert.NotNull(container.Resolve<IStructuredTraceSink>());
+            Assert.IsType<MyStructuredTraceSink>(container.Resolve<IStructuredTraceSink>());
         }
 
         [Fact]
@@ -49,14 +49,17 @@ namespace unittests.Diagnostics
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
             configuration.UseContainer(container);
-            configuration.RegisterDiagnosticSink(typeof(MyDiagnosticsSink));
-            Assert.NotNull(container.Resolve<IDiagnosticsSink>());
-            Assert.IsType<MyDiagnosticsSink>(container.Resolve<IDiagnosticsSink>());
+            configuration.Tracing().RegisterSink(typeof(MyStructuredTraceSink));
+            Assert.NotNull(container.Resolve<IStructuredTraceSink>());
+            Assert.IsType<MyStructuredTraceSink>(container.Resolve<IStructuredTraceSink>());
         }
 
-        public class MyDiagnosticsSink : IDiagnosticsSink
+        public class MyStructuredTraceSink : IStructuredTraceSink
         {
-            public void Add(string value) { }
+            public Task Buffer(StructuredTrace traced)
+            {
+                return Task.CompletedTask;
+            }
 
             public Task Flush()
             {
@@ -64,6 +67,4 @@ namespace unittests.Diagnostics
             }
         }
     }
-
-   
 }

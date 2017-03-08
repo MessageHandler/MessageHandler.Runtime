@@ -30,12 +30,7 @@ namespace MessageHandler.Runtime
             config.LockSettings();
 
             var container = config.Settings.GetContainer();
-            var runtime = new HandlerRuntime(config, container);
-
-
-            container?.Register(() => config.Settings);
-
-            return runtime;
+            return new HandlerRuntime(config, container);
         }
 
         public async Task Start()

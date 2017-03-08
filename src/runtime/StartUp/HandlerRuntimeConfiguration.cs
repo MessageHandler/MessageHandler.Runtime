@@ -19,7 +19,9 @@ namespace MessageHandler.Runtime
 
         private void ApplyDefaults()
         {
-            _settings.SetDefaultContainer(new Container());
+            var container = new Container();
+            container.Register(() => _settings);
+            _settings.SetDefaultContainer(container);
             _settings.SetDefaultShutdownGracePeriod(TimeSpan.FromSeconds(30));
         }
 

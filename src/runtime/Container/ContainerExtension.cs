@@ -8,7 +8,9 @@ namespace MessageHandler.Runtime
         private const string ContainerKey = "messagehandler.container";
         public static void UseContainer(this HandlerRuntimeConfiguration configuration,IContainer container)
         {
-            configuration.GetSettings().Set(ContainerKey, container);
+            var settings = configuration.GetSettings();
+            container.Register(() => settings);
+            settings.Set(ContainerKey, container);
         }
 
         public static IContainer GetContainer(this HandlerRuntimeConfiguration configuration)

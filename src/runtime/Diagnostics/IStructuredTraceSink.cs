@@ -2,9 +2,9 @@
 
 namespace MessageHandler.Runtime
 {
-    public interface IDiagnosticsSink
+    public interface IStructuredTraceSink
     {
-        void Add(string value);
+        Task Buffer(StructuredTrace trace);
         Task Flush();
     }
 }

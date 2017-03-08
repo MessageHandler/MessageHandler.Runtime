@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Disruptor, Version=3.3.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Disruptor.3.3.5.1\lib\net45\Disruptor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Extensions" />
@@ -68,9 +72,19 @@
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\Lifecycle.cs" />
     <Compile Include="Container\TypeExtensions.cs" />
-    <Compile Include="Diagnostics\DiagnosticsExtensions.cs" />
-    <Compile Include="Diagnostics\DiagnosticSinkTypes.cs" />
-    <Compile Include="Diagnostics\IDiagnosticsSink.cs" />
+    <Compile Include="Diagnostics\Configuration\TraceSettingsExtensionPoint.cs" />
+    <Compile Include="Diagnostics\Configuration\TraceSeverityTresholds.cs" />
+    <Compile Include="Diagnostics\Configuration\TraceSinkRegistration.cs" />
+    <Compile Include="Diagnostics\Sink\BufferedConsoleTraceSink.cs" />
+    <Compile Include="Diagnostics\Configuration\TraceExtensions.cs" />
+    <Compile Include="Diagnostics\Configuration\TraceSinkRegistrations.cs" />
+    <Compile Include="Diagnostics\IStructuredTraceSink.cs" />
+    <Compile Include="Diagnostics\ITrace.cs" />
+    <Compile Include="Diagnostics\Model\StructuredTrace.cs" />
+    <Compile Include="Diagnostics\Model\StructuredTraceScope.cs" />
+    <Compile Include="Diagnostics\Model\StructuredTraceSeverity.cs" />
+    <Compile Include="Diagnostics\StructuredTraceCompletionBehavior.cs" />
+    <Compile Include="Diagnostics\Tracer.cs" />
     <Compile Include="LeaseManagement\InMemoryLease.cs" />
     <Compile Include="LeaseManagement\InMemoryLeaseCreation.cs" />
     <Compile Include="LeaseManagement\IAllocateLeases.cs" />
@@ -102,7 +116,9 @@
     <Compile Include="StartUp\StartupTaskRegisteredException.cs" />
     <Compile Include="StartUp\StartupTaskTypes.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
