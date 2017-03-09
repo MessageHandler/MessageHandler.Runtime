@@ -4,6 +4,7 @@ namespace MessageHandler.Runtime
 {
     public class StructuredTrace
     {
+        public string Text { get; set; }
         public object State { get; set; }
         public string What { get; set; }
         public string Where { get; set; }

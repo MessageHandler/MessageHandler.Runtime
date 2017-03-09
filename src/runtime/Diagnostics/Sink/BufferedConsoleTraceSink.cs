@@ -20,9 +20,10 @@ namespace MessageHandler.Runtime
             }
         }
 
-        public async Task Buffer(StructuredTrace traced)
+        public Task Buffer(StructuredTrace traced)
         {
-            _buffer.Put($"{traced.When:yyyy-MM-dd HH:mm:ss)} [{traced.Severity}] {traced.State}");
+            _buffer.Put($"{traced.When:yyyy-MM-dd HH:mm:ss)} [{traced.Severity}] {traced.Text}{Environment.NewLine} {traced.State}");
+            return Task.CompletedTask;
         }
 
         public async Task Flush()

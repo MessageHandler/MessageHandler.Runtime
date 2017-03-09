@@ -27,7 +27,7 @@ namespace unittests.Diagnostics
             
             for (int i = 0; i < numberOfTraces; i++)
             {
-                trace.Add(new StructuredTrace() { State = i });
+                trace.Add(new StructuredTrace() { Text = i.ToString() });
             }
 
             sw.Stop();

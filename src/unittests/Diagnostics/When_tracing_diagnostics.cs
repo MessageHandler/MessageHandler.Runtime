@@ -5,7 +5,7 @@ using Xunit;
 
 namespace unittests.Diagnostics
 {
-    public class When_tracing_diagnostic
+    public class When_tracing_diagnostics
     {
         [Fact]
         public async Task Will_not_invoke_below_treshold()
@@ -17,7 +17,7 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Error);
 
             var trace = container.Resolve<ITrace>();
-            await trace.Add(new StructuredTrace() { State = "test", Severity = StructuredTraceSeverity.Info}, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Add(new StructuredTrace() { Text = "test", Severity = StructuredTraceSeverity.Info}, StructuredTraceCompletionBehavior.Flushed);
 
             Assert.False(sink.BufferCalled);
         }
@@ -32,7 +32,7 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Info);
 
             var trace = container.Resolve<ITrace>();
-            await trace.Add(new StructuredTrace() { State = "test", Severity = StructuredTraceSeverity.Warn }, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Add(new StructuredTrace() { Text = "test", Severity = StructuredTraceSeverity.Warn }, StructuredTraceCompletionBehavior.Flushed);
 
             Assert.True(sink.BufferCalled);
         }
@@ -47,7 +47,7 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, scope: StructuredTraceScope.Infrastructure, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
-            await trace.Add(new StructuredTrace() { State = "test", Scope = StructuredTraceScope.Domain }, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Add(new StructuredTrace() { Text = "test", Scope = StructuredTraceScope.Domain }, StructuredTraceCompletionBehavior.Flushed);
 
             Assert.False(sink.BufferCalled);
         }
@@ -62,7 +62,7 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, scope: StructuredTraceScope.Domain, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
-            await trace.Add(new StructuredTrace() { State = "test", Scope = StructuredTraceScope.Domain }, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Add(new StructuredTrace() { Text = "test", Scope = StructuredTraceScope.Domain }, StructuredTraceCompletionBehavior.Flushed);
 
             Assert.True(sink.BufferCalled);
         }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 using Disruptor;
@@ -30,6 +32,123 @@ namespace MessageHandler.Runtime
             _buffer = _disruptor.Start();
         }
 
+        public StructuredTraceCompletionBehavior DefaultCompletionBehavior { get; set; } = StructuredTraceCompletionBehavior.FireAndForget;
+        
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public Task Verbose(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace()
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Verbose,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, DefaultCompletionBehavior);
+        }
+
+        public Task Debug(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace()
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Debug,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, DefaultCompletionBehavior);
+        }
+
+        public Task Info(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace()
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Info,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, DefaultCompletionBehavior);
+        }
+
+        public Task Warn(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace()
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Warn,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, DefaultCompletionBehavior);
+        }
+
+        public Task Error(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Error,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, StructuredTraceCompletionBehavior.Flushed);
+        }
+
+        public Task Error(string text, Exception exception, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Error,
+                State = exception,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, StructuredTraceCompletionBehavior.Flushed);
+        }
+
+        public Task Fatal(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Fatal,
+                Text = text,
+                Where = where,
+                What = "Trace"
+            }, StructuredTraceCompletionBehavior.Flushed);
+        }
+
+        public Task Fatal(string text, Exception exception, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
+        {
+            var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
+
+            return Add(new StructuredTrace
+            {
+                Scope = scope,
+                Severity = StructuredTraceSeverity.Fatal,
+                Text = text,
+                State = exception,
+                Where = where,
+                What = "Trace"
+            }, StructuredTraceCompletionBehavior.Flushed);
+        }
+
         public Task Add(StructuredTrace traced)
         {
             return Add(traced, StructuredTraceCompletionBehavior.FireAndForget);
@@ -48,7 +167,6 @@ namespace MessageHandler.Runtime
 
             return completion.Task;
         }
-
 
         internal class TraceTranslator : IEventTranslatorOneArg<TraceDisruptorEntry, StructuredTrace>
         {

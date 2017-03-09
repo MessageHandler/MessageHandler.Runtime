@@ -74,7 +74,8 @@
     <Compile Include="Diagnostics\When_registering_trace_settings.cs" />
     <Compile Include="Diagnostics\When_registering_trace_sinks.cs" />
     <Compile Include="Diagnostics\When_sinking_diagnostic_to_console.cs" />
-    <Compile Include="Diagnostics\When_tracing_diagnostic.cs" />
+    <Compile Include="Diagnostics\When_tracing_diagnostics.cs" />
+    <Compile Include="Diagnostics\When_tracing_diagnostics_using_convenience_methods.cs" />
     <Compile Include="LeaseManagement\When_allocating_leases_in_memory.cs" />
     <Compile Include="LeaseManagement\When_storing_leases_in_memory.cs" />
     <Compile Include="Metrics\When_registering_metrics.cs" />
