@@ -22,7 +22,8 @@ namespace MessageHandler.Runtime
 
         public Task Buffer(StructuredTrace traced)
         {
-            _buffer.Put($"{traced.When:yyyy-MM-dd HH:mm:ss)} [{traced.Severity}] {traced.Text}{Environment.NewLine} {traced.State}");
+            var state = traced.State != null ? Environment.NewLine + traced.State : string.Empty;
+            _buffer.Put($"{traced.When:yyyy-MM-dd HH:mm:ss)} [{traced.Severity}] {traced.Text}{state}");
             return Task.CompletedTask;
         }
 
