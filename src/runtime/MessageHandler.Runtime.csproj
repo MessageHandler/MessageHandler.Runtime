@@ -83,6 +83,7 @@
     <Compile Include="Diagnostics\Model\StructuredTrace.cs" />
     <Compile Include="Diagnostics\Model\StructuredTraceScope.cs" />
     <Compile Include="Diagnostics\Model\StructuredTraceSeverity.cs" />
+    <Compile Include="Diagnostics\Sink\CircularBuffer.cs" />
     <Compile Include="Diagnostics\StructuredTraceCompletionBehavior.cs" />
     <Compile Include="Diagnostics\Tracer.cs" />
     <Compile Include="LeaseManagement\InMemoryLease.cs" />

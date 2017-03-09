@@ -6,29 +6,36 @@ namespace MessageHandler.Runtime
 {
     public class BufferedConsoleStructuredTraceSink : IStructuredTraceSink
     {
-        private readonly StringBuilder _builder = new StringBuilder();
-        private int _lineCount = 0;
+        private readonly CircularBuffer<string> _buffer = new CircularBuffer<string>(GetBufferHeight());
+
+        private static int GetBufferHeight()
+        {
+            try
+            {
+                return Console.BufferHeight;
+            }
+            catch
+            {
+                return 300; // default console bufferheight, if console not available or redirected.
+            }
+        }
 
         public async Task Buffer(StructuredTrace traced)
         {
-            string value = traced.State.ToString();
-            if (_builder.Capacity + value.Length > _builder.MaxCapacity || _lineCount >= Console.BufferHeight - 1)
-            {
-                await Flush();
-            }
-
-            _builder.AppendLine($"{traced.When:yyyy-MM-dd HH:mm:ss)} [{traced.Severity}] {traced.State}");
-            _lineCount++;
-            
+            _buffer.Put($"{traced.When:yyyy-MM-dd HH:mm:ss)} [{traced.Severity}] {traced.State}");
         }
 
         public async Task Flush()
         {
-            var s = _builder.ToString();
-            await Console.Out.WriteAsync(s).ConfigureAwait(false);
-            _lineCount = 0;
-            _builder.Clear();
+            var toFlush = _buffer.Clear();
+            var builder = new StringBuilder();
+            foreach (var flush in toFlush)
+            {
+                builder.AppendLine(flush);
+            }
+            await Console.Out.WriteAsync(builder.ToString()).ConfigureAwait(false);
         }
-    }
 
+        
+    }
 }
