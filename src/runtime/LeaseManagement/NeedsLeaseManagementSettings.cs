@@ -9,7 +9,9 @@ namespace MessageHandler.Runtime
         {
         }
 
-        public Func<string, ILease> LeaseFactory { get; set; }
-    
+        public Type LeaseType { get; set; }
+
+        public Type LeaseStoreType { get; set; }
+
     }
 }
