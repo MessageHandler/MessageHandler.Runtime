@@ -9,16 +9,16 @@ namespace MessageHandler.Runtime
     public class InMemoryLeaseStore<T> : IStoreLeases<T> where T : ILease
     {
         private readonly ConcurrentDictionary<string, T> _leases = new ConcurrentDictionary<string, T>();
-        private readonly ICreateLeases<T> _leaseFactory;
+        private readonly Func<string, ILease> _leaseFactory;
 
-        public InMemoryLeaseStore(ICreateLeases<T> leaseFactory)
+        public InMemoryLeaseStore(Func<string, ILease> leaseFactory)
         {
             _leaseFactory = leaseFactory;
         }
 
         public Task<T> TryAcquire(string leaseId)
         {
-            T lease = _leases.GetOrAdd(leaseId, s => _leaseFactory.Create(s));
+            T lease = _leases.GetOrAdd(leaseId, s => (T) _leaseFactory(s));
             return Task.FromResult(lease);
         }
 
