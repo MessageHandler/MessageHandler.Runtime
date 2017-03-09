@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Disruptor;
 using Disruptor.Dsl;
@@ -15,7 +16,7 @@ namespace MessageHandler.Runtime
     internal class Tracer : ITrace
     {
         private readonly Disruptor<TraceDisruptorEntry> _disruptor;
-        private readonly RingBuffer<TraceDisruptorEntry> _buffer;
+        private RingBuffer<TraceDisruptorEntry> _buffer;
        
         public Tracer(IResolveDependencies container, ISettings settings)
         {
@@ -28,18 +29,28 @@ namespace MessageHandler.Runtime
                 var registration = registrations.First(r => r.Type == sink.GetType());
                 _disruptor.HandleEventsWith(new TraceEventHandler(sink, registration));
             }
-
-            _buffer = _disruptor.Start();
         }
 
         public StructuredTraceCompletionBehavior DefaultCompletionBehavior { get; set; } = StructuredTraceCompletionBehavior.FireAndForget;
-        
+
+        public Task Start(CancellationToken token)
+        {
+            _buffer = _disruptor.Start();
+            return Task.CompletedTask;
+        }
+
+        public Task Stop()
+        {
+            _disruptor.Shutdown();
+            return Task.CompletedTask;
+        }
+
         [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Verbose(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
 
-            return Add(new StructuredTrace()
+            return Add(new StructuredTrace
             {
                 Scope = scope,
                 Severity = StructuredTraceSeverity.Verbose,

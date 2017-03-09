@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using MessageHandler.Runtime;
 using MessageHandler.Runtime.Diagnostics;
@@ -17,8 +18,9 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Error);
 
             var trace = container.Resolve<ITrace>();
+            await trace.Start(CancellationToken.None);
             await trace.Add(new StructuredTrace() { Text = "test", Severity = StructuredTraceSeverity.Info}, StructuredTraceCompletionBehavior.Flushed);
-
+            await trace.Stop();
             Assert.False(sink.BufferCalled);
         }
 
@@ -32,7 +34,9 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Info);
 
             var trace = container.Resolve<ITrace>();
+            await trace.Start(CancellationToken.None);
             await trace.Add(new StructuredTrace() { Text = "test", Severity = StructuredTraceSeverity.Warn }, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Stop();
 
             Assert.True(sink.BufferCalled);
         }
@@ -47,7 +51,9 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, scope: StructuredTraceScope.Infrastructure, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
+            await trace.Start(CancellationToken.None);
             await trace.Add(new StructuredTrace() { Text = "test", Scope = StructuredTraceScope.Domain }, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Stop();
 
             Assert.False(sink.BufferCalled);
         }
@@ -62,7 +68,9 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, scope: StructuredTraceScope.Domain, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
+            await trace.Start(CancellationToken.None);
             await trace.Add(new StructuredTrace() { Text = "test", Scope = StructuredTraceScope.Domain }, StructuredTraceCompletionBehavior.Flushed);
+            await trace.Stop();
 
             Assert.True(sink.BufferCalled);
         }

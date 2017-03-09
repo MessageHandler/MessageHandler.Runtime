@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using MessageHandler.Runtime;
 using MessageHandler.Runtime.Diagnostics;
@@ -21,8 +22,9 @@ namespace unittests.Diagnostics
             var trace = container.Resolve<ITrace>();
             //change the default completion behavior so that we can validate the outcome
             trace.DefaultCompletionBehavior = StructuredTraceCompletionBehavior.Buffered;
-
+            await trace.Start(CancellationToken.None);
             await trace.Verbose("test");
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Verbose, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -44,8 +46,9 @@ namespace unittests.Diagnostics
             var trace = container.Resolve<ITrace>();
             //change the default completion behavior so that we can validate the outcome
             trace.DefaultCompletionBehavior = StructuredTraceCompletionBehavior.Buffered;
-
+            await trace.Start(CancellationToken.None);
             await trace.Debug("test");
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Debug, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -67,8 +70,9 @@ namespace unittests.Diagnostics
             var trace = container.Resolve<ITrace>();
             //change the default completion behavior so that we can validate the outcome
             trace.DefaultCompletionBehavior = StructuredTraceCompletionBehavior.Buffered;
-
+            await trace.Start(CancellationToken.None);
             await trace.Info("test");
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Info, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -90,8 +94,9 @@ namespace unittests.Diagnostics
             var trace = container.Resolve<ITrace>();
             //change the default completion behavior so that we can validate the outcome
             trace.DefaultCompletionBehavior = StructuredTraceCompletionBehavior.Buffered;
-
+            await trace.Start(CancellationToken.None);
             await trace.Warn("test");
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Warn, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -111,8 +116,9 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
-      
+            await trace.Start(CancellationToken.None);
             await trace.Error("test");
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Error, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -135,7 +141,9 @@ namespace unittests.Diagnostics
             var trace = container.Resolve<ITrace>();
 
             var ex = new Exception();
+            await trace.Start(CancellationToken.None);
             await trace.Error("test", ex);
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Error, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -157,8 +165,9 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
-
+            await trace.Start(CancellationToken.None);
             await trace.Fatal("test");
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Fatal, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);
@@ -179,9 +188,10 @@ namespace unittests.Diagnostics
             configuration.Tracing().RegisterSink(sink, severity: StructuredTraceSeverity.Verbose);
 
             var trace = container.Resolve<ITrace>();
-
+            await trace.Start(CancellationToken.None);
             var ex = new Exception();
             await trace.Fatal("test", ex);
+            await trace.Stop();
 
             Assert.Equal(StructuredTraceSeverity.Fatal, sink.Traced.Severity);
             Assert.Equal(StructuredTraceScope.Domain, sink.Traced.Scope);

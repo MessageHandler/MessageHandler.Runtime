@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MessageHandler.Runtime
@@ -7,6 +8,9 @@ namespace MessageHandler.Runtime
     public interface ITrace
     {
         StructuredTraceCompletionBehavior DefaultCompletionBehavior { get; set; }
+
+        Task Start(CancellationToken token);
+        Task Stop();
 
         Task Verbose(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "");
         Task Debug(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "");

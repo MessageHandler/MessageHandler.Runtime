@@ -35,6 +35,9 @@ namespace MessageHandler.Runtime
 
         public async Task Start()
         {
+            var tracer = _container?.Resolve<ITrace>();
+            if (tracer != null) await tracer.Start(_tokenSource.Token);
+
             var startupTasks = _container?.ResolveAll<IStartupTask>() ?? new List<IStartupTask>();
             foreach (var task in startupTasks)
             {
@@ -59,6 +62,9 @@ namespace MessageHandler.Runtime
             var timeoutTask = Task.Delay(gracePeriod);
             var waitingForCompletion = Task.WhenAll(_runningTasks);
             await Task.WhenAny(timeoutTask, waitingForCompletion).ConfigureAwait(false);
+
+            var tracer = _container?.Resolve<ITrace>();
+            if (tracer != null) await tracer.Stop();
         }
     }
 }
