@@ -86,6 +86,7 @@
     <Compile Include="Diagnostics\Sink\CircularBuffer.cs" />
     <Compile Include="Diagnostics\StructuredTraceCompletionBehavior.cs" />
     <Compile Include="Diagnostics\Tracer.cs" />
+    <Compile Include="LeaseManagement\LeaseTypeSettingsExtensions.cs" />
     <Compile Include="LeaseManagement\NeedsLeaseManagementSettings.cs" />
     <Compile Include="LeaseManagement\InMemoryLease.cs" />
     <Compile Include="LeaseManagement\IAllocateLeases.cs" />

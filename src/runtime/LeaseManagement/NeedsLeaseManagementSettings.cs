@@ -1,4 +1,3 @@
-using System;
 using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
@@ -9,9 +8,6 @@ namespace MessageHandler.Runtime
         {
         }
 
-        public Type LeaseType { get; set; }
-
-        public Type LeaseStoreType { get; set; }
-
+        
     }
 }
