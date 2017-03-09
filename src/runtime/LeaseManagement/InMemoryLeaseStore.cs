@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace MessageHandler.Runtime
 {
-    public class InMemoryLeaseStore<T> : IStoreLeases<T> where T : ILease
+    public class InMemoryLeaseStore<T> : IStoreLeases<T> where T : ILease, new()
     {
         private readonly ConcurrentDictionary<string, T> _leases = new ConcurrentDictionary<string, T>();
-        private readonly Func<string, ILease> _leaseFactory;
-
-        public InMemoryLeaseStore(Func<string, ILease> leaseFactory)
-        {
-            _leaseFactory = leaseFactory;
-        }
 
         public Task<T> TryAcquire(string leaseId)
         {
-            T lease = _leases.GetOrAdd(leaseId, s => (T) _leaseFactory(s));
+            T lease = _leases.GetOrAdd(leaseId, s => new T() { LeaseId = leaseId });
             return Task.FromResult(lease);
         }
 

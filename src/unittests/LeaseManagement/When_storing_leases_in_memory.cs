@@ -12,7 +12,7 @@ namespace unittests
         public async Task Can_put_lease()
         {
             var leaseId = Guid.NewGuid().ToString();
-            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(l => new InMemoryLease() { LeaseId = l });
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>();
             await leaseStore.Put(new InMemoryLease { LeaseId = leaseId });
         }
 
@@ -20,7 +20,7 @@ namespace unittests
         public async Task Can_acquire_lease()
         {
             var leaseId = Guid.NewGuid().ToString();
-            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(l => new InMemoryLease() { LeaseId = l });
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>();
             var leaseStored = await leaseStore.TryAcquire(leaseId);
             Assert.NotNull(leaseStored);
         }
@@ -31,7 +31,7 @@ namespace unittests
             var leaseId = Guid.NewGuid().ToString();
             var originalLease = new InMemoryLease() {LeaseId = leaseId};
 
-            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(l => new InMemoryLease() { LeaseId = l });
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>();
             await leaseStore.Put(originalLease);
 
             var leaseStored = await leaseStore.TryAcquire(leaseId);
@@ -42,7 +42,7 @@ namespace unittests
         [Fact]
         public async Task Can_list_leases()
         {
-            var leaseStore = new InMemoryLeaseStore<InMemoryLease>(l => new InMemoryLease() { LeaseId = l });
+            var leaseStore = new InMemoryLeaseStore<InMemoryLease>();
             await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
             await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
             await leaseStore.Put(new InMemoryLease { LeaseId = Guid.NewGuid().ToString() });
