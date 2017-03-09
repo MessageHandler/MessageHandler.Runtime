@@ -7,7 +7,7 @@
         public string AccountId { get; internal set; }
         public string EnvironmentId { get; internal set; }
         public string ChannelId { get; internal set; }
-        public string TransportType { get; internal set; }
-        public string Connectionstring { get; internal set; }
+        public string TransportType { get; set; }
+        public string Connectionstring { get; set; }
     }
 }
