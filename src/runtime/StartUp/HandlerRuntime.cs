@@ -38,17 +38,23 @@ namespace MessageHandler.Runtime
             var tracer = _container?.Resolve<ITrace>();
             if (tracer != null) await tracer.Start(_tokenSource.Token);
 
+            if (tracer != null) await tracer.Info("Starting startup tasks", StructuredTraceScope.Infrastructure);
+
             var startupTasks = _container?.ResolveAll<IStartupTask>() ?? new List<IStartupTask>();
             foreach (var task in startupTasks)
             {
+                if (tracer != null) await tracer.Info($"Starting startup task '{task.GetType()}'", StructuredTraceScope.Infrastructure);
                 _runningTasks.Add(task.Run());
             }
 
             await Task.WhenAll(_runningTasks).ConfigureAwait(false);
 
+            if (tracer != null) await tracer.Info("Starting background tasks", StructuredTraceScope.Infrastructure);
+
             _backgroundTasks.AddRange(_container?.ResolveAll<IBackgroundTask>() ?? new List<IBackgroundTask>());
             foreach (var task in _backgroundTasks)
             {
+                if (tracer != null) await tracer.Info($"Starting background task '{task.GetType()}'", StructuredTraceScope.Infrastructure);
                 var t = Task.Factory.StartNew(() => task.Run(_tokenSource.Token), TaskCreationOptions.LongRunning).Unwrap();
                 _runningTasks.Add(t);
             }
@@ -59,11 +65,15 @@ namespace MessageHandler.Runtime
             _tokenSource.Cancel(false);
             var gracePeriod = _config.Settings.GetShutdownGracePeriod();
 
+            var tracer = _container?.Resolve<ITrace>();
+            if (tracer != null) await tracer.Info($"Stopping, allowing tasks to complete for {gracePeriod.Seconds} seconds", StructuredTraceScope.Infrastructure);
+
             var timeoutTask = Task.Delay(gracePeriod);
             var waitingForCompletion = Task.WhenAll(_runningTasks);
             await Task.WhenAny(timeoutTask, waitingForCompletion).ConfigureAwait(false);
 
-            var tracer = _container?.Resolve<ITrace>();
+            if (tracer != null) await tracer.Info($"Stopped", StructuredTraceScope.Infrastructure);
+
             if (tracer != null) await tracer.Stop();
         }
     }
