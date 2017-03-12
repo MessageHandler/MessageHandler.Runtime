@@ -5,7 +5,14 @@ namespace MessageHandler.Runtime
 {
     public static class MetricExtensions
     {
-        public static void RegisterMetricSink(this HandlerRuntimeConfiguration configuration, IMetricsSink sink)
+        public static MetricsExtensionPoint Metrics(this HandlerRuntimeConfiguration configuration)
+        {
+            var container = configuration.Settings.GetContainer();
+            container.Register<MetricsCollector>(Lifecycle.Singleton);
+            return new MetricsExtensionPoint(configuration.Settings);
+        }
+
+        public static void RegisterSink(this MetricsExtensionPoint configuration, IMetricsSink sink)
         {
             var settings = configuration.GetSettings();
             var metrics = settings.GetOrCreate<MetricSinkTypes>();
@@ -14,7 +21,7 @@ namespace MessageHandler.Runtime
             container.Register(() => sink);
         }
 
-        public static void RegisterMetricSink(this HandlerRuntimeConfiguration configuration, Type type)
+        public static void RegisterSink(this MetricsExtensionPoint configuration, Type type)
         {
             var settings = configuration.GetSettings();
             var metrics = settings.GetOrCreate<MetricSinkTypes>();
@@ -23,9 +30,9 @@ namespace MessageHandler.Runtime
             metrics.Add(type);
         }
 
-        public static void RegisterMetricSink<T>(this HandlerRuntimeConfiguration configuration)
+        public static void RegisterSink<T>(this MetricsExtensionPoint configuration)
         {
-            configuration.RegisterMetricSink(typeof(T));
+            configuration.RegisterSink(typeof(T));
         }
     }
 }

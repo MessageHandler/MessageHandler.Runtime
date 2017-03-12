@@ -14,7 +14,7 @@ namespace unittests.Metrics
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
             configuration.UseContainer(container);
-            configuration.RegisterMetricSink(myMetric);
+            configuration.Metrics().RegisterSink(myMetric);
             Assert.NotNull(container.Resolve<IMetricsSink>());
             Assert.IsType<MyMetricSink>(container.Resolve<IMetricsSink>());
         }
@@ -25,7 +25,7 @@ namespace unittests.Metrics
             var settings = new Settings();
             var myMetric = new MyMetricSink();
             var configuration = new HandlerRuntimeConfiguration(settings);
-            configuration.RegisterMetricSink(myMetric);
+            configuration.Metrics().RegisterSink(myMetric);
             var metrics = settings.Get<MetricSinkTypes>();
             Assert.NotNull(metrics.Exists(t => t == typeof(MyMetricSink)));
         }
@@ -36,7 +36,7 @@ namespace unittests.Metrics
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
             configuration.UseContainer(container);
-            configuration.RegisterMetricSink<MyMetricSink>();
+            configuration.Metrics().RegisterSink<MyMetricSink>();
             Assert.NotNull(container.Resolve<IMetricsSink>());
             Assert.IsType<MyMetricSink>(container.Resolve<IMetricsSink>());
         }
@@ -47,7 +47,7 @@ namespace unittests.Metrics
             var configuration = new HandlerRuntimeConfiguration();
             var container = new Container();
             configuration.UseContainer(container);
-            configuration.RegisterMetricSink(typeof(MyMetricSink));
+            configuration.Metrics().RegisterSink(typeof(MyMetricSink));
             Assert.NotNull(container.Resolve<IMetricsSink>());
             Assert.IsType<MyMetricSink>(container.Resolve<IMetricsSink>());
         }
@@ -55,8 +55,9 @@ namespace unittests.Metrics
 
     public class MyMetricSink:IMetricsSink
     {
-        public void Add(Metric metric)
+        public Task Buffer(Metric metric)
         {
+            return Task.CompletedTask;
         }
 
         public Task Flush()

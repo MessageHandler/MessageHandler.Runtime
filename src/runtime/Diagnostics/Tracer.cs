@@ -202,7 +202,7 @@ namespace MessageHandler.Runtime
         {
             private readonly IStructuredTraceSink _sink;
             private readonly TraceSinkRegistration _registration;
-            private List<TaskCompletionSource<bool>> toComplete = new List<TaskCompletionSource<bool>>();
+            private readonly List<TaskCompletionSource<bool>> _toComplete = new List<TaskCompletionSource<bool>>();
 
             public TraceEventHandler(IStructuredTraceSink sink, TraceSinkRegistration registration)
             {
@@ -225,16 +225,17 @@ namespace MessageHandler.Runtime
                     }
                     else if (data.CompletionBehavior == StructuredTraceCompletionBehavior.Flushed)
                     {
-                        toComplete.Add(data.Completion);
+                        _toComplete.Add(data.Completion);
                     }
 
                     if (endOfBatch )
                     {
                         _sink.Flush().GetAwaiter().GetResult();
-                        foreach (var completion in toComplete)
+                        foreach (var completion in _toComplete)
                         {
                             completion.SetResult(true);
                         }
+                        _toComplete.Clear();
                     }
                     
                 }

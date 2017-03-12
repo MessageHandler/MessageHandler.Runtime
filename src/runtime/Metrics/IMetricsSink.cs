@@ -4,7 +4,7 @@ namespace MessageHandler.Runtime
 {
     public interface IMetricsSink
     {
-        void Add(Metric metric);
+        Task Buffer(Metric metric);
 
         Task Flush();
     }

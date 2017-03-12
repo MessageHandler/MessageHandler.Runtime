@@ -35,6 +35,9 @@ namespace MessageHandler.Runtime
 
         public async Task Start()
         {
+            var metrics = _container?.Resolve<IMetrics>();
+            if (metrics != null) await metrics.Start(_tokenSource.Token);
+
             var tracer = _container?.Resolve<ITrace>();
             if (tracer != null) await tracer.Start(_tokenSource.Token);
 
@@ -71,6 +74,10 @@ namespace MessageHandler.Runtime
             var timeoutTask = Task.Delay(gracePeriod);
             var waitingForCompletion = Task.WhenAll(_runningTasks);
             await Task.WhenAny(timeoutTask, waitingForCompletion).ConfigureAwait(false);
+
+            var metrics = _container?.Resolve<IMetrics>();
+            if (tracer != null) await tracer.Info($"Stopping metrics collection", StructuredTraceScope.Infrastructure);
+            if (metrics != null) await metrics.Stop();
 
             if (tracer != null) await tracer.Info($"Stopped", StructuredTraceScope.Infrastructure);
 

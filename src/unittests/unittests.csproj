@@ -79,6 +79,7 @@
     <Compile Include="LeaseManagement\When_allocating_leases_in_memory.cs" />
     <Compile Include="LeaseManagement\When_storing_leases_in_memory.cs" />
     <Compile Include="Metrics\When_registering_metrics.cs" />
+    <Compile Include="Metrics\When_sinking_metrics_to_console.cs" />
     <Compile Include="Running\When_executing_background_tasks.cs" />
     <Compile Include="Running\When_registering_background_tasks.cs" />
     <Compile Include="Serialization\When_deserializing_objects.cs" />
