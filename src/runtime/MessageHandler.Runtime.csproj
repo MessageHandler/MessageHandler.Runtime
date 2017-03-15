@@ -54,6 +54,7 @@
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
+    <Compile Include="Configuration\GatewayPartition.cs" />
     <Compile Include="Configuration\HandlerConfigurationAttribute.cs" />
     <Compile Include="Configuration\HandlerRouting.cs" />
     <Compile Include="Configuration\HandlerConfigurationSettingsExtension.cs" />
