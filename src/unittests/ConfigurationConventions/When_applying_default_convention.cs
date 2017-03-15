@@ -25,8 +25,8 @@ namespace unittests.ConfigurationConventions
             Assert.Equal("Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx=", settings.Get<HandlerRuntimeConfigurationValues>().Connectionstring);
             Assert.NotEmpty(settings.GetHandlerConfigurationValues());
             Assert.NotEmpty(settings.GetUserVariables());
-            Assert.NotEmpty(settings.GetHandlerConfigurationRouting().OutputSubjectRoutes);
-            Assert.NotEmpty(settings.GetHandlerConfigurationRouting().InputSubjectFilters);
+            Assert.NotEmpty(settings.GetHandlerRoutingConfiguration().OutputSubjectRoutes);
+            Assert.NotEmpty(settings.GetHandlerRoutingConfiguration().InputSubjectFilters);
         }
     }
 }

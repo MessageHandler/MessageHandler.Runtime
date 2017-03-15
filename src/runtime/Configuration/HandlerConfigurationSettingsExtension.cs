@@ -19,13 +19,13 @@ namespace MessageHandler.Runtime
             return settings.Get<Dictionary<string, object>>(handlerConfigurationValuesKey);
         }
 
-        public static void HandlerConfigurationRouting(this HandlerRuntimeConfiguration configuration, HandlerRouting routing)
+        public static void HandlerRoutingConfiguration(this HandlerRuntimeConfiguration configuration, HandlerRouting routing)
         {
             var settings = configuration.GetSettings();
             settings.Set(handlerConfigurationRoutingKey, routing);
         }
 
-        public static HandlerRouting GetHandlerConfigurationRouting(this Settings settings)
+        public static HandlerRouting GetHandlerRoutingConfiguration(this Settings settings)
         {
             return settings.Get<HandlerRouting>(handlerConfigurationRoutingKey);
         }

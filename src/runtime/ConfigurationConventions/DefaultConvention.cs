@@ -51,7 +51,7 @@ namespace MessageHandler.Runtime
             {
                 var json = await reader.ReadToEndAsync().ConfigureAwait(false);
                 var deserialized = Json.Decode<HandlerRouting>(json);
-                configuration.HandlerConfigurationRouting(deserialized);
+                configuration.HandlerRoutingConfiguration(deserialized);
             }
         }
     }
