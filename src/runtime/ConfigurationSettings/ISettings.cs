@@ -18,6 +18,7 @@ namespace MessageHandler.Runtime.ConfigurationSettings
         object GetDefault(string key);
         T GetDefault<T>();
         T GetOrCreate<T>();
+        T GetOrCreate<T>(string key);
         object GetOrCreate(Type type);
         object GetOrCreate(string key, Type type);
     }

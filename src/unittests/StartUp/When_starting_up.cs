@@ -110,6 +110,11 @@ namespace unittests.StartUp
                 return Activator.CreateInstance<T>();
             }
 
+            public T GetOrCreate<T>(string key)
+            {
+                return Activator.CreateInstance<T>();
+            }
+
             public object GetOrCreate(Type type)
             {
                 return Activator.CreateInstance(type);

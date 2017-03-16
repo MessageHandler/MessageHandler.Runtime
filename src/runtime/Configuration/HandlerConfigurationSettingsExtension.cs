@@ -16,7 +16,7 @@ namespace MessageHandler.Runtime
 
         public static Dictionary<string, object> GetHandlerConfigurationValues(this ISettings settings)
         {
-            return settings.Get<Dictionary<string, object>>(handlerConfigurationValuesKey);
+            return settings.GetOrCreate<Dictionary<string, object>>(handlerConfigurationValuesKey);
         }
 
         public static void HandlerRoutingConfiguration(this HandlerRuntimeConfiguration configuration, HandlerRouting routing)
@@ -27,7 +27,7 @@ namespace MessageHandler.Runtime
 
         public static HandlerRouting GetHandlerRoutingConfiguration(this ISettings settings)
         {
-            return settings.Get<HandlerRouting>(handlerConfigurationRoutingKey);
+            return settings.GetOrCreate<HandlerRouting>(handlerConfigurationRoutingKey);
         }
     }
 }

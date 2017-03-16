@@ -15,7 +15,7 @@ namespace MessageHandler.Runtime
 
         internal static List<Variable> GetUserVariables(this ISettings settings)
         {
-            return settings.Get<List<Variable>>(handlerConfigurationVariablesKey);
+            return settings.GetOrCreate<List<Variable>>(handlerConfigurationVariablesKey);
         }
     }
 }

@@ -157,6 +157,11 @@ namespace MessageHandler.Runtime.ConfigurationSettings
             return (T) GetOrCreate(typeof(T).FullName, typeof(T));
         }
 
+        public T GetOrCreate<T>(string key)
+        {
+            return (T)GetOrCreate(key, typeof(T));
+        }
+
         public object GetOrCreate(Type type)
         {
             return GetOrCreate(type.FullName, type);
