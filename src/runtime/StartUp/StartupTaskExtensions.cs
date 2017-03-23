@@ -8,6 +8,22 @@ namespace MessageHandler.Runtime
         public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, IStartupTask task)
         {
             var settings = configuration.GetSettings();
+            settings.RegisterStartupTask(task);
+        }
+
+        public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, Type type)
+        {
+            var settings = configuration.GetSettings();
+            settings.RegisterStartupTask(type);
+        }
+
+        public static void RegisterStartupTask<T>(this HandlerRuntimeConfiguration configuration)
+        {
+            configuration.RegisterStartupTask(typeof(T));
+        }
+
+        public static void RegisterStartupTask(this ISettings settings, IStartupTask task)
+        {
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
             if (tasks.Contains(task.GetType()))
             {
@@ -18,9 +34,8 @@ namespace MessageHandler.Runtime
             container.Register(() => task);
         }
 
-        public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, Type type)
+        public static void RegisterStartupTask(this ISettings settings, Type type)
         {
-            var settings = configuration.GetSettings();
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
             if (tasks.Contains(type))
             {
@@ -31,9 +46,9 @@ namespace MessageHandler.Runtime
             tasks.Add(type);
         }
 
-        public static void RegisterStartupTask<T>(this HandlerRuntimeConfiguration configuration)
+        public static void RegisterStartupTask<T>(this ISettings settings)
         {
-            configuration.RegisterStartupTask(typeof(T));
+            settings.RegisterStartupTask(typeof(T));
         }
 
     }
