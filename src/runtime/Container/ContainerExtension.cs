@@ -18,7 +18,7 @@ namespace MessageHandler.Runtime
             return configuration.GetSettings().GetContainer();
         }
 
-        internal static IContainer GetContainer(this ISettings settings)
+        public static IContainer GetContainer(this ISettings settings)
         {
             return settings.Get<IContainer>(ContainerKey);
         }
