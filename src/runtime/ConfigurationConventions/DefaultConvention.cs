@@ -26,8 +26,6 @@ namespace MessageHandler.Runtime
                 configuration.AccountId((string)deserialized.AccountId);
                 configuration.EnvironmentId((string)deserialized.EnvironmentId);
                 configuration.ChannelId((string)deserialized.ChannelId);
-                configuration.TransportType((string)deserialized.TransportType);
-                configuration.Connectionstring((string)deserialized.Connectionstring);
             }
 
             var fullPathConfig = Path.Combine(_basePath, "handler.config.json");

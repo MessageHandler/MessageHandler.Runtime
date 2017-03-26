@@ -73,40 +73,5 @@ namespace MessageHandler.Runtime
             return config.ChannelId;
         }
 
-        public static void TransportType(this HandlerRuntimeConfiguration configuration, string transportType)
-        {
-            var settings = configuration.GetSettings();
-            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
-            config.TransportType = transportType;
-        }
-
-        public static string GetTransportType(this ISettings settings)
-        {
-            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
-            return config.TransportType;
-        }
-
-        public static void Connectionstring(this HandlerRuntimeConfiguration configuration, string connectionString)
-        {
-            var settings = configuration.GetSettings();
-            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
-            config.Connectionstring = connectionString;
-        }
-
-        public static string GetConnectionstring(this ISettings settings)
-        {
-            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
-            return config.Connectionstring;
-        }
-        public static void Pipeline<T>(this HandlerRuntimeConfiguration configuration, Func<T, Task> pipeline)
-        {
-            var settings = configuration.GetSettings();
-            settings.Set(MessageHandlerPipelineKey, pipeline);
-        }
-
-        public static Func<T, Task> GetPipeline<T>(this ISettings settings)
-        {
-            return settings.Get<Func<T, Task>>(MessageHandlerPipelineKey);
-        }
     }
 }

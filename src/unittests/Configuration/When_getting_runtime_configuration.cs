@@ -50,23 +50,5 @@ namespace unittests.Configuration
             config.ChannelId("value");
             Assert.Equal("value", settings.GetChannelId());
         }
-
-        [Fact]
-        public void Can_set_handler_transportType()
-        {
-            var settings = new Settings();
-            var config = new HandlerRuntimeConfiguration(settings);
-            config.TransportType("value");
-            Assert.Equal("value", settings.GetTransportType());
-        }
-
-        [Fact]
-        public void Can_set_handler_connectionString()
-        {
-            var settings = new Settings();
-            var config = new HandlerRuntimeConfiguration(settings);
-            config.Connectionstring("value");
-            Assert.Equal("value", settings.GetConnectionstring());
-        }
     }
 }
