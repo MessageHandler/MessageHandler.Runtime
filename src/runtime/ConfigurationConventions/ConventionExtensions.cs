@@ -1,3 +1,4 @@
+using System.Linq;
 using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
@@ -8,7 +9,10 @@ namespace MessageHandler.Runtime
         {
             var settings = configuration.GetSettings();
             var conventions = settings.GetOrCreate<Conventions>();
-            conventions.Add(convention);
+            if (conventions.All(c => c.GetType() != convention.GetType()))
+            {
+                conventions.Add(convention);
+            }
         }
     }
 }
