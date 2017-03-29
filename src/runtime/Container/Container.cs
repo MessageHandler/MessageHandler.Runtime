@@ -11,6 +11,7 @@ namespace MessageHandler.Runtime
 
         public Container()
         {
+            Register<IContainer>(() => this);
             Register<IResolveDependencies>(()=> this) ;
             Register<IRegisterDependencies>(() => this);
         }

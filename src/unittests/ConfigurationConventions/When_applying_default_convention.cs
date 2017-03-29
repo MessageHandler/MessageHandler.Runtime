@@ -21,8 +21,6 @@ namespace unittests.ConfigurationConventions
             Assert.Equal("messagehandler", settings.Get<HandlerRuntimeConfigurationValues>().AccountId);
             Assert.Equal("7d49577c-d64d-4926-bf71-de8212f10aab", settings.Get<HandlerRuntimeConfigurationValues>().EnvironmentId);
             Assert.Equal("727cce9e-f95f-468f-9437-1eb05105835d", settings.Get<HandlerRuntimeConfigurationValues>().ChannelId);
-            Assert.Equal("EventHub", settings.Get<HandlerRuntimeConfigurationValues>().TransportType);
-            Assert.Equal("Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx=", settings.Get<HandlerRuntimeConfigurationValues>().Connectionstring);
             Assert.NotEmpty(settings.GetHandlerConfigurationValues());
             Assert.NotEmpty(settings.GetUserVariables());
             Assert.NotEmpty(settings.GetHandlerRoutingConfiguration().OutputSubjectRoutes);

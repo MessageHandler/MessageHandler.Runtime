@@ -25,11 +25,10 @@ namespace MessageHandler.Runtime
         public static void RegisterStartupTask(this ISettings settings, IStartupTask task)
         {
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
-            if (tasks.Contains(task.GetType()))
+            if (!tasks.Contains(task.GetType()))
             {
-                throw new StartupTaskRegisteredException("Startup task is already registered.");
+                tasks.Add(task.GetType());
             }
-            tasks.Add(task.GetType());
             var container = settings.GetContainer();
             container.Register(() => task);
         }
@@ -37,13 +36,12 @@ namespace MessageHandler.Runtime
         public static void RegisterStartupTask(this ISettings settings, Type type)
         {
             var tasks = settings.GetOrCreate<StartupTaskTypes>();
-            if (tasks.Contains(type))
+            if (!tasks.Contains(type))
             {
-                throw new StartupTaskRegisteredException("Startup task is already registered.");
+                var container = settings.GetContainer();
+                container.Register(type);
+                tasks.Add(type);
             }
-            var container = settings.GetContainer();
-            container.Register(type);
-            tasks.Add(type);
         }
 
         public static void RegisterStartupTask<T>(this ISettings settings)
