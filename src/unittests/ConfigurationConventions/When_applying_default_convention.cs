@@ -23,8 +23,6 @@ namespace unittests.ConfigurationConventions
             Assert.Equal("727cce9e-f95f-468f-9437-1eb05105835d", settings.Get<HandlerRuntimeConfigurationValues>().ChannelId);
             Assert.NotEmpty(settings.GetHandlerConfigurationValues());
             Assert.NotEmpty(settings.GetUserVariables());
-            Assert.NotEmpty(settings.GetHandlerRoutingConfiguration().OutputSubjectRoutes);
-            Assert.NotEmpty(settings.GetHandlerRoutingConfiguration().InputSubjectFilters);
         }
     }
 }
