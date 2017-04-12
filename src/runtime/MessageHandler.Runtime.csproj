@@ -54,7 +54,6 @@
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
-    <Compile Include="Configuration\GatewayPartition.cs" />
     <Compile Include="Configuration\HandlerConfigurationAttribute.cs" />
     <Compile Include="Configuration\HandlerRouting.cs" />
     <Compile Include="Configuration\HandlerConfigurationSettingsExtension.cs" />
@@ -64,7 +63,6 @@
     <Compile Include="Configuration\InputSubjectFilter.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />
-    <Compile Include="Configuration\OutputSubjectRoute.cs" />
     <Compile Include="Configuration\UserVariablesExtensions.cs" />
     <Compile Include="Configuration\Variable.cs" />
     <Compile Include="Container\Container.cs" />

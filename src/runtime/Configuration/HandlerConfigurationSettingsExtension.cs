@@ -6,7 +6,6 @@ namespace MessageHandler.Runtime
     public static class HandlerConfigurationSettingsExtension
     {
         private const string handlerConfigurationValuesKey = "messagehandler.handlerconfigurationvalues";
-        private const string handlerConfigurationRoutingKey = "messagehandler.handlerconfigurationrouting";
 
         public static void HandlerConfigurationValues(this HandlerRuntimeConfiguration configuration, Dictionary<string, object> values)
         {
@@ -17,17 +16,6 @@ namespace MessageHandler.Runtime
         public static Dictionary<string, object> GetHandlerConfigurationValues(this ISettings settings)
         {
             return settings.GetOrCreate<Dictionary<string, object>>(handlerConfigurationValuesKey);
-        }
-
-        public static void HandlerRoutingConfiguration(this HandlerRuntimeConfiguration configuration, HandlerRouting routing)
-        {
-            var settings = configuration.GetSettings();
-            settings.Set(handlerConfigurationRoutingKey, routing);
-        }
-
-        public static HandlerRouting GetHandlerRoutingConfiguration(this ISettings settings)
-        {
-            return settings.GetOrCreate<HandlerRouting>(handlerConfigurationRoutingKey);
         }
     }
 }
