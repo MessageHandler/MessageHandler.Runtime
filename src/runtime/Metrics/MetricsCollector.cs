@@ -19,7 +19,7 @@ namespace MessageHandler.Runtime
 
         public MetricsCollector(IResolveDependencies container, ISettings settings)
         {
-            _disruptor = new Disruptor<MetricDisruptorEntry>(() => new MetricDisruptorEntry(), 256, TaskScheduler.Default, ProducerType.Multi, new SleepingWaitStrategy());
+            _disruptor = new Disruptor<MetricDisruptorEntry>(() => new MetricDisruptorEntry(), 256, TaskScheduler.Default, ProducerType.Multi, new BlockingWaitStrategy());
 
             var sinks = container.ResolveAll<IMetricsSink>();
             foreach (var sink in sinks)
