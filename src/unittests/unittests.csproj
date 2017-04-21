@@ -99,6 +99,7 @@
     <Compile Include="StartUp\When_starting_up.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Configuration\handler.config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

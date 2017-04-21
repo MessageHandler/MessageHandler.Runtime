@@ -98,7 +98,7 @@ namespace MessageHandler.Runtime
 
                 await Task.WhenAll(tasks);
                 await Allocate();
-                await Task.Delay(TimeSpan.FromSeconds(30), cancellation);
+                await Task.Delay(TimeSpan.FromSeconds(10), cancellation);
             }
         }
 

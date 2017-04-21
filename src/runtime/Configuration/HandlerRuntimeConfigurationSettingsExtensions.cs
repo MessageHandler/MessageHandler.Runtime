@@ -47,6 +47,19 @@ namespace MessageHandler.Runtime
             return config.AccountId;
         }
 
+        public static string GetProjectId(this ISettings settings)
+        {
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            return config.ProjectId;
+        }
+
+        public static void ProjectId(this HandlerRuntimeConfiguration configuration, string projectId)
+        {
+            var settings = configuration.GetSettings();
+            var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
+            config.ProjectId = projectId;
+        }
+
         public static void EnvironmentId(this HandlerRuntimeConfiguration configuration, string environmentId)
         {
             var settings = configuration.GetSettings();
