@@ -144,7 +144,8 @@
     <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
     <Compile Include="ConfigurationSettings\Settings.cs" />
     <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
-    <Compile Include="Configuration\DynamicVariable.cs" />
+    <Compile Include="DynamicConfiguration\IDynamicConfigurationSource.cs" />
+    <Compile Include="DynamicConfiguration\DynamicVariable.cs" />
     <Compile Include="Configuration\HandlerConfigurationAttribute.cs" />
     <Compile Include="Configuration\HandlerRouting.cs" />
     <Compile Include="Configuration\HandlerConfigurationSettingsExtension.cs" />
@@ -211,8 +212,8 @@
     <Compile Include="StartUp\StartupTaskExtensions.cs" />
     <Compile Include="StartUp\StartupTaskRegisteredException.cs" />
     <Compile Include="StartUp\StartupTaskTypes.cs" />
-    <Compile Include="Templating\Roslyn\RoslynRegexTemplatingEngine.cs" />
-    <Compile Include="Templating\Roslyn\RoslynScriptingEngine.cs" />
+    <Compile Include="DynamicConfiguration\Roslyn\RoslynRegexTemplatingEngine.cs" />
+    <Compile Include="DynamicConfiguration\Roslyn\RoslynScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

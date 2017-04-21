@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MessageHandler.Runtime.Configuration;
 using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
     public static class HandlerRuntimeConfigurationSettingsExtensions
     {
-        private const string MessageHandlerPipelineKey = "MessageHandler.Pipeline";
+
         public static void HandlerInstanceId(this HandlerRuntimeConfiguration configuration, string handlerInstanceId)
         {
             var settings = configuration.GetSettings();
@@ -86,5 +87,13 @@ namespace MessageHandler.Runtime
             return config.ChannelId;
         }
 
+        public static void EnableDynamicConfiguration(this HandlerRuntimeConfiguration configuration)
+        {
+            var container = configuration.GetContainer();
+            container.Register<DynamicConfigurationSource>();
+            container.Register<VariableSource>();
+            container.Register<RoslynScriptingEngine>();
+            container.Register<RoslynRegexTemplatingEngine>();
+        }
     }
 }

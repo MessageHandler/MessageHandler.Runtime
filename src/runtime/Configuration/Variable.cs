@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
@@ -29,9 +30,9 @@ namespace MessageHandler.Runtime
     {
         private readonly IList<Variable> _variables;
 
-        public VariableSource(IList<Variable> variables)
+        public VariableSource(ISettings settings)
         {
-            _variables = variables;
+            _variables = settings.GetUserVariables();
         }
 
         public dynamic GetVariables(VariableScope scopeType, string scopeId)
