@@ -7,7 +7,5 @@ namespace MessageHandler.Runtime
         protected NeedsLeaseManagementSettings(ISettings settings) : base(settings)
         {
         }
-
-        
     }
 }

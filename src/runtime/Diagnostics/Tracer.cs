@@ -59,7 +59,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, DefaultCompletionBehavior);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Debug(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
@@ -73,7 +73,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, DefaultCompletionBehavior);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Info(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
@@ -87,7 +87,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, DefaultCompletionBehavior);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Warn(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
@@ -101,7 +101,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, DefaultCompletionBehavior);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Error(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
@@ -115,7 +115,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Error(string text, Exception exception, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
@@ -130,7 +130,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Fatal(string text, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;
@@ -144,7 +144,7 @@ namespace MessageHandler.Runtime
                 What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
-
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public Task Fatal(string text, Exception exception, StructuredTraceScope scope = StructuredTraceScope.Domain, [CallerMemberName] string callerName = "")
         {
             var where = !string.IsNullOrEmpty(callerName) ? callerName : new StackTrace().GetFrame(1).GetMethod().Name;

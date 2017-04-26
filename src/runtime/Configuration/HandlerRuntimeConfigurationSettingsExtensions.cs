@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using MessageHandler.Runtime.Configuration;
+﻿using MessageHandler.Runtime.Configuration;
 using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime

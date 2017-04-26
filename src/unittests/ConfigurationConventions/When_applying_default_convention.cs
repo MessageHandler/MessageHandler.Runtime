@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MessageHandler.Runtime;
 using MessageHandler.Runtime.ConfigurationSettings;
 using Xunit;
-using Xunit.Sdk;
 
 namespace unittests.ConfigurationConventions
 {

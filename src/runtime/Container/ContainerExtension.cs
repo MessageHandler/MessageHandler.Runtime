@@ -1,4 +1,3 @@
-using System.CodeDom;
 using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
@@ -6,6 +5,7 @@ namespace MessageHandler.Runtime
     public static class ContainerExtension
     {
         private const string ContainerKey = "messagehandler.container";
+
         public static void UseContainer(this HandlerRuntimeConfiguration configuration,IContainer container)
         {
             var settings = configuration.GetSettings();

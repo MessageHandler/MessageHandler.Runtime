@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Disruptor;
 using Disruptor.Dsl;
 using MessageHandler.Runtime.ConfigurationSettings;
-using MessageHandler.Runtime.Diagnostics;
 
 namespace MessageHandler.Runtime
 {

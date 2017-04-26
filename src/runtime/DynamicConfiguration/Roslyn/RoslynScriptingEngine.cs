@@ -96,26 +96,4 @@ namespace MessageHandler.Runtime
 
         
     }
-
-    public interface ITemplateEngine
-    {
-        string Apply(string template, object message, object context);
-
-        string Apply(string template, Dictionary<ScriptScope, object> parameters);
-    }
-
-    public interface IScriptEngine
-    {
-        string Execute(string script, Dictionary<ScriptScope, object> parameters);
-    }
-
-    public enum ScriptScope
-    {
-        Message,
-        Context,
-        Account,
-        Channel,
-        Environment,
-        Project,
-    }
 }
