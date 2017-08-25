@@ -83,7 +83,9 @@ namespace MessageHandler.Runtime
 
         public object Resolve(Type type)
         {
-            if (type == null || !_registrations.ContainsKey(type))
+            if (type == null) return null;
+
+            if (!_registrations.ContainsKey(type))
             {
                 var defaultConstructor = type.GetConstructor(Type.EmptyTypes);
                 return defaultConstructor != null ? Activator.CreateInstance(type) : null;
