@@ -83,7 +83,7 @@ namespace MessageHandler.Runtime
 
         public object Resolve(Type type)
         {
-            if (!_registrations.ContainsKey(type))
+            if (type == null || !_registrations.ContainsKey(type))
             {
                 var defaultConstructor = type.GetConstructor(Type.EmptyTypes);
                 return defaultConstructor != null ? Activator.CreateInstance(type) : null;
@@ -105,7 +105,7 @@ namespace MessageHandler.Runtime
         {
           //  var results = new List<object>();
 
-            if (!_registrations.ContainsKey(type)) yield break;
+            if (type == null || !_registrations.ContainsKey(type)) yield break;
 
             foreach (var registration in _registrations[type])
             {
