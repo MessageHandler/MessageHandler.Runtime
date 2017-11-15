@@ -244,7 +244,7 @@
       <Project>{a63c8fb2-288d-4689-9a1e-428935d47cc4}</Project>
       <Name>MessageHandler.Runtime.Metrics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\serialization\MessageHandler.Runtime.Serialization.JSon.csproj">
+    <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj">
       <Project>{2130b96a-a9fa-4878-9e0c-21a3e1434910}</Project>
       <Name>MessageHandler.Runtime.Serialization.JSon</Name>
     </ProjectReference>
