@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Scri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.ConfigurationSource.Dynamic", "configurationsource.dynamic\MessageHandler.Runtime.ConfigurationSource.Dynamic.csproj", "{C2950552-3982-414E-9FD5-51C08C71A175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.Runtime.ConfigurationSource.Dynamic.Roslyn", "configurationsource.dynamic.roslyn\MessageHandler.Runtime.ConfigurationSource.Dynamic.Roslyn.csproj", "{B3ED5DA4-3DA4-48D2-A35E-23467764827A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.Runtime.Scripting.Roslyn", "scripting.roslyn\MessageHandler.Runtime.Scripting.Roslyn.csproj", "{90C53710-0932-4618-947D-46D79FD91072}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,10 +107,10 @@ Global
 		{C2950552-3982-414E-9FD5-51C08C71A175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2950552-3982-414E-9FD5-51C08C71A175}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2950552-3982-414E-9FD5-51C08C71A175}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3ED5DA4-3DA4-48D2-A35E-23467764827A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3ED5DA4-3DA4-48D2-A35E-23467764827A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3ED5DA4-3DA4-48D2-A35E-23467764827A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3ED5DA4-3DA4-48D2-A35E-23467764827A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C53710-0932-4618-947D-46D79FD91072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C53710-0932-4618-947D-46D79FD91072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C53710-0932-4618-947D-46D79FD91072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C53710-0932-4618-947D-46D79FD91072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
