@@ -6,7 +6,7 @@ namespace MessageHandler.Runtime
     public static class ShutdownExtensions
     {
         private const string ShutdownGracePeriodKey = "messagehandler.shutdowngraceperiod";
-        public static void ShutdownGracePeriod(this HandlerRuntimeConfiguration configuration, TimeSpan gracePeriod)
+        public static void ShutdownGracePeriod(this ConfigurationRoot configuration, TimeSpan gracePeriod)
         {
             var settings = configuration.GetSettings();
             settings.Set(ShutdownGracePeriodKey, gracePeriod);

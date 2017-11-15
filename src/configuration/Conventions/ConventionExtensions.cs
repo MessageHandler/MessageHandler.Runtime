@@ -5,7 +5,7 @@ namespace MessageHandler.Runtime
 {
     public static class ConventionExtensions
     {
-        public static void RegisterConvention(this HandlerRuntimeConfiguration configuration, IConvention convention)
+        public static void RegisterConvention(this ConfigurationRoot configuration, IConvention convention)
         {
             var settings = configuration.GetSettings();
             var conventions = settings.GetOrCreate<Conventions>();

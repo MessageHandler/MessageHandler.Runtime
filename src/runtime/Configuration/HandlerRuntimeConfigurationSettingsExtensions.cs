@@ -6,7 +6,7 @@ namespace MessageHandler.Runtime
     public static class HandlerRuntimeConfigurationSettingsExtensions
     {
 
-        public static void HandlerInstanceId(this HandlerRuntimeConfiguration configuration, string handlerInstanceId)
+        public static void HandlerInstanceId(this ConfigurationRoot configuration, string handlerInstanceId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
@@ -19,7 +19,7 @@ namespace MessageHandler.Runtime
             return config.HandlerInstanceId;
         }
 
-        public static void HandlerConfigurationId(this HandlerRuntimeConfiguration configuration,
+        public static void HandlerConfigurationId(this ConfigurationRoot configuration,
             string handlerConfigurationId)
         {
             var settings = configuration.GetSettings();
@@ -33,7 +33,7 @@ namespace MessageHandler.Runtime
             return config.HandlerConfigurationId;
         }
 
-        public static void AccountId(this HandlerRuntimeConfiguration configuration, string accountId)
+        public static void AccountId(this ConfigurationRoot configuration, string accountId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
@@ -52,14 +52,14 @@ namespace MessageHandler.Runtime
             return config.ProjectId;
         }
 
-        public static void ProjectId(this HandlerRuntimeConfiguration configuration, string projectId)
+        public static void ProjectId(this ConfigurationRoot configuration, string projectId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             config.ProjectId = projectId;
         }
 
-        public static void EnvironmentId(this HandlerRuntimeConfiguration configuration, string environmentId)
+        public static void EnvironmentId(this ConfigurationRoot configuration, string environmentId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
@@ -72,7 +72,7 @@ namespace MessageHandler.Runtime
             return config.EnvironmentId;
         }
 
-        public static void ChannelId(this HandlerRuntimeConfiguration configuration, string channelId)
+        public static void ChannelId(this ConfigurationRoot configuration, string channelId)
         {
             var settings = configuration.GetSettings();
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();

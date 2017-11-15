@@ -118,9 +118,37 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\backgroundtasks\MessageHandler.Runtime.BackgroundTasks.csproj">
+      <Project>{56c96ce7-2ac4-46ae-adb2-71f03831ae72}</Project>
+      <Name>MessageHandler.Runtime.BackgroundTasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj">
+      <Project>{1f08788e-5897-438c-958c-0a0950f39b98}</Project>
+      <Name>MessageHandler.Runtime.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj">
+      <Project>{ee8c0e3a-aa42-49f3-928d-52540c4984b5}</Project>
+      <Name>MessageHandler.Runtime.Container</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\diagnostics\MessageHandler.Runtime.Diagnostics.csproj">
+      <Project>{ac3cca56-e47e-4c8f-8316-73cf2d29d9e0}</Project>
+      <Name>MessageHandler.Runtime.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\metrics\MessageHandler.Runtime.Metrics.csproj">
+      <Project>{a63c8fb2-288d-4689-9a1e-428935d47cc4}</Project>
+      <Name>MessageHandler.Runtime.Metrics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\runtime\MessageHandler.Runtime.csproj">
       <Project>{3179e536-2b90-4092-a7f8-b612273dca6e}</Project>
       <Name>MessageHandler.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\serialization\MessageHandler.Runtime.Serialization.csproj">
+      <Project>{2130b96a-a9fa-4878-9e0c-21a3e1434910}</Project>
+      <Name>MessageHandler.Runtime.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj">
+      <Project>{66828d23-6b1e-4371-88eb-ab4bb7b50ffa}</Project>
+      <Name>MessageHandler.Runtime.StartupTasks</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

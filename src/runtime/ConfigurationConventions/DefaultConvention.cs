@@ -14,7 +14,7 @@ namespace MessageHandler.Runtime
             _basePath = basePath;
         }
 
-        public async Task Apply(HandlerRuntimeConfiguration configuration)
+        public async Task Apply(ConfigurationRoot configuration)
         {
             var fullPath = Path.Combine(_basePath, "handler.runtime.json");
             using (var reader = File.OpenText(fullPath))

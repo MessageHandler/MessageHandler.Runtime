@@ -3,7 +3,7 @@ using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
-    public class HandlerRuntimeConfiguration:SettingsExtensionPoint
+    public class HandlerRuntimeConfiguration: ConfigurationRoot
     {
         private readonly ISettings _settings;
 
@@ -25,9 +25,5 @@ namespace MessageHandler.Runtime
             _settings.SetDefaultShutdownGracePeriod(TimeSpan.FromSeconds(30));
         }
 
-        internal void LockSettings()
-        {
-            _settings.LockAll();
-        }
     }
 }

@@ -7,7 +7,7 @@ namespace MessageHandler.Runtime
     {
         private const string handlerConfigurationValuesKey = "messagehandler.handlerconfigurationvalues";
 
-        public static void HandlerConfigurationValues(this HandlerRuntimeConfiguration configuration, Dictionary<string, object> values)
+        public static void HandlerConfigurationValues(this ConfigurationRoot configuration, Dictionary<string, object> values)
         {
             var settings = configuration.GetSettings();
             settings.Set(handlerConfigurationValuesKey, values);

@@ -7,6 +7,6 @@
             Settings = settings;
         }
 
-        internal ISettings Settings { get; private set; }
+        public ISettings Settings { get; private set; }
     }
 }

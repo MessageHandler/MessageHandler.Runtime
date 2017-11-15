@@ -135,17 +135,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationConventions\ConventionExtensions.cs" />
-    <Compile Include="ConfigurationConventions\Conventions.cs" />
     <Compile Include="ConfigurationConventions\DefaultConvention.cs" />
-    <Compile Include="ConfigurationConventions\IConvention.cs" />
-    <Compile Include="ConfigurationSettings\IManageSettings.cs" />
-    <Compile Include="ConfigurationSettings\IProvideSettings.cs" />
-    <Compile Include="ConfigurationSettings\ISettings.cs" />
-    <Compile Include="ConfigurationSettings\Setting.cs" />
-    <Compile Include="ConfigurationSettings\SettingLockedException.cs" />
-    <Compile Include="ConfigurationSettings\Settings.cs" />
-    <Compile Include="ConfigurationSettings\SettingsExtensionPointExtensions.cs" />
     <Compile Include="Configuration\IVariableSource.cs" />
     <Compile Include="Configuration\VariableScope.cs" />
     <Compile Include="Configuration\VariableSource.cs" />
@@ -162,7 +152,6 @@
     <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\InputSubjectFilter.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
-    <Compile Include="ConfigurationSettings\SettingsExtensionPoint.cs" />
     <Compile Include="Configuration\UserVariablesExtensions.cs" />
     <Compile Include="Configuration\Variable.cs" />
     <Compile Include="Container\Container.cs" />
@@ -210,12 +199,12 @@
     <Compile Include="Running\BackgroundTaskRegisteredException.cs" />
     <Compile Include="Running\BackgroundTaskTypes.cs" />
     <Compile Include="Running\IBackgroundTask.cs" />
+    <Compile Include="Running\BackgroundTaskExtensions.cs" />
     <Compile Include="Serialization\DynamicHelper.cs" />
     <Compile Include="Serialization\DynamicJavaScriptConverter.cs" />
     <Compile Include="Serialization\DynamicJsonArray.cs" />
     <Compile Include="Serialization\DynamicJsonObject.cs" />
     <Compile Include="Serialization\Json.cs" />
-    <Compile Include="Running\BackgroundTaskExtensions.cs" />
     <Compile Include="Shutdown\ShutdownExtensions.cs" />
     <Compile Include="StartUp\HandlerRuntime.cs" />
     <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
@@ -234,6 +223,37 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\backgroundtasks\MessageHandler.Runtime.BackgroundTasks.csproj">
+      <Project>{56c96ce7-2ac4-46ae-adb2-71f03831ae72}</Project>
+      <Name>MessageHandler.Runtime.BackgroundTasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj">
+      <Project>{1f08788e-5897-438c-958c-0a0950f39b98}</Project>
+      <Name>MessageHandler.Runtime.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj">
+      <Project>{ee8c0e3a-aa42-49f3-928d-52540c4984b5}</Project>
+      <Name>MessageHandler.Runtime.Container</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\diagnostics\MessageHandler.Runtime.Diagnostics.csproj">
+      <Project>{ac3cca56-e47e-4c8f-8316-73cf2d29d9e0}</Project>
+      <Name>MessageHandler.Runtime.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\metrics\MessageHandler.Runtime.Metrics.csproj">
+      <Project>{a63c8fb2-288d-4689-9a1e-428935d47cc4}</Project>
+      <Name>MessageHandler.Runtime.Metrics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\serialization\MessageHandler.Runtime.Serialization.csproj">
+      <Project>{2130b96a-a9fa-4878-9e0c-21a3e1434910}</Project>
+      <Name>MessageHandler.Runtime.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj">
+      <Project>{66828d23-6b1e-4371-88eb-ab4bb7b50ffa}</Project>
+      <Name>MessageHandler.Runtime.StartupTasks</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
