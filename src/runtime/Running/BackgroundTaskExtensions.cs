@@ -5,7 +5,7 @@ namespace MessageHandler.Runtime
 {
     public static class BackgroundTaskExtensions
     {
-        public static void RegisterBackgroundTask(this HandlerRuntimeConfiguration configuration, IBackgroundTask task)
+        public static void RegisterBackgroundTask(this ConfigurationRoot configuration, IBackgroundTask task)
         {
             var settings = configuration.GetSettings();
             var tasks = settings.GetOrCreate<BackgroundTaskTypes>();
@@ -17,7 +17,7 @@ namespace MessageHandler.Runtime
             container.Register(() => task);
         }
 
-        public static void RegisterBackgroundTask(this HandlerRuntimeConfiguration configuration, Type type)
+        public static void RegisterBackgroundTask(this ConfigurationRoot configuration, Type type)
         {
             var settings = configuration.GetSettings();
             var tasks = settings.GetOrCreate<BackgroundTaskTypes>();
@@ -29,7 +29,7 @@ namespace MessageHandler.Runtime
             }
         }
 
-        public static void RegisterBackgroundTask<T>(this HandlerRuntimeConfiguration configuration)
+        public static void RegisterBackgroundTask<T>(this ConfigurationRoot configuration)
         {
             configuration.RegisterBackgroundTask(typeof(T));
         }

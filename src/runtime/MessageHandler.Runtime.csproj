@@ -135,7 +135,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationConventions\DefaultConvention.cs" />
+    <Compile Include="DefaultConvention.cs" />
     <Compile Include="Configuration\IVariableSource.cs" />
     <Compile Include="Configuration\VariableScope.cs" />
     <Compile Include="Configuration\VariableSource.cs" />
@@ -206,8 +206,8 @@
     <Compile Include="Serialization\DynamicJsonObject.cs" />
     <Compile Include="Serialization\Json.cs" />
     <Compile Include="Shutdown\ShutdownExtensions.cs" />
-    <Compile Include="StartUp\HandlerRuntime.cs" />
-    <Compile Include="StartUp\HandlerRuntimeConfiguration.cs" />
+    <Compile Include="HandlerRuntime.cs" />
+    <Compile Include="Configuration\HandlerRuntimeConfiguration.cs" />
     <Compile Include="StartUp\IStartupTask.cs" />
     <Compile Include="StartUp\StartupTaskExtensions.cs" />
     <Compile Include="StartUp\StartupTaskRegisteredException.cs" />

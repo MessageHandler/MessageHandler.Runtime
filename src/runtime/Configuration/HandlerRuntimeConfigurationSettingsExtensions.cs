@@ -85,7 +85,7 @@ namespace MessageHandler.Runtime
             return config.ChannelId;
         }
 
-        public static void EnableDynamicConfiguration(this HandlerRuntimeConfiguration configuration)
+        public static void EnableDynamicConfiguration(this ConfigurationRoot configuration)
         {
             var container = configuration.GetContainer();
             container.Register<DynamicConfigurationSource>();

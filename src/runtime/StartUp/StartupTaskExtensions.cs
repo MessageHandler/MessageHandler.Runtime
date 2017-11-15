@@ -5,19 +5,19 @@ namespace MessageHandler.Runtime
 {
     public static class StartupTaskExtensions
     {
-        public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, IStartupTask task)
+        public static void RegisterStartupTask(this ConfigurationRoot configuration, IStartupTask task)
         {
             var settings = configuration.GetSettings();
             settings.RegisterStartupTask(task);
         }
 
-        public static void RegisterStartupTask(this HandlerRuntimeConfiguration configuration, Type type)
+        public static void RegisterStartupTask(this ConfigurationRoot configuration, Type type)
         {
             var settings = configuration.GetSettings();
             settings.RegisterStartupTask(type);
         }
 
-        public static void RegisterStartupTask<T>(this HandlerRuntimeConfiguration configuration)
+        public static void RegisterStartupTask<T>(this ConfigurationRoot configuration)
         {
             configuration.RegisterStartupTask(typeof(T));
         }

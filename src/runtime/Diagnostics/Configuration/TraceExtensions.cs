@@ -5,7 +5,7 @@ namespace MessageHandler.Runtime.Diagnostics
 {
     public static class TraceExtensions
     {
-        public static TraceSettingsExtensionPoint Tracing(this HandlerRuntimeConfiguration configuration)
+        public static TraceSettingsExtensionPoint Tracing(this ConfigurationRoot configuration)
         {
             var container = configuration.Settings.GetContainer();
             container.Register<Tracer>(Lifecycle.Singleton);

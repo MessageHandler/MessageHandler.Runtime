@@ -5,7 +5,7 @@ namespace MessageHandler.Runtime
 {
     public static class MetricExtensions
     {
-        public static MetricsExtensionPoint Metrics(this HandlerRuntimeConfiguration configuration)
+        public static MetricsExtensionPoint Metrics(this ConfigurationRoot configuration)
         {
             var container = configuration.Settings.GetContainer();
             container.Register<MetricsCollector>(Lifecycle.Singleton);
