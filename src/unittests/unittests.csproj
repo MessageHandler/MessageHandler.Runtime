@@ -142,9 +142,9 @@
       <Project>{3179e536-2b90-4092-a7f8-b612273dca6e}</Project>
       <Name>MessageHandler.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="..\serialization\MessageHandler.Runtime.Serialization.csproj">
+    <ProjectReference Include="..\serialization\MessageHandler.Runtime.Serialization.JSon.csproj">
       <Project>{2130b96a-a9fa-4878-9e0c-21a3e1434910}</Project>
-      <Name>MessageHandler.Runtime.Serialization</Name>
+      <Name>MessageHandler.Runtime.Serialization.JSon</Name>
     </ProjectReference>
     <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj">
       <Project>{66828d23-6b1e-4371-88eb-ab4bb7b50ffa}</Project>

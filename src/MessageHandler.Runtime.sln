@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Star
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.BackgroundTasks", "backgroundtasks\MessageHandler.Runtime.BackgroundTasks.csproj", "{56C96CE7-2AC4-46AE-ADB2-71F03831AE72}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Serialization", "serialization\MessageHandler.Runtime.Serialization.csproj", "{2130B96A-A9FA-4878-9E0C-21A3E1434910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Serialization.JSon", "serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj", "{2130B96A-A9FA-4878-9E0C-21A3E1434910}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.Runtime.ConfigurationSource", "configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj", "{2F41921B-B7AB-4974-BD12-685E195E16AF}"
 EndProject
