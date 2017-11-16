@@ -186,11 +186,6 @@
     <Compile Include="Running\BackgroundTaskTypes.cs" />
     <Compile Include="Running\IBackgroundTask.cs" />
     <Compile Include="Running\BackgroundTaskExtensions.cs" />
-    <Compile Include="Serialization\DynamicHelper.cs" />
-    <Compile Include="Serialization\DynamicJavaScriptConverter.cs" />
-    <Compile Include="Serialization\DynamicJsonArray.cs" />
-    <Compile Include="Serialization\DynamicJsonObject.cs" />
-    <Compile Include="Serialization\Json.cs" />
     <Compile Include="Shutdown\ShutdownExtensions.cs" />
     <Compile Include="HandlerRuntime.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfiguration.cs" />
@@ -275,7 +270,9 @@
       <Name>MessageHandler.Runtime.Templating</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Serialization\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
