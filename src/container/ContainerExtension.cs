@@ -23,7 +23,7 @@ namespace MessageHandler.Runtime
             return settings.Get<IContainer>(ContainerKey);
         }
 
-        internal static void SetDefaultContainer(this ISettings settings, IContainer container)
+        public static void SetDefaultContainer(this ISettings settings, IContainer container)
         {
             settings.SetDefault(ContainerKey, container);
         }
