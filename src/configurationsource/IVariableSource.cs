@@ -2,6 +2,6 @@
 {
     public interface IVariableSource
     {
-        object GetVariables(VariableScope scopeType, string scopeId);
+        dynamic GetVariables(string scopeType, string scopeId);
     }
 }

@@ -135,23 +135,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicConfiguration\DynamicConfigurationSettingsExtensions.cs" />
     <Compile Include="DefaultConvention.cs" />
-    <Compile Include="Configuration\IVariableSource.cs" />
     <Compile Include="Configuration\VariableScope.cs" />
-    <Compile Include="Configuration\VariableSource.cs" />
     <Compile Include="DynamicConfiguration\DynamicConfigurationSource.cs" />
     <Compile Include="DynamicConfiguration\IDynamicConfigurationSource.cs" />
-    <Compile Include="DynamicConfiguration\DynamicVariable.cs" />
     <Compile Include="Configuration\HandlerConfigurationAttribute.cs" />
     <Compile Include="Configuration\HandlerRouting.cs" />
-    <Compile Include="Configuration\HandlerConfigurationSettingsExtension.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfigurationValues.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfigurationSettingsExtensions.cs" />
-    <Compile Include="Configuration\IConfigurationSource.cs" />
     <Compile Include="Configuration\InputSubjectFilter.cs" />
     <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
-    <Compile Include="Configuration\UserVariablesExtensions.cs" />
-    <Compile Include="Configuration\Variable.cs" />
     <Compile Include="Diagnostics\Configuration\TraceSettingsExtensionPoint.cs" />
     <Compile Include="Diagnostics\Configuration\TraceSeverityTresholds.cs" />
     <Compile Include="Diagnostics\Configuration\TraceSinkRegistration.cs" />
@@ -220,6 +214,22 @@
       <Project>{56c96ce7-2ac4-46ae-adb2-71f03831ae72}</Project>
       <Name>MessageHandler.Runtime.BackgroundTasks</Name>
     </ProjectReference>
+    <ProjectReference Include="..\configurationsource.dynamic\MessageHandler.Runtime.ConfigurationSource.Dynamic.csproj">
+      <Project>{c2950552-3982-414e-9fd5-51c08c71a175}</Project>
+      <Name>MessageHandler.Runtime.ConfigurationSource.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\configurationsource.file.json\MessageHandler.Runtime.ConfigurationSource.File.Json.csproj">
+      <Project>{2686df32-6dd0-47c1-910b-e2a1372266bc}</Project>
+      <Name>MessageHandler.Runtime.ConfigurationSource.File.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\configurationsource.inmemory\MessageHandler.Runtime.ConfigurationSource.InMemory.csproj">
+      <Project>{47225a34-8f46-4358-aa70-d88f1da15c09}</Project>
+      <Name>MessageHandler.Runtime.ConfigurationSource.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj">
+      <Project>{2f41921b-b7ab-4974-bd12-685e195e16af}</Project>
+      <Name>MessageHandler.Runtime.ConfigurationSource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj">
       <Project>{1f08788e-5897-438c-958c-0a0950f39b98}</Project>
       <Name>MessageHandler.Runtime.Configuration</Name>
@@ -232,9 +242,25 @@
       <Project>{ac3cca56-e47e-4c8f-8316-73cf2d29d9e0}</Project>
       <Name>MessageHandler.Runtime.Diagnostics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\leasemanagement.inmemory\MessageHandler.Runtime.LeaseManagement.InMemory.csproj">
+      <Project>{8bba63e7-e824-4e81-b0b4-454a41786ceb}</Project>
+      <Name>MessageHandler.Runtime.LeaseManagement.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\leasemanagement\MessageHandler.Runtime.LeaseManagement.csproj">
+      <Project>{3402c047-0c51-444f-8508-1436c5ec0fe2}</Project>
+      <Name>MessageHandler.Runtime.LeaseManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\metrics\MessageHandler.Runtime.Metrics.csproj">
       <Project>{a63c8fb2-288d-4689-9a1e-428935d47cc4}</Project>
       <Name>MessageHandler.Runtime.Metrics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\scripting.roslyn\MessageHandler.Runtime.Scripting.Roslyn.csproj">
+      <Project>{90c53710-0932-4618-947d-46d79fd91072}</Project>
+      <Name>MessageHandler.Runtime.Scripting.Roslyn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\scripting\MessageHandler.Runtime.Scripting.csproj">
+      <Project>{02b40dce-de95-4214-8646-5ce2eefd2e4b}</Project>
+      <Name>MessageHandler.Runtime.Scripting</Name>
     </ProjectReference>
     <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj">
       <Project>{2130b96a-a9fa-4878-9e0c-21a3e1434910}</Project>
@@ -243,6 +269,10 @@
     <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj">
       <Project>{66828d23-6b1e-4371-88eb-ab4bb7b50ffa}</Project>
       <Name>MessageHandler.Runtime.StartupTasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\templating\MessageHandler.Runtime.Templating.csproj">
+      <Project>{cd087011-36d2-4f12-89d8-b204677abfd7}</Project>
+      <Name>MessageHandler.Runtime.Templating</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

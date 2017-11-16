@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj" />
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
+  </ItemGroup>
+
+</Project>

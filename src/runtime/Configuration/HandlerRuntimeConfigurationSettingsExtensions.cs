@@ -1,5 +1,4 @@
-﻿using MessageHandler.Runtime.Configuration;
-using MessageHandler.Runtime.ConfigurationSettings;
+﻿using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
@@ -83,15 +82,6 @@ namespace MessageHandler.Runtime
         {
             var config = settings.GetOrCreate<HandlerRuntimeConfigurationValues>();
             return config.ChannelId;
-        }
-
-        public static void EnableDynamicConfiguration(this ConfigurationRoot configuration)
-        {
-            var container = configuration.GetContainer();
-            container.Register<DynamicConfigurationSource>();
-            container.Register<VariableSource>();
-            container.Register<RoslynScriptingEngine>();
-            container.Register<RoslynRegexTemplatingEngine>();
         }
     }
 }

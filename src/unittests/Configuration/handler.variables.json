@@ -1,212 +1,242 @@
-[{
-		"Account" : "messagehandler",
-		"ScopeIdentifier" : "1eea763a-4a16-421e-9e16-0b24d9f50b78",
-		"ScopeType" : "Channel",
-		"Name" : "AverageSoilTemperatureTable",
-		"Value" : "AverageSoilTemperature",
-		"FullName" : "1eea763a-4a16-421e-9e16-0b24d9f50b78.AverageSoilTemperatureTable"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "1eea763a-4a16-421e-9e16-0b24d9f50b78.DurationInSeconds",
-		"Name" : "DurationInSeconds",
-		"ScopeIdentifier" : "1eea763a-4a16-421e-9e16-0b24d9f50b78",
-		"ScopeType" : "Channel",
-		"Value" : "30"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "1eea763a-4a16-421e-9e16-0b24d9f50b78.SoilTemperatureTable",
-		"Name" : "SoilTemperatureTable",
-		"ScopeIdentifier" : "1eea763a-4a16-421e-9e16-0b24d9f50b78",
-		"ScopeType" : "Channel",
-		"Value" : "SoilTemperature"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "3542bd0a-2822-49c4-abe2-32974b5c6986.EmailFrom",
-		"Name" : "EmailFrom",
-		"ScopeIdentifier" : "3542bd0a-2822-49c4-abe2-32974b5c6986",
-		"ScopeType" : "Channel",
-		"Value" : "yves@goeleven.com"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "3542bd0a-2822-49c4-abe2-32974b5c6986.EmailTo",
-		"Name" : "EmailTo",
-		"ScopeIdentifier" : "3542bd0a-2822-49c4-abe2-32974b5c6986",
-		"ScopeType" : "Channel",
-		"Value" : "yves@goeleven.com"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "3542bd0a-2822-49c4-abe2-32974b5c6986.GithubRepository",
-		"Name" : "GithubRepository",
-		"ScopeIdentifier" : "3542bd0a-2822-49c4-abe2-32974b5c6986",
-		"ScopeType" : "Channel",
-		"Value" : "MessageHandler.Sample"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "3542bd0a-2822-49c4-abe2-32974b5c6986.GithubRepositoryOwner",
-		"Name" : "GithubRepositoryOwner",
-		"ScopeIdentifier" : "3542bd0a-2822-49c4-abe2-32974b5c6986",
-		"ScopeType" : "Channel",
-		"Value" : "MessageHandler"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "3542bd0a-2822-49c4-abe2-32974b5c6986.MyGetFeed",
-		"Name" : "MyGetFeed",
-		"ScopeIdentifier" : "3542bd0a-2822-49c4-abe2-32974b5c6986",
-		"ScopeType" : "Channel",
-		"Value" : "https://www.myget.org/RSS/messagehandler-dev"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "4af4b433-4d63-4185-90a3-5012070534ab.Something",
-		"Name" : "Something",
-		"ScopeIdentifier" : "4af4b433-4d63-4185-90a3-5012070534ab",
-		"ScopeType" : "Environment",
-		"Value" : "Somevalue"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "6e724c8d-7f26-4d21-a42d-ea00b460038a.StorageAccount",
-		"Name" : "StorageAccount",
-		"ScopeIdentifier" : "6e724c8d-7f26-4d21-a42d-ea00b460038a",
-		"ScopeType" : "Channel",
-		"Value" : "DefaultEndpointsProtocol=https;AccountName=messagehandler;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "7e6f72c6-0bd4-4867-a1c6-1acb958174ff.StorageAccount",
-		"Name" : "StorageAccount",
-		"ScopeIdentifier" : "7e6f72c6-0bd4-4867-a1c6-1acb958174ff",
-		"ScopeType" : "Channel",
-		"Value" : "DefaultEndpointsProtocol=https;AccountName=messagehandler;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "decbc7df-c71d-48fd-9792-9128887cc6d2.StorageAccount",
-		"Name" : "StorageAccount",
-		"ScopeIdentifier" : "decbc7df-c71d-48fd-9792-9128887cc6d2",
-		"ScopeType" : "Channel",
-		"Value" : "DefaultEndpointsProtocol=https;AccountName=messagehandler;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.DocDbAuthorizationKey",
-		"Name" : "DocDbAuthorizationKey",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.DocDbServiceEndpoint",
-		"Name" : "DocDbServiceEndpoint",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "https://yaus.documents.azure.com:443/"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "EmailFrom",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "yves@goeleven.com"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "EmailTo",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "yves@goeleven.com"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "GithubLogin",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "yvesgoeleven"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.GithubPassword",
-		"Name" : "GithubPassword",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "GithubRepository",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "MessageHandler.Samples"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "GithubRepositoryOwner",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "MessageHandler"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "MyGetFeed",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "https://www.myget.org/RSS/messagehandler-dev"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "MyGetPassword",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "MyGetUsername",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "YvesGoeleven"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.SearchApiKey",
-		"Name" : "SearchApiKey",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.SearchService",
-		"Name" : "SearchService",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "mh-search"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "SmtpServer",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "smtp.sendgrid.net"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.SmtpServerLogin",
-		"Name" : "SmtpServerLogin",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "MessageHandlerDemo"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.SmtpServerPassword",
-		"Name" : "SmtpServerPassword",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : null,
-		"Name" : "SmtpServerPort",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "587"
-	}, {
-		"Account" : "messagehandler",
-		"FullName" : "messagehandler.StorageAccount",
-		"Name" : "StorageAccount",
-		"ScopeIdentifier" : "messagehandler",
-		"ScopeType" : "Account",
-		"Value" : "DefaultEndpointsProtocol=https;AccountName=mhpriveuwest;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
-	}
+[
+  {
+    "OwnerIdentifier": "messagehandler",
+    "ScopeIdentifier": "1eea763a-4a16-421e-9e16-0b24d9f50b78",
+    "ScopeType": "Channel",
+    "Name": "AverageSoilTemperatureTable",
+    "Value": "AverageSoilTemperature",
+    "FullName": "1eea763a-4a16-421e-9e16-0b24d9f50b78.AverageSoilTemperatureTable"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "1eea763a-4a16-421e-9e16-0b24d9f50b78.DurationInSeconds",
+    "Name": "DurationInSeconds",
+    "ScopeIdentifier": "1eea763a-4a16-421e-9e16-0b24d9f50b78",
+    "ScopeType": "Channel",
+    "Value": "30"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "1eea763a-4a16-421e-9e16-0b24d9f50b78.SoilTemperatureTable",
+    "Name": "SoilTemperatureTable",
+    "ScopeIdentifier": "1eea763a-4a16-421e-9e16-0b24d9f50b78",
+    "ScopeType": "Channel",
+    "Value": "SoilTemperature"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "3542bd0a-2822-49c4-abe2-32974b5c6986.EmailFrom",
+    "Name": "EmailFrom",
+    "ScopeIdentifier": "3542bd0a-2822-49c4-abe2-32974b5c6986",
+    "ScopeType": "Channel",
+    "Value": "yves@goeleven.com"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "3542bd0a-2822-49c4-abe2-32974b5c6986.EmailTo",
+    "Name": "EmailTo",
+    "ScopeIdentifier": "3542bd0a-2822-49c4-abe2-32974b5c6986",
+    "ScopeType": "Channel",
+    "Value": "yves@goeleven.com"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "3542bd0a-2822-49c4-abe2-32974b5c6986.GithubRepository",
+    "Name": "GithubRepository",
+    "ScopeIdentifier": "3542bd0a-2822-49c4-abe2-32974b5c6986",
+    "ScopeType": "Channel",
+    "Value": "MessageHandler.Sample"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "3542bd0a-2822-49c4-abe2-32974b5c6986.GithubRepositoryOwner",
+    "Name": "GithubRepositoryOwner",
+    "ScopeIdentifier": "3542bd0a-2822-49c4-abe2-32974b5c6986",
+    "ScopeType": "Channel",
+    "Value": "MessageHandler"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "3542bd0a-2822-49c4-abe2-32974b5c6986.MyGetFeed",
+    "Name": "MyGetFeed",
+    "ScopeIdentifier": "3542bd0a-2822-49c4-abe2-32974b5c6986",
+    "ScopeType": "Channel",
+    "Value": "https://www.myget.org/RSS/messagehandler-dev"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "4af4b433-4d63-4185-90a3-5012070534ab.Something",
+    "Name": "Something",
+    "ScopeIdentifier": "4af4b433-4d63-4185-90a3-5012070534ab",
+    "ScopeType": "Environment",
+    "Value": "Somevalue"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "6e724c8d-7f26-4d21-a42d-ea00b460038a.StorageAccount",
+    "Name": "StorageAccount",
+    "ScopeIdentifier": "6e724c8d-7f26-4d21-a42d-ea00b460038a",
+    "ScopeType": "Channel",
+    "Value": "DefaultEndpointsProtocol=https;AccountName=messagehandler;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "7e6f72c6-0bd4-4867-a1c6-1acb958174ff.StorageAccount",
+    "Name": "StorageAccount",
+    "ScopeIdentifier": "7e6f72c6-0bd4-4867-a1c6-1acb958174ff",
+    "ScopeType": "Channel",
+    "Value": "DefaultEndpointsProtocol=https;AccountName=messagehandler;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "decbc7df-c71d-48fd-9792-9128887cc6d2.StorageAccount",
+    "Name": "StorageAccount",
+    "ScopeIdentifier": "decbc7df-c71d-48fd-9792-9128887cc6d2",
+    "ScopeType": "Channel",
+    "Value": "DefaultEndpointsProtocol=https;AccountName=messagehandler;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.DocDbAuthorizationKey",
+    "Name": "DocDbAuthorizationKey",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.DocDbServiceEndpoint",
+    "Name": "DocDbServiceEndpoint",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "https://yaus.documents.azure.com:443/"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "EmailFrom",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "yves@goeleven.com"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "EmailTo",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "yves@goeleven.com"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "GithubLogin",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "yvesgoeleven"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.GithubPassword",
+    "Name": "GithubPassword",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "GithubRepository",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "MessageHandler.Samples"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "GithubRepositoryOwner",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "MessageHandler"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "MyGetFeed",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "https://www.myget.org/RSS/messagehandler-dev"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "MyGetPassword",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "MyGetUsername",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "YvesGoeleven"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.SearchApiKey",
+    "Name": "SearchApiKey",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.SearchService",
+    "Name": "SearchService",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "mh-search"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "SmtpServer",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "smtp.sendgrid.net"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.SmtpServerLogin",
+    "Name": "SmtpServerLogin",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "MessageHandlerDemo"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.SmtpServerPassword",
+    "Name": "SmtpServerPassword",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": null,
+    "Name": "SmtpServerPort",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "587"
+  },
+  {
+    "OwnerIdentifier": "messagehandler",
+    "FullName": "messagehandler.StorageAccount",
+    "Name": "StorageAccount",
+    "ScopeIdentifier": "messagehandler",
+    "ScopeType": "Account",
+    "Value": "DefaultEndpointsProtocol=https;AccountName=mhpriveuwest;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=="
+  }
 ]

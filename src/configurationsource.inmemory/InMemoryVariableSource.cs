@@ -3,18 +3,18 @@ using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
-    public class VariableSource : IVariableSource
+    public class InMemoryVariableSource : IVariableSource
     {
         private readonly IList<Variable> _variables;
 
-        public VariableSource(ISettings settings)
+        public InMemoryVariableSource(ISettings settings)
         {
             _variables = settings.GetUserVariables();
         }
 
-        public dynamic GetVariables(VariableScope scopeType, string scopeId)
+        public dynamic GetVariables(string scopeType, string scopeId)
         {
-            return new DynamicVariable(scopeType.ToString(), _variables);
+            return new DynamicVariables(scopeType, _variables);
         }
     }
 }
