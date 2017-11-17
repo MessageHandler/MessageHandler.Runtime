@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
+    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj" />
+  </ItemGroup>
+
 </Project>

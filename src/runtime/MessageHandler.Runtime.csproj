@@ -161,10 +161,6 @@
     <Compile Include="Shutdown\ShutdownExtensions.cs" />
     <Compile Include="HandlerRuntime.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfiguration.cs" />
-    <Compile Include="StartUp\IStartupTask.cs" />
-    <Compile Include="StartUp\StartupTaskExtensions.cs" />
-    <Compile Include="StartUp\StartupTaskRegisteredException.cs" />
-    <Compile Include="StartUp\StartupTaskTypes.cs" />
     <Compile Include="DynamicConfiguration\Roslyn\RoslynRegexTemplatingEngine.cs" />
     <Compile Include="DynamicConfiguration\Roslyn\RoslynScriptingEngine.cs" />
   </ItemGroup>
@@ -246,6 +242,7 @@
     <Folder Include="Diagnostics\" />
     <Folder Include="Metrics\" />
     <Folder Include="Serialization\" />
+    <Folder Include="StartUp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
