@@ -154,10 +154,6 @@
     <Compile Include="LeaseManagement\IStoreLeases.cs" />
     <Compile Include="LeaseManagement\Lease.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Running\BackgroundTaskRegisteredException.cs" />
-    <Compile Include="Running\BackgroundTaskTypes.cs" />
-    <Compile Include="Running\IBackgroundTask.cs" />
-    <Compile Include="Running\BackgroundTaskExtensions.cs" />
     <Compile Include="Shutdown\ShutdownExtensions.cs" />
     <Compile Include="HandlerRuntime.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfiguration.cs" />
@@ -241,6 +237,7 @@
   <ItemGroup>
     <Folder Include="Diagnostics\" />
     <Folder Include="Metrics\" />
+    <Folder Include="Running\" />
     <Folder Include="Serialization\" />
     <Folder Include="StartUp\" />
   </ItemGroup>
