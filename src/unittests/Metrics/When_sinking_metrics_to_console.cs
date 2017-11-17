@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using MessageHandler.Runtime;
-using MessageHandler.Runtime.Diagnostics;
+using MessageHandler.Runtime.Metrics;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace unittests.Diagnostics
+namespace unittests.Metrics
 {
     public class When_sinking_metrics_to_console
     {

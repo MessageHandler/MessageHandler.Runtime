@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessageHandler.Runtime
+namespace MessageHandler.Runtime.Diagnostics
 {
     public class BufferedConsoleStructuredTraceSink : IStructuredTraceSink
     {
