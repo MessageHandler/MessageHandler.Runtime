@@ -45,13 +45,13 @@ namespace unittests.Serialization
             public string SomeProperty { get; set; }
         }
 
-        public class SerializedConfigSection : ConfigurationSection
+        public class SerializedConfigSection 
         {
-            [ConfigurationProperty("SomeProperty", IsRequired = false)]
+           
             public string SomeProperty
             {
-                get { return this["SomeProperty"] as string; }
-                set { this["SomeProperty"] = value; }
+                get;
+                set;
             }
         }
     }

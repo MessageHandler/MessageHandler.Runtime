@@ -1,201 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BADB5E1E-548B-4159-B1BB-6D9681B2DCBE}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>unittests</RootNamespace>
-    <AssemblyName>unittests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net461</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Disruptor, Version=3.3.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Disruptor.3.3.7\lib\net45\Disruptor.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.console" Version="2.3.1" />
+	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="ConfigurationConventions\When_applying_default_convention.cs" />
-    <Compile Include="ConfigurationSettings\When_getting_or_creating_settings.cs" />
-    <Compile Include="ConfigurationSettings\When_locking_values.cs" />
-    <Compile Include="ConfigurationSettings\When_removing_values.cs" />
-    <Compile Include="ConfigurationSettings\When_working_with_types.cs" />
-    <Compile Include="Configuration\When_getting_configuration.cs" />
-    <Compile Include="ConfigurationConventions\When_applying_conventions.cs" />
-    <Compile Include="Configuration\When_getting_runtime_configuration.cs" />
-    <Compile Include="DependencyInjection\When_registering_dependencies.cs" />
-    <Compile Include="DependencyInjection\When_resolving_dependencies.cs" />
-    <Compile Include="DependencyInjection\When_resolving_dependencies_with_inheritance.cs" />
-    <Compile Include="DependencyInjection\When_resolving_interface_dependencies.cs" />
-    <Compile Include="DependencyInjection\When_resolving_mutiple_interface.cs" />
-    <Compile Include="DependencyInjection\When_resolving_single_instances.cs" />
-    <Compile Include="Diagnostics\When_registering_trace_settings.cs" />
-    <Compile Include="Diagnostics\When_registering_trace_sinks.cs" />
-    <Compile Include="Diagnostics\When_sinking_diagnostic_to_console.cs" />
-    <Compile Include="Diagnostics\When_tracing_diagnostics.cs" />
-    <Compile Include="Diagnostics\When_tracing_diagnostics_using_convenience_methods.cs" />
-    <Compile Include="LeaseManagement\When_allocating_leases_in_memory.cs" />
-    <Compile Include="LeaseManagement\When_storing_leases_in_memory.cs" />
-    <Compile Include="Metrics\When_registering_metrics.cs" />
-    <Compile Include="Metrics\When_sinking_metrics_to_console.cs" />
-    <Compile Include="Running\When_executing_background_tasks.cs" />
-    <Compile Include="Running\When_registering_background_tasks.cs" />
-    <Compile Include="Serialization\When_deserializing_objects.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\When_deserializing_arrays.cs" />
-    <Compile Include="Serialization\When_deserializing_primitive_types.cs" />
-    <Compile Include="Serialization\When_roundtrip_serializing_arrays.cs" />
-    <Compile Include="Serialization\When_roundtrip_serializing_objects.cs" />
-    <Compile Include="Serialization\When_serializing_arrays.cs" />
-    <Compile Include="Serialization\When_serializing_objects.cs" />
-    <Compile Include="Serialization\When_working_with_dynamic_json_arrays.cs" />
-    <Compile Include="Serialization\When_working_with_dynamic_json_objects.cs" />
-    <Compile Include="ConfigurationSettings\When_setting_values.cs" />
-    <Compile Include="StartUp\When_configuring_the_container.cs" />
-    <Compile Include="StartUp\When_extending_handler_runtime_configuration.cs" />
-    <Compile Include="StartUp\When_registering_start_up_tasks.cs" />
-    <Compile Include="StartUp\When_starting_up.cs" />
+    <ProjectReference Include="..\backgroundtasks\MessageHandler.Runtime.BackgroundTasks.csproj" />
+    <ProjectReference Include="..\configurationsource.dynamic\MessageHandler.Runtime.ConfigurationSource.Dynamic.csproj" />
+    <ProjectReference Include="..\configurationsource.file.json\MessageHandler.Runtime.ConfigurationSource.File.Json.csproj" />
+    <ProjectReference Include="..\configurationsource.inmemory\MessageHandler.Runtime.ConfigurationSource.InMemory.csproj" />
+    <ProjectReference Include="..\configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj" />
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
+    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj" />
+    <ProjectReference Include="..\diagnostics\MessageHandler.Runtime.Diagnostics.csproj" />
+    <ProjectReference Include="..\leasemanagement.inmemory\MessageHandler.Runtime.LeaseManagement.InMemory.csproj" />
+    <ProjectReference Include="..\leasemanagement\MessageHandler.Runtime.LeaseManagement.csproj" />
+    <ProjectReference Include="..\metrics\MessageHandler.Runtime.Metrics.csproj" />
+    <ProjectReference Include="..\runtime\MessageHandler.Runtime.csproj" />
+    <ProjectReference Include="..\scripting.roslyn\MessageHandler.Runtime.Scripting.Roslyn.csproj" />
+    <ProjectReference Include="..\scripting\MessageHandler.Runtime.Scripting.csproj" />
+    <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj" />
+    <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj" />
+    <ProjectReference Include="..\templating\MessageHandler.Runtime.Templating.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Configuration\handler.config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Configuration\handler.routing.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Configuration\handler.runtime.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Configuration\handler.variables.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="handler.config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\backgroundtasks\MessageHandler.Runtime.BackgroundTasks.csproj">
-      <Project>{56c96ce7-2ac4-46ae-adb2-71f03831ae72}</Project>
-      <Name>MessageHandler.Runtime.BackgroundTasks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\configurationsource.dynamic\MessageHandler.Runtime.ConfigurationSource.Dynamic.csproj">
-      <Project>{c2950552-3982-414e-9fd5-51c08c71a175}</Project>
-      <Name>MessageHandler.Runtime.ConfigurationSource.Dynamic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\configurationsource.file.json\MessageHandler.Runtime.ConfigurationSource.File.Json.csproj">
-      <Project>{2686df32-6dd0-47c1-910b-e2a1372266bc}</Project>
-      <Name>MessageHandler.Runtime.ConfigurationSource.File.Json</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\configurationsource.inmemory\MessageHandler.Runtime.ConfigurationSource.InMemory.csproj">
-      <Project>{47225a34-8f46-4358-aa70-d88f1da15c09}</Project>
-      <Name>MessageHandler.Runtime.ConfigurationSource.InMemory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj">
-      <Project>{2f41921b-b7ab-4974-bd12-685e195e16af}</Project>
-      <Name>MessageHandler.Runtime.ConfigurationSource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj">
-      <Project>{1f08788e-5897-438c-958c-0a0950f39b98}</Project>
-      <Name>MessageHandler.Runtime.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj">
-      <Project>{ee8c0e3a-aa42-49f3-928d-52540c4984b5}</Project>
-      <Name>MessageHandler.Runtime.Container</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\diagnostics\MessageHandler.Runtime.Diagnostics.csproj">
-      <Project>{ac3cca56-e47e-4c8f-8316-73cf2d29d9e0}</Project>
-      <Name>MessageHandler.Runtime.Diagnostics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\leasemanagement.inmemory\MessageHandler.Runtime.LeaseManagement.InMemory.csproj">
-      <Project>{8bba63e7-e824-4e81-b0b4-454a41786ceb}</Project>
-      <Name>MessageHandler.Runtime.LeaseManagement.InMemory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\leasemanagement\MessageHandler.Runtime.LeaseManagement.csproj">
-      <Project>{3402c047-0c51-444f-8508-1436c5ec0fe2}</Project>
-      <Name>MessageHandler.Runtime.LeaseManagement</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\metrics\MessageHandler.Runtime.Metrics.csproj">
-      <Project>{a63c8fb2-288d-4689-9a1e-428935d47cc4}</Project>
-      <Name>MessageHandler.Runtime.Metrics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\runtime\MessageHandler.Runtime.csproj">
-      <Project>{3179e536-2b90-4092-a7f8-b612273dca6e}</Project>
-      <Name>MessageHandler.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\scripting.roslyn\MessageHandler.Runtime.Scripting.Roslyn.csproj">
-      <Project>{90c53710-0932-4618-947d-46d79fd91072}</Project>
-      <Name>MessageHandler.Runtime.Scripting.Roslyn</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\scripting\MessageHandler.Runtime.Scripting.csproj">
-      <Project>{02b40dce-de95-4214-8646-5ce2eefd2e4b}</Project>
-      <Name>MessageHandler.Runtime.Scripting</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj">
-      <Project>{2130b96a-a9fa-4878-9e0c-21a3e1434910}</Project>
-      <Name>MessageHandler.Runtime.Serialization.JSon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj">
-      <Project>{66828d23-6b1e-4371-88eb-ab4bb7b50ffa}</Project>
-      <Name>MessageHandler.Runtime.StartupTasks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\templating\MessageHandler.Runtime.Templating.csproj">
-      <Project>{cd087011-36d2-4f12-89d8-b204677abfd7}</Project>
-      <Name>MessageHandler.Runtime.Templating</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

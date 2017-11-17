@@ -17,7 +17,7 @@ namespace unittests.Configuration
             Assert.NotNull(deserialized);
             Assert.True(deserialized.SomeProperty == "test");
         }
-
+        
         [Fact]
         public async Task Throws_file_not_found_exception_if_file_does_not_exist()
         {

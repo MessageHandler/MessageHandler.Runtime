@@ -72,7 +72,7 @@ namespace unittests.Serialization
             Assert.True(dict["SomeProperty"] == "test");
         }
 
-        public static IEnumerable DateTimePermutations
+        public static IEnumerable<object[]> DateTimePermutations
         {
             get
             {
