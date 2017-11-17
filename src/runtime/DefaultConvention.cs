@@ -33,7 +33,7 @@ namespace MessageHandler.Runtime
             {
                 var json = await reader.ReadToEndAsync().ConfigureAwait(false);
                 var deserialized = Json.Decode<Dictionary<string, object>>(json);
-                configuration.HandlerConfigurationValues(deserialized);
+                configuration.ConfigurationValues(deserialized);
             }
 
             var fullPathVariables = Path.Combine(_basePath, "handler.variables.json");

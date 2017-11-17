@@ -2,7 +2,7 @@
 {
     public class Variable
     {
-        public string Account { get; set; }
+        public string OwnerIdentifier { get; set; }
         public string ScopeIdentifier { get; set; }
         public string ScopeType { get; set; }
         public string Name { get; set; }

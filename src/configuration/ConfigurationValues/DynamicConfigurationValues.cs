@@ -6,15 +6,13 @@ using System.Linq;
 
 namespace MessageHandler.Runtime
 {
-    public class DynamicVariable : DynamicObject
+    public class DynamicConfigurationValues : DynamicObject
     {
-        private readonly IDictionary<string, Variable> _values;
+        private readonly IDictionary<string, object> _values;
 
-        public DynamicVariable(string scope, IEnumerable<Variable> values)
+        public DynamicConfigurationValues(string scope, IDictionary<string, object> values)
         {
-            _values = values
-                .Where(p => p.ScopeType == scope)
-                .ToDictionary(p => p.Name, p => p);
+            _values = values;
         }
 
         public override bool TryConvert(ConvertBinder binder, out object result)
@@ -74,8 +72,7 @@ namespace MessageHandler.Runtime
 
         private object GetValue(string name)
         {
-            Variable result;
-            return _values.TryGetValue(name, out result) ? result.Value : null;
+            return _values.TryGetValue(name, out var result) ? result : null;
         }
     }
 }

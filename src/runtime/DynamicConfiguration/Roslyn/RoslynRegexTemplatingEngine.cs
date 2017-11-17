@@ -35,10 +35,10 @@ namespace MessageHandler.Runtime
         {
             if (string.IsNullOrEmpty(template)) return template;
 
-            var channel = variableSource.GetVariables(VariableScope.Channel, _settings.GetChannelId());
-            var environment = variableSource.GetVariables(VariableScope.Environment, _settings.GetEnvironmentId());
-            var account = variableSource.GetVariables(VariableScope.Account, _settings.GetAccountId());
-            var project = variableSource.GetVariables(VariableScope.Project, _settings.GetProjectId());
+            var channel = variableSource.GetVariables(VariableScope.Channel.ToString(), _settings.GetChannelId());
+            var environment = variableSource.GetVariables(VariableScope.Environment.ToString(), _settings.GetEnvironmentId());
+            var account = variableSource.GetVariables(VariableScope.Account.ToString(), _settings.GetAccountId());
+            var project = variableSource.GetVariables(VariableScope.Project.ToString(), _settings.GetProjectId());
             
             var parameters = new Dictionary<ScriptScope, object>
             {

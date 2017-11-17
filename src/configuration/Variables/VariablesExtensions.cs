@@ -3,7 +3,7 @@ using MessageHandler.Runtime.ConfigurationSettings;
 
 namespace MessageHandler.Runtime
 {
-    public static class UserVariablesExtensions
+    public static class VariablesExtensions
     {
         private const string handlerConfigurationVariablesKey = "messagehandler.uservariables";
 
@@ -13,7 +13,7 @@ namespace MessageHandler.Runtime
             settings.Set(handlerConfigurationVariablesKey, variables);
         }
 
-        internal static List<Variable> GetUserVariables(this ISettings settings)
+        public static List<Variable> GetUserVariables(this ISettings settings)
         {
             return settings.GetOrCreate<List<Variable>>(handlerConfigurationVariablesKey);
         }

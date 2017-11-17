@@ -21,9 +21,9 @@ namespace unittests.Configuration
         [Fact]
         public async Task Throws_file_not_found_exception_if_file_does_not_exist()
         {
-            var configurationSource = new JSonFileConfigurationSource();
+            var configurationSource = new JSonFileConfigurationSource("unexisting.json");
 
-            await Assert.ThrowsAsync<FileNotFoundException>(() => configurationSource.GetConfiguration<SerializedObject>("unexisting.json")).ConfigureAwait(false);
+            await Assert.ThrowsAsync<FileNotFoundException>(() => configurationSource.GetConfiguration<SerializedObject>()).ConfigureAwait(false);
         }
 
         public class SerializedObject
