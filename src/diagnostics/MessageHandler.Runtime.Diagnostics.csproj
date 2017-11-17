@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Disruptor" Version="3.3.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
+    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj" />
+  </ItemGroup>
+
 </Project>

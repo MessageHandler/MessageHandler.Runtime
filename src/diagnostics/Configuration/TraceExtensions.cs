@@ -58,7 +58,7 @@ namespace MessageHandler.Runtime.Diagnostics
             RegisterSink(configuration, typeof(T), scope, severity);
         }
 
-        internal static StructuredTraceSeverity GetTraceSeverityTreshold(this ISettings settings, StructuredTraceScope scope)
+        public static StructuredTraceSeverity GetTraceSeverityTreshold(this ISettings settings, StructuredTraceScope scope)
         {
             var tresholds = settings.GetOrCreate<TraceSeverityTresholds>();
             return tresholds.ContainsKey(scope) ? tresholds[scope] : StructuredTraceSeverity.Verbose;

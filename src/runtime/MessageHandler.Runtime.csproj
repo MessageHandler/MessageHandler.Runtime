@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Disruptor, Version=3.3.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Disruptor.3.3.5.1\lib\net45\Disruptor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeAnalysis.Common.2.1.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
       <Private>True</Private>
@@ -145,20 +141,6 @@
     <Compile Include="Configuration\HandlerRuntimeConfigurationValues.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfigurationSettingsExtensions.cs" />
     <Compile Include="Configuration\InputSubjectFilter.cs" />
-    <Compile Include="Diagnostics\Configuration\TraceSettingsExtensionPoint.cs" />
-    <Compile Include="Diagnostics\Configuration\TraceSeverityTresholds.cs" />
-    <Compile Include="Diagnostics\Configuration\TraceSinkRegistration.cs" />
-    <Compile Include="Diagnostics\Sink\BufferedConsoleTraceSink.cs" />
-    <Compile Include="Diagnostics\Configuration\TraceExtensions.cs" />
-    <Compile Include="Diagnostics\Configuration\TraceSinkRegistrations.cs" />
-    <Compile Include="Diagnostics\IStructuredTraceSink.cs" />
-    <Compile Include="Diagnostics\ITrace.cs" />
-    <Compile Include="Diagnostics\Model\StructuredTrace.cs" />
-    <Compile Include="Diagnostics\Model\StructuredTraceScope.cs" />
-    <Compile Include="Diagnostics\Model\StructuredTraceSeverity.cs" />
-    <Compile Include="CircularBuffer.cs" />
-    <Compile Include="Diagnostics\StructuredTraceCompletionBehavior.cs" />
-    <Compile Include="Diagnostics\Tracer.cs" />
     <Compile Include="DynamicConfiguration\Roslyn\IScriptEngine.cs" />
     <Compile Include="DynamicConfiguration\Roslyn\ITemplateEngine.cs" />
     <Compile Include="DynamicConfiguration\Roslyn\ScriptScope.cs" />
@@ -171,15 +153,6 @@
     <Compile Include="LeaseManagement\IObserveLeases.cs" />
     <Compile Include="LeaseManagement\IStoreLeases.cs" />
     <Compile Include="LeaseManagement\Lease.cs" />
-    <Compile Include="Metrics\Configuration\MetricsExtensionPoint.cs" />
-    <Compile Include="Metrics\IMetrics.cs" />
-    <Compile Include="Metrics\IMetricsSink.cs" />
-    <Compile Include="Metrics\Model\Metric.cs" />
-    <Compile Include="Metrics\Configuration\MetricExtensions.cs" />
-    <Compile Include="Metrics\MetricsCollector.cs" />
-    <Compile Include="Metrics\Configuration\MetricsCompletionBehavior.cs" />
-    <Compile Include="Metrics\Configuration\MetricSinkTypes.cs" />
-    <Compile Include="Metrics\Sink\BufferedConsoleMetricSink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Running\BackgroundTaskRegisteredException.cs" />
     <Compile Include="Running\BackgroundTaskTypes.cs" />
@@ -270,6 +243,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Diagnostics\" />
+    <Folder Include="Metrics\" />
     <Folder Include="Serialization\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
