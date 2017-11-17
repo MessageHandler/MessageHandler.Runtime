@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj" />
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
     <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj" />
   </ItemGroup>
 

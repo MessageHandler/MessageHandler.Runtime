@@ -6,7 +6,7 @@ namespace MessageHandler.Runtime.Configuration
 {
     public class JSonFileConfigurationSource : IConfigurationSource
     {
-        private string _filename = "handler.config.json";
+        private readonly string _filename = "handler.config.json";
 
         public JSonFileConfigurationSource() { }
 

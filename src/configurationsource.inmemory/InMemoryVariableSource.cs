@@ -7,9 +7,9 @@ namespace MessageHandler.Runtime
     {
         private readonly IList<Variable> _variables;
 
-        public InMemoryVariableSource(ISettings settings)
+        public InMemoryVariableSource(IList<Variable> variables)
         {
-            _variables = settings.GetUserVariables();
+            _variables = variables;
         }
 
         public dynamic GetVariables(string scopeType, string scopeId)
