@@ -19,14 +19,7 @@ namespace MessageHandler.Runtime.Configuration
             ApplyTemplates(config);
             return config;
         }
-
-        public async Task<T> GetConfiguration<T>(string filename) where T : class, new()
-        {
-            var config = await _configurationSource.GetConfiguration<T>(filename);
-            ApplyTemplates(config);
-            return config;
-        }
-
+        
         private void ApplyTemplates<T>(T config)
         {
             var type = typeof(T);

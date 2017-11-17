@@ -145,7 +145,6 @@
     <Compile Include="Configuration\HandlerRuntimeConfigurationValues.cs" />
     <Compile Include="Configuration\HandlerRuntimeConfigurationSettingsExtensions.cs" />
     <Compile Include="Configuration\InputSubjectFilter.cs" />
-    <Compile Include="Configuration\JSonFileConfigurationSource.cs" />
     <Compile Include="Diagnostics\Configuration\TraceSettingsExtensionPoint.cs" />
     <Compile Include="Diagnostics\Configuration\TraceSeverityTresholds.cs" />
     <Compile Include="Diagnostics\Configuration\TraceSinkRegistration.cs" />

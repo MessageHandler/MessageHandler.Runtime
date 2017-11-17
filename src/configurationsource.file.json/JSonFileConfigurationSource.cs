@@ -6,14 +6,17 @@ namespace MessageHandler.Runtime.Configuration
 {
     public class JSonFileConfigurationSource : IConfigurationSource
     {
-        public Task<T> GetConfiguration<T>() where T : class, new()
-        {
-            return GetConfiguration<T>("handler.config.json");
-        }
+        private string _filename = "handler.config.json";
 
-        public async Task<T> GetConfiguration<T>(string filename) where T : class, new()
+        public JSonFileConfigurationSource() { }
+
+        public JSonFileConfigurationSource(string filename)
         {
-            using (var reader = File.OpenText(filename))
+            _filename = filename;
+        }
+        public async Task<T> GetConfiguration<T>() where T : class, new()
+        {
+            using (var reader = File.OpenText(_filename))
             {
                 var json = await reader.ReadToEndAsync().ConfigureAwait(false);
                 return Json.Decode<T>(json);

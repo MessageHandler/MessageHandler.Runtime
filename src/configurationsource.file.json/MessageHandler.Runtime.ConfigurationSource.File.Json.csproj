@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\configurationsource\MessageHandler.Runtime.ConfigurationSource.csproj" />
+    <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj" />
+  </ItemGroup>
+
 </Project>
