@@ -1,4 +1,6 @@
-﻿namespace unittests.Serialization
+﻿using System.Collections.Generic;
+
+namespace unittests.Serialization
 {
     using System.Collections;
     using MessageHandler.Runtime.Serialization;
@@ -6,7 +8,7 @@
 
     public class When_deserializing_primitive_types
     {
-        public static IEnumerable PrimitivePermutations
+        public static IEnumerable<object[]> PrimitivePermutations
         {
             get
             {
