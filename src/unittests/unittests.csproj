@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +28,24 @@
     <ProjectReference Include="..\serialization.json\MessageHandler.Runtime.Serialization.JSon.csproj" />
     <ProjectReference Include="..\startuptasks\MessageHandler.Runtime.StartupTasks.csproj" />
     <ProjectReference Include="..\templating\MessageHandler.Runtime.Templating.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Configuration\handler.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configuration\handler.routing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configuration\handler.runtime.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configuration\handler.variables.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="handler.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

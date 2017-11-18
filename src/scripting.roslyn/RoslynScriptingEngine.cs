@@ -15,7 +15,7 @@ namespace MessageHandler.Runtime
     {
         private readonly ConcurrentDictionary<string, Func<dynamic, dynamic, dynamic, dynamic, dynamic, dynamic, object>> _compiled = new ConcurrentDictionary<string, Func<dynamic, dynamic, dynamic, dynamic, dynamic, dynamic, object>>(); 
 
-        public string Execute(string script, object message = null, object channel = null, object environment = null, object account = null, object context = null)
+        public string Execute(string script, dynamic message = null, dynamic channel = null, dynamic environment = null, dynamic account = null, dynamic context = null)
         {
             var func = _compiled.GetOrAdd(script, s =>
             {
@@ -32,7 +32,7 @@ namespace MessageHandler.Runtime
 
         public string Execute(string script, Dictionary<ScriptScope, object> parameters)
         {
-            object message, channel, environment, account, project, context;
+            dynamic message, channel, environment, account, project, context;
             parameters.TryGetValue(ScriptScope.Message, out message);
             parameters.TryGetValue(ScriptScope.Channel, out channel);
             parameters.TryGetValue(ScriptScope.Environment, out environment);
@@ -63,9 +63,9 @@ namespace MessageHandler.Runtime
                 references: new[]
                 {
                     MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                    MetadataReference.CreateFromFile(typeof(RuntimeBinderException).Assembly.Location),
-                    MetadataReference.CreateFromFile(typeof(System.Runtime.CompilerServices.DynamicAttribute).Assembly.Location)
-                });
+                     MetadataReference.CreateFromFile(typeof(Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo).Assembly.Location),
+                     MetadataReference.CreateFromFile(typeof(System.Runtime.CompilerServices.DynamicAttribute).Assembly.Location)
+                 });
 
             EmitResult emitResult;
 
