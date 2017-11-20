@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MessageHandler.Runtime;
 using MessageHandler.Runtime.Configuration;
 using Xunit;
+using Xunit.Sdk;
 
 namespace unittests.Configuration
 {
@@ -13,10 +14,19 @@ namespace unittests.Configuration
         {
             var engine = new RoslynScriptingEngine();
 
-            var result = engine.Execute("@message.Value > 0");
+            var result = engine.Execute("message.Value > 0", message: new TestMessage { Value = 1 });
 
-            Assert.Equal("true", result);
+            Assert.Equal("True", result);
         }
 
+        public class TestMessage
+        {
+            public int Value {
+                get;
+                set;
+            }
+
+
+        }
     }
 }

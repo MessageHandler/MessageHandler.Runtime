@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -15,7 +16,7 @@ namespace MessageHandler.Runtime
     {
         private readonly ConcurrentDictionary<string, Func<dynamic, dynamic, dynamic, dynamic, dynamic, dynamic, object>> _compiled = new ConcurrentDictionary<string, Func<dynamic, dynamic, dynamic, dynamic, dynamic, dynamic, object>>(); 
 
-        public string Execute(string script, object message = null, object channel = null, object environment = null, object account = null, object context = null)
+        public string Execute(string script, dynamic message = null, dynamic channel = null, dynamic environment = null, dynamic account = null, dynamic context = null)
         {
             var func = _compiled.GetOrAdd(script, s =>
             {
@@ -32,7 +33,7 @@ namespace MessageHandler.Runtime
 
         public string Execute(string script, Dictionary<ScriptScope, object> parameters)
         {
-            object message, channel, environment, account, project, context;
+            dynamic message, channel, environment, account, project, context;
             parameters.TryGetValue(ScriptScope.Message, out message);
             parameters.TryGetValue(ScriptScope.Channel, out channel);
             parameters.TryGetValue(ScriptScope.Environment, out environment);
@@ -55,17 +56,15 @@ namespace MessageHandler.Runtime
 
         private Assembly Compile(params string[] sources)
         {
+            var references = CollectReferences();
+            references.Add(MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location));
+            references.Add(MetadataReference.CreateFromFile(typeof(RuntimeBinderException).GetTypeInfo().Assembly.Location));
             var assemblyFileName = "gen" + Guid.NewGuid().ToString().Replace("-", "") + ".dll";
             var compilation = CSharpCompilation.Create(assemblyFileName,
                 options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary),
                 syntaxTrees: from source in sources
                              select CSharpSyntaxTree.ParseText(source),
-                references: new[]
-                {
-                    MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                    MetadataReference.CreateFromFile(typeof(RuntimeBinderException).Assembly.Location),
-                    MetadataReference.CreateFromFile(typeof(System.Runtime.CompilerServices.DynamicAttribute).Assembly.Location)
-                });
+                references: references.ToArray());
 
             EmitResult emitResult;
 
@@ -94,6 +93,44 @@ namespace MessageHandler.Runtime
                                             "}}" +
                                         "}}";
 
-        
+        private static List<MetadataReference> CollectReferences()
+        {
+            // first, collect all assemblies
+            var assemblies = new HashSet<Assembly>();
+
+            Collect(Assembly.Load(new AssemblyName("netstandard")));
+
+            //// add extra assemblies which are not part of netstandard.dll, for example:
+            //Collect(typeof(Uri).Assembly);
+
+            // second, build metadata references for these assemblies
+            var result = new List<MetadataReference>(assemblies.Count);
+            foreach (var assembly in assemblies)
+            {
+                result.Add(MetadataReference.CreateFromFile(assembly.Location));
+            }
+
+            return result;
+
+            // helper local function - add assembly and its referenced assemblies
+            void Collect(Assembly assembly)
+            {
+                if (!assemblies.Add(assembly))
+                {
+                    // already added
+                    return;
+                }
+
+                var referencedAssemblyNames = assembly.GetReferencedAssemblies();
+
+                foreach (var assemblyName in referencedAssemblyNames)
+                {
+                    var loadedAssembly = Assembly.Load(assemblyName);
+                    assemblies.Add(loadedAssembly);
+                }
+            }
+        }
+
+
     }
 }
