@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Configuration\HandlerRuntimeContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\backgroundtasks\MessageHandler.Runtime.BackgroundTasks.csproj" />
     <ProjectReference Include="..\configurationsource.dynamic\MessageHandler.Runtime.ConfigurationSource.Dynamic.csproj" />
     <ProjectReference Include="..\configurationsource.file.json\MessageHandler.Runtime.ConfigurationSource.File.Json.csproj" />
