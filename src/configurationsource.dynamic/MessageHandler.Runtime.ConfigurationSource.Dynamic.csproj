@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.0</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\configurationsource.inmemory\MessageHandler.Runtime.ConfigurationSource.InMemory.csproj" />
+    <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
+    <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj" />
+    <ProjectReference Include="..\scripting\MessageHandler.Runtime.Scripting.csproj" />
+    <ProjectReference Include="..\templating\MessageHandler.Runtime.Templating.csproj" />
+  </ItemGroup>
 
 </Project>
