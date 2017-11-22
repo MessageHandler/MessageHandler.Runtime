@@ -10,7 +10,7 @@ namespace MessageHandler.Runtime
             container.Register<DynamicConfigurationSource>();
             container.Register(() => new InMemoryVariableSource(configuration.Settings.GetUserVariables()));
             container.Register<RoslynScriptingEngine>();
-            container.Register<RoslynRegexTemplatingEngine>();
+            container.Register<RegexTemplatingEngine>();
         }
     }
 }
