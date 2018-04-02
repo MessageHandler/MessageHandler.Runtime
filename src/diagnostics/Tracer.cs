@@ -20,7 +20,7 @@ namespace MessageHandler.Runtime
        
         public Tracer(IResolveDependencies container, ISettings settings)
         {
-            _disruptor = new Disruptor<TraceDisruptorEntry>(() => new TraceDisruptorEntry(), 16384, TaskScheduler.Default, ProducerType.Multi, new BlockingWaitStrategy());
+            _disruptor = new Disruptor<TraceDisruptorEntry>(() => new TraceDisruptorEntry(), 16384, TaskScheduler.Default, ProducerType.Multi, new BlockingSpinWaitWaitStrategy());
 
             var sinks = container.ResolveAll<IStructuredTraceSink>();
             var registrations = settings.Get<TraceSinkRegistrations>();
