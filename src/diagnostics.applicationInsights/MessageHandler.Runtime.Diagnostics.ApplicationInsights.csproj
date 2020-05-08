@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\configuration\MessageHandler.Runtime.Configuration.csproj" />
     <ProjectReference Include="..\container\MessageHandler.Runtime.Container.csproj" />
+    <ProjectReference Include="..\diagnostics\MessageHandler.Runtime.Diagnostics.csproj" />
   </ItemGroup>
 
 </Project>
