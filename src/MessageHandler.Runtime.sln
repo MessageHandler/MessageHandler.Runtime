@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.Runtime", "runtime\MessageHandler.Runtime.csproj", "{3179E536-2B90-4092-A7F8-B612273DCA6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime", "runtime\MessageHandler.Runtime.csproj", "{3179E536-2B90-4092-A7F8-B612273DCA6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unittests", "unittests\unittests.csproj", "{BADB5E1E-548B-4159-B1BB-6D9681B2DCBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "unittests", "unittests\unittests.csproj", "{BADB5E1E-548B-4159-B1BB-6D9681B2DCBE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Configuration", "configuration\MessageHandler.Runtime.Configuration.csproj", "{1F08788E-5897-438C-958C-0A0950F39B98}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Container", "container\MessageHandler.Runtime.Container.csproj", "{EE8C0E3A-AA42-49F3-928D-52540C4984B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Diagnostics", "diagnostics\MessageHandler.Runtime.Diagnostics.csproj", "{AC3CCA56-E47E-4C8F-8316-73CF2D29D9E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Diagnostics.ApplicationInsights", "diagnostics.applicationInsights\MessageHandler.Runtime.Diagnostics.ApplicationInsights.csproj", "{7DDF8739-4736-4938-AD4F-9E71234FB3FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Metrics", "metrics\MessageHandler.Runtime.Metrics.csproj", "{A63C8FB2-288D-4689-9A1E-428935D47CC4}"
 EndProject
@@ -37,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Conf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.Scripting.Roslyn", "scripting.roslyn\MessageHandler.Runtime.Scripting.Roslyn.csproj", "{90C53710-0932-4618-947D-46D79FD91072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHandler.Runtime.ConfigurationSource.InMemory", "configurationsource.inmemory\MessageHandler.Runtime.ConfigurationSource.InMemory.csproj", "{47225A34-8F46-4358-AA70-D88F1DA15C09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageHandler.Runtime.ConfigurationSource.InMemory", "configurationsource.inmemory\MessageHandler.Runtime.ConfigurationSource.InMemory.csproj", "{47225A34-8F46-4358-AA70-D88F1DA15C09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,7 +66,9 @@ Global
 		{AC3CCA56-E47E-4C8F-8316-73CF2D29D9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC3CCA56-E47E-4C8F-8316-73CF2D29D9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC3CCA56-E47E-4C8F-8316-73CF2D29D9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC3CCA56-E47E-4C8F-8316-73CF2D29D9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDF8739-4736-4938-AD4F-9E71234FB3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDF8739-4736-4938-AD4F-9E71234FB3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDF8739-4736-4938-AD4F-9E71234FB3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A63C8FB2-288D-4689-9A1E-428935D47CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A63C8FB2-288D-4689-9A1E-428935D47CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A63C8FB2-288D-4689-9A1E-428935D47CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
