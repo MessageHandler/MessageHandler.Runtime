@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Disruptor" Version="3.3.8" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
