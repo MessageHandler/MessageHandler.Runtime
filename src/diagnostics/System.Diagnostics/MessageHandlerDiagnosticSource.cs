@@ -33,7 +33,14 @@ namespace MessageHandler.Runtime
         {
             if (activity != null)
             {
-                _diagnosticListener.StopActivity(activity, getPayload());
+                if (_diagnosticListener.IsEnabled(activity.OperationName))
+                {
+                    _diagnosticListener.StopActivity(activity, getPayload());
+                }
+                else
+                {
+                    activity.Stop();
+                }
             }
         }
     }
