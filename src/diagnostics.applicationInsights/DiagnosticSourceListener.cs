@@ -153,7 +153,13 @@ namespace MessageHandler.Runtime
                 Duration = currentActivity.Duration,
                 Name = info?.Name ?? currentActivity.OperationName,
                 Type = info?.Type ?? "MessageHandler",
-                Data = info?.Command
+                Data = info?.Command,
+
+                // testing what is shown where in the UI
+                CommandName = "CommandName",
+                DependencyTypeName = "DependencyTypeName",
+                ResultCode = "ResultCode",
+                Target = "Target"                
             };
 
             foreach (KeyValuePair<string, string> tag in currentActivity.Tags)
