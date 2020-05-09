@@ -40,7 +40,6 @@ namespace MessageHandler.Runtime
 
     public class ActivityInfo
     {
-        public string Type { get; set; }
         public string Name { get; set; }
         public string Command { get; set; }
     }

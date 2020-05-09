@@ -1,4 +1,5 @@
-﻿using Microsoft.ApplicationInsights;
+﻿using MessageHandler.Runtime.ConfigurationSettings;
+using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Common;
 using Microsoft.ApplicationInsights.DataContracts;
 using System;
@@ -11,7 +12,7 @@ namespace MessageHandler.Runtime
     public class DiagnosticSourceListener : IObserver<DiagnosticListener>, IDiagnosticEventHandler, IDisposable
     {
         private TelemetryClient _client;
-        
+        private readonly ISettings _settings;
         private static readonly ConcurrentDictionary<string, ActiveSubsciptionManager> SubscriptionManagers = new ConcurrentDictionary<string, ActiveSubsciptionManager>();
         private readonly ConcurrentQueue<IDisposable> individualSubscriptions = new ConcurrentQueue<IDisposable>();
         private readonly ConcurrentQueue<IndividualDiagnosticSourceListener> individualListeners = new ConcurrentQueue<IndividualDiagnosticSourceListener>();
@@ -21,10 +22,10 @@ namespace MessageHandler.Runtime
 
         private IDisposable _subscription;
 
-        public DiagnosticSourceListener(TelemetryClient client)
+        public DiagnosticSourceListener(TelemetryClient client, ConfigurationSettings.ISettings settings)
         {
             this._client = client;
-
+            this._settings = settings;
             includedDiagnosticSources.Add(MessageHandlerDiagnosticSource.DiagnosticListenerName);
         }
 
@@ -148,15 +149,16 @@ namespace MessageHandler.Runtime
         internal DependencyTelemetry ExtractDependencyTelemetry(Activity currentActivity, ActivityInfo info)
         {
             // Displayed in app insights = DependencyTypeName - Target - Name
+            var handlerConfigurationId = _settings.GetHandlerConfigurationId();
 
             DependencyTelemetry telemetry = new DependencyTelemetry
             {
                 Id = currentActivity.SpanId.ToHexString(),
                 Duration = currentActivity.Duration,
-                DependencyTypeName = info?.Type ?? "MessageHandler", 
-                Type = info?.Type ?? "MessageHandler",
-                Target = info?.Name,
-                Name = info?.Command,
+                DependencyTypeName = "MH",
+                Type = "MH",
+                Target = handlerConfigurationId,
+                Name = info?.Name + " " + info?.Command,
                 //Name = info?.Name ?? currentActivity.OperationName,
                 Data = info?.Command
             };

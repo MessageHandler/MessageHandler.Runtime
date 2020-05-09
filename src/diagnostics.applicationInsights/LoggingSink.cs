@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MessageHandler.Runtime.Diagnostics;
+using Microsoft.ApplicationInsights;
 using Microsoft.Extensions.Logging;
 
 namespace MessageHandler.Runtime
@@ -47,6 +49,21 @@ namespace MessageHandler.Runtime
         public Task Flush()
         {
             return Task.CompletedTask;
+        }
+    }
+
+    public static class ApplicationInsightsSettingsExtensions
+    {
+        public static ConfigurationRoot AddApplicationInsights(this ConfigurationRoot configuration, TelemetryClient telemetry, ILogger logger, StructuredTraceSeverity severity)
+        {
+            configuration.Tracing().RegisterSink(new LoggingSink(logger), severity: severity);
+
+            var container = configuration.Settings.GetContainer();
+            var diagnosticsSourceListener = new DiagnosticSourceListener(telemetry, configuration.Settings);
+            diagnosticsSourceListener.Subscribe();
+            container.Register(Lifecycle.Singleton, () => diagnosticsSourceListener);           
+
+            return configuration;
         }
     }
 }
