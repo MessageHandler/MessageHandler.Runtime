@@ -9,7 +9,7 @@ namespace MessageHandler.Runtime
 
         private static readonly DiagnosticListener _diagnosticListener = new DiagnosticListener(DiagnosticListenerName);
 
-        public Activity Start(string operationName, Activity parent, Func<object> getPayload)
+        public Activity Start(string operationName, Activity parent, Func<ActivityInfo> getPayload)
         {
             string activityName = BaseActivityName + operationName;
             var activity = new Activity(activityName);
@@ -29,12 +29,19 @@ namespace MessageHandler.Runtime
             return activity;
         }
 
-        public void Stop(Activity activity, Func<object> getPayload)
+        public void Stop(Activity activity, Func<ActivityInfo> getPayload)
         {
             if (activity != null)
             {
                 _diagnosticListener.StopActivity(activity, getPayload());
             }
         }
+    }
+
+    public class ActivityInfo
+    {
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string Command { get; set; }
     }
 }

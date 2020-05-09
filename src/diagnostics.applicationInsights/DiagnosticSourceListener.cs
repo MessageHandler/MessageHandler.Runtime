@@ -25,7 +25,7 @@ namespace MessageHandler.Runtime
         {
             this._client = client;
 
-            includedDiagnosticSources.Add("MessageHandler.Runtime");
+            includedDiagnosticSources.Add(MessageHandlerDiagnosticSource.DiagnosticListenerName);
         }
 
         public void Subscribe()
@@ -126,8 +126,9 @@ namespace MessageHandler.Runtime
             if (evnt.Key.EndsWith(".Start"))
             {
                 Activity currentActivity = Activity.Current;
+                ActivityInfo info = evnt.Value as ActivityInfo;
 
-                var telemetry = ExtractDependencyTelemetry(diagnosticListener, currentActivity);
+                var telemetry = ExtractDependencyTelemetry(currentActivity, info);
                 if (telemetry == null)
                 {
                     return;
@@ -138,20 +139,21 @@ namespace MessageHandler.Runtime
                 telemetry.Timestamp = currentActivity.StartTimeUtc;
 
                 telemetry.Properties["DiagnosticSource"] = diagnosticListener.Name;
-                telemetry.Properties["Activity"] = currentActivity.OperationName;
+                //telemetry.Properties["Activity"] = currentActivity.OperationName;
 
                 this._client.TrackDependency(telemetry);
             }
         }
 
-        internal DependencyTelemetry ExtractDependencyTelemetry(DiagnosticListener diagnosticListener, Activity currentActivity)
+        internal DependencyTelemetry ExtractDependencyTelemetry(Activity currentActivity, ActivityInfo info)
         {
             DependencyTelemetry telemetry = new DependencyTelemetry
             {
                 Id = currentActivity.SpanId.ToHexString(),
                 Duration = currentActivity.Duration,
-                Name = currentActivity.OperationName,
-                Type = "MessageHandler"
+                Name = info?.Name ?? currentActivity.OperationName,
+                Type = info?.Type ?? "MessageHandler",
+                Data = info?.Command
             };
 
             foreach (KeyValuePair<string, string> tag in currentActivity.Tags)
