@@ -147,19 +147,18 @@ namespace MessageHandler.Runtime
 
         internal DependencyTelemetry ExtractDependencyTelemetry(Activity currentActivity, ActivityInfo info)
         {
+            // Displayed in app insights = DependencyTypeName - Target - Name
+
             DependencyTelemetry telemetry = new DependencyTelemetry
             {
                 Id = currentActivity.SpanId.ToHexString(),
                 Duration = currentActivity.Duration,
-                Name = info?.Name ?? currentActivity.OperationName,
+                DependencyTypeName = info?.Type ?? "MessageHandler", 
                 Type = info?.Type ?? "MessageHandler",
-                Data = info?.Command,
-
-                // testing what is shown where in the UI
-                CommandName = "CommandName",
-                DependencyTypeName = "DependencyTypeName",
-                ResultCode = "ResultCode",
-                Target = "Target"                
+                Target = info?.Name,
+                Name = info?.Command,
+                //Name = info?.Name ?? currentActivity.OperationName,
+                Data = info?.Command
             };
 
             foreach (KeyValuePair<string, string> tag in currentActivity.Tags)
