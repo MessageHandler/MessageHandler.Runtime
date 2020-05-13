@@ -14,9 +14,12 @@ namespace MessageHandler.Runtime
             string activityName = BaseActivityName + operationName;
             var activity = new Activity(activityName);
 
-            var parentSpanId = parent.SpanId.ToHexString() != "0000000000000000" ? parent.SpanId : parent.ParentSpanId;
+            if(parent != null)
+            {
+                var parentSpanId = parent.SpanId.ToHexString() != "0000000000000000" ? parent.SpanId : parent.ParentSpanId;
+                activity.SetParentId(parent.TraceId, parentSpanId, parent.ActivityTraceFlags);
+            }
 
-            activity.SetParentId(parent.TraceId, parentSpanId, parent.ActivityTraceFlags);
             if (_diagnosticListener.IsEnabled(activityName))
             {
                 _diagnosticListener.StartActivity(activity, getPayload());
