@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace MessageHandler.Runtime
 {
@@ -12,5 +13,6 @@ namespace MessageHandler.Runtime
         public DateTimeOffset When { get; set; } = DateTimeOffset.UtcNow;
         public StructuredTraceSeverity Severity { get; set; } = StructuredTraceSeverity.Verbose;
         public StructuredTraceScope Scope { get; set; } = StructuredTraceScope.Domain;
+        public Activity ActivityTrace { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using MessageHandler.Runtime.Diagnostics;
 using Microsoft.ApplicationInsights;
@@ -19,6 +20,11 @@ namespace MessageHandler.Runtime
         {
             var state = trace.State != null ? Environment.NewLine + trace.State : string.Empty;
             var message = ($"{trace.When:yyyy-MM-dd HH:mm:ss)} [{trace.Severity}] {trace.Text}{state}");
+
+            if (trace.ActivityTrace != null)
+            {
+                Activity.Current = trace.ActivityTrace;
+            }
 
             if(trace.State is Exception)
             {

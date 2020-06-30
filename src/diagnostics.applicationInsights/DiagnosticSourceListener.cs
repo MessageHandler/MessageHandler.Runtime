@@ -135,7 +135,7 @@ namespace MessageHandler.Runtime
                     return;
                 }
 
-                telemetry.Context.Operation.Id = info.NewOperation ? ActivityTraceId.CreateRandom().ToHexString() : currentActivity.RootId;
+                telemetry.Context.Operation.Id = currentActivity.RootId;
                 telemetry.Context.Operation.ParentId = currentActivity.ParentSpanId.ToHexString();
                 telemetry.Timestamp = currentActivity.StartTimeUtc;
 
