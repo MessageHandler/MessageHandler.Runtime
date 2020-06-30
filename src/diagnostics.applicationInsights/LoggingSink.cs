@@ -20,7 +20,14 @@ namespace MessageHandler.Runtime
             var state = trace.State != null ? Environment.NewLine + trace.State : string.Empty;
             var message = ($"{trace.When:yyyy-MM-dd HH:mm:ss)} [{trace.Severity}] {trace.Text}{state}");
 
-            _logger.Log(Translate(trace.Severity), message, trace.State);
+            if(trace.State is Exception)
+            {
+                _logger.Log(Translate(trace.Severity), (Exception) trace.State, message);
+            }
+            else
+            {
+                _logger.Log(Translate(trace.Severity), message, trace.State);
+            }            
 
             return Task.CompletedTask;
         }
