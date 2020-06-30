@@ -56,8 +56,7 @@ namespace MessageHandler.Runtime
                 Severity = StructuredTraceSeverity.Verbose,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, DefaultCompletionBehavior);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -71,8 +70,7 @@ namespace MessageHandler.Runtime
                 Severity = StructuredTraceSeverity.Debug,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, DefaultCompletionBehavior);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -86,8 +84,7 @@ namespace MessageHandler.Runtime
                 Severity = StructuredTraceSeverity.Info,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, DefaultCompletionBehavior);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -101,8 +98,7 @@ namespace MessageHandler.Runtime
                 Severity = StructuredTraceSeverity.Warn,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, DefaultCompletionBehavior);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -116,8 +112,7 @@ namespace MessageHandler.Runtime
                 Severity = StructuredTraceSeverity.Error,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -132,8 +127,7 @@ namespace MessageHandler.Runtime
                 State = exception,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -147,8 +141,7 @@ namespace MessageHandler.Runtime
                 Severity = StructuredTraceSeverity.Fatal,
                 Text = text,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -163,8 +156,7 @@ namespace MessageHandler.Runtime
                 Text = text,
                 State = exception,
                 Where = where,
-                What = "Trace",
-                ActivityTrace = Activity.Current
+                What = "Trace"
             }, StructuredTraceCompletionBehavior.Flushed);
         }
 
